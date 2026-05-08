@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="dark">
+<meta name="theme-color" content="#0D1B2E">
+<meta name="fo-verify" content="df0dd6b9-0610-493f-ba7e-69548095e35c" />
+<title>アメリカでクレジットカードを作る完全ガイド｜在米日本人がゼロから始める方法 | AmePeach</title>
+<meta name="description" content="アメリカに渡米したばかりの日本人向けに、クレジットカードの作り方をゼロから解説。SSN・ITINの違い、初心者におすすめのカード3選、クレジットヒストリーを最速で育てるコツまで。">
+<meta name="keywords" content="アメリカ クレジットカード 作り方,在米日本人 クレカ,SSNなし クレカ,クレジットヒストリー 作り方,アメリカ クレカ 初心者">
+<meta property="og:title" content="アメリカでクレジットカードを作る完全ガイド｜在米日本人がゼロから始める方法">
+<meta property="og:description" content="渡米したての日本人向け。SSNがなくても作れるカードから、Chase 5/24ルールまで全網羅。">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://amepeach.com/blog/first-credit-card">
+<link rel="canonical" href="https://amepeach.com/blog/first-credit-card">
+<link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --orange: #F5763A;
+    --gold: #FFD600;
+    --amber: #F5A623;
+    --navy: #1B3A6B;
+    --bg: #0D1B2E;
+    --card-bg: #162438;
+    --text: #FFF8EE;
+    --text-muted: #8EA8C3;
+    --border: rgba(255,255,255,0.08);
+  }
+
+- { margin: 0; padding: 0; box-sizing: border-box; }
+
+html, body { background: var(–bg) !important; }
+
+body {
+font-family: ‘Zen Maru Gothic’, sans-serif;
+color: var(–text);
+line-height: 1.8;
+overflow-x: hidden;
+}
+
+/* Header */
+.site-header {
+position: sticky;
+top: 0;
+background: rgba(13,27,46,0.95);
+backdrop-filter: blur(12px);
+-webkit-backdrop-filter: blur(12px);
+border-bottom: 1px solid var(–border);
+padding: 14px 16px;
+z-index: 100;
+display: flex;
+align-items: center;
+justify-content: space-between;
+}
+
+.site-logo {
+font-size: 1rem;
+font-weight: 900;
+color: var(–gold);
+text-decoration: none;
+display: flex;
+align-items: center;
+gap: 6px;
+}
+
+.site-logo .peach { font-size: 1.2rem; }
+
+.back-link {
+font-size: 0.78rem;
+color: var(–text-muted);
+text-decoration: none;
+padding: 6px 12px;
+border: 1px solid var(–border);
+border-radius: 99px;
+transition: all 0.2s;
+}
+
+.back-link:hover { border-color: var(–orange); color: var(–orange); }
+
+/* Article container */
+.article {
+max-width: 720px;
+margin: 0 auto;
+padding: 24px 18px 60px;
+}
+
+.article-meta {
+display: flex;
+gap: 10px;
+align-items: center;
+margin-bottom: 14px;
+flex-wrap: wrap;
+}
+
+.category-tag {
+background: rgba(245,118,58,0.15);
+color: var(–orange);
+padding: 4px 10px;
+border-radius: 99px;
+font-size: 0.7rem;
+font-weight: 700;
+}
+
+.date {
+font-size: 0.72rem;
+color: var(–text-muted);
+}
+
+.read-time {
+font-size: 0.72rem;
+color: var(–text-muted);
+}
+
+h1 {
+font-size: 1.7rem;
+font-weight: 900;
+line-height: 1.4;
+margin-bottom: 18px;
+color: var(–text);
+}
+
+.article-intro {
+font-size: 0.95rem;
+color: var(–text-muted);
+line-height: 1.8;
+margin-bottom: 30px;
+padding: 16px;
+background: rgba(255,255,255,0.03);
+border-left: 3px solid var(–orange);
+border-radius: 0 8px 8px 0;
+}
+
+/* TOC */
+.toc {
+background: var(–card-bg);
+border: 1px solid var(–border);
+border-radius: 12px;
+padding: 18px;
+margin-bottom: 32px;
+}
+
+.toc-title {
+font-size: 0.78rem;
+font-weight: 900;
+color: var(–gold);
+margin-bottom: 12px;
+letter-spacing: 0.05em;
+}
+
+.toc ol {
+padding-left: 20px;
+}
+
+.toc li {
+font-size: 0.85rem;
+line-height: 1.9;
+color: var(–text-muted);
+}
+
+.toc a {
+color: var(–text-muted);
+text-decoration: none;
+transition: color 0.2s;
+}
+
+.toc a:hover { color: var(–orange); }
+
+/* Headings in article */
+h2 {
+font-size: 1.3rem;
+font-weight: 900;
+margin: 40px 0 16px;
+padding-bottom: 8px;
+border-bottom: 2px solid var(–orange);
+color: var(–text);
+}
+
+h3 {
+font-size: 1.05rem;
+font-weight: 900;
+margin: 28px 0 12px;
+color: var(–gold);
+}
+
+/* Paragraphs */
+p {
+font-size: 0.92rem;
+line-height: 1.95;
+margin-bottom: 16px;
+color: rgba(255,248,238,0.92);
+}
+
+strong {
+color: var(–gold);
+font-weight: 900;
+}
+
+/* Lists */
+ul, ol {
+margin: 12px 0 20px 22px;
+}
+
+li {
+font-size: 0.92rem;
+line-height: 1.85;
+margin-bottom: 6px;
+color: rgba(255,248,238,0.9);
+}
+
+/* Callout boxes */
+.callout {
+background: var(–card-bg);
+border: 1px solid var(–border);
+border-left: 4px solid var(–gold);
+padding: 16px 18px;
+margin: 20px 0;
+border-radius: 0 12px 12px 0;
+}
+
+.callout-title {
+font-weight: 900;
+color: var(–gold);
+margin-bottom: 8px;
+font-size: 0.9rem;
+}
+
+.callout p:last-child { margin-bottom: 0; }
+
+.callout.warning { border-left-color: var(–orange); }
+.callout.warning .callout-title { color: var(–orange); }
+
+/* CTA box (link to app) */
+.cta-box {
+background: linear-gradient(135deg, rgba(245,166,35,0.15), rgba(245,118,58,0.08));
+border: 2px solid var(–orange);
+border-radius: 16px;
+padding: 22px 20px;
+margin: 32px 0;
+text-align: center;
+}
+
+.cta-emoji {
+font-size: 2rem;
+margin-bottom: 6px;
+}
+
+.cta-title {
+font-size: 1.05rem;
+font-weight: 900;
+color: var(–gold);
+margin-bottom: 6px;
+}
+
+.cta-desc {
+font-size: 0.82rem;
+color: var(–text-muted);
+margin-bottom: 16px;
+line-height: 1.7;
+}
+
+.cta-btn {
+display: inline-block;
+background: linear-gradient(135deg, var(–amber), var(–orange));
+color: white;
+padding: 11px 24px;
+border-radius: 99px;
+text-decoration: none;
+font-weight: 900;
+font-size: 0.88rem;
+transition: transform 0.2s, box-shadow 0.2s;
+box-shadow: 0 4px 14px rgba(245,118,58,0.3);
+}
+
+.cta-btn:hover {
+transform: translateY(-2px);
+box-shadow: 0 6px 18px rgba(245,118,58,0.45);
+}
+
+/* Comparison table */
+.compare-table {
+background: var(–card-bg);
+border-radius: 12px;
+padding: 16px;
+margin: 20px 0;
+overflow-x: auto;
+}
+
+table {
+width: 100%;
+border-collapse: collapse;
+font-size: 0.8rem;
+}
+
+th {
+text-align: left;
+padding: 10px 8px;
+color: var(–gold);
+font-weight: 900;
+border-bottom: 2px solid var(–orange);
+font-size: 0.78rem;
+}
+
+td {
+padding: 10px 8px;
+border-bottom: 1px solid var(–border);
+color: rgba(255,248,238,0.9);
+}
+
+tr:last-child td { border-bottom: none; }
+
+/* FAQ */
+.faq-item {
+background: var(–card-bg);
+border: 1px solid var(–border);
+border-radius: 12px;
+padding: 16px 18px;
+margin-bottom: 12px;
+}
+
+.faq-q {
+font-weight: 900;
+color: var(–gold);
+margin-bottom: 8px;
+font-size: 0.92rem;
+display: flex;
+gap: 8px;
+align-items: flex-start;
+}
+
+.faq-q::before {
+content: ‘Q.’;
+color: var(–orange);
+flex-shrink: 0;
+}
+
+.faq-a {
+font-size: 0.88rem;
+line-height: 1.85;
+color: rgba(255,248,238,0.9);
+padding-left: 22px;
+position: relative;
+}
+
+.faq-a::before {
+content: ‘A.’;
+color: var(–gold);
+font-weight: 900;
+position: absolute;
+left: 0;
+}
+
+/* Footer disclosure */
+.article-footer {
+margin-top: 50px;
+padding-top: 24px;
+border-top: 1px solid var(–border);
+}
+
+.disclosure {
+background: rgba(245,166,35,0.06);
+border: 1px solid rgba(245,166,35,0.2);
+border-radius: 10px;
+padding: 12px 14px;
+font-size: 0.72rem;
+color: var(–text-muted);
+line-height: 1.7;
+margin-bottom: 24px;
+}
+
+.disclosure strong {
+color: var(–orange);
+font-size: 0.75rem;
+}
+
+.author-box {
+display: flex;
+gap: 12px;
+align-items: center;
+padding: 14px;
+background: var(–card-bg);
+border-radius: 12px;
+margin-bottom: 20px;
+}
+
+.author-icon {
+width: 48px; height: 48px;
+background: linear-gradient(135deg, var(–amber), var(–orange));
+border-radius: 50%;
+display: flex;
+align-items: center;
+justify-content: center;
+font-size: 1.5rem;
+flex-shrink: 0;
+}
+
+.author-info {
+flex: 1;
+}
+
+.author-name {
+font-size: 0.85rem;
+font-weight: 900;
+color: var(–gold);
+}
+
+.author-bio {
+font-size: 0.72rem;
+color: var(–text-muted);
+margin-top: 2px;
+line-height: 1.6;
+}
+
+.footer-nav {
+text-align: center;
+padding: 20px 0;
+font-size: 0.72rem;
+color: var(–text-muted);
+}
+
+.footer-nav a {
+color: var(–text-muted);
+text-decoration: none;
+margin: 0 6px;
+}
+
+.footer-nav a:hover { color: var(–orange); }
+
+/* Highlight key term */
+.key-term {
+background: rgba(255,214,0,0.15);
+color: var(–gold);
+padding: 2px 6px;
+border-radius: 4px;
+font-weight: 700;
+}
+</style>
+
+</head>
+<body>
+
+<header class="site-header">
+  <a href="/" class="site-logo">
+    <span class="peach">🍑</span>
+    <span>AmePeach</span>
+  </a>
+  <a href="/" class="back-link">← アプリへ戻る</a>
+</header>
+
+<article class="article">
+  <div class="article-meta">
+    <span class="category-tag">クレカ初心者</span>
+    <span class="date">2025年8月</span>
+    <span class="read-time">📖 約10分で読めます</span>
+  </div>
+
+  <h1>アメリカでクレジットカードを作る完全ガイド｜在米日本人がゼロから始める方法</h1>
+
+  <div class="article-intro">
+    <p>「アメリカに来たけど、クレジットカードってどう作るの？」「SSNがないんだけど大丈夫？」「最初の1枚は何にすべき？」</p>
+    <p style="margin-top:10px;">渡米したばかりの日本人が必ずぶつかる壁、それがクレジットカードです。この記事では、ゼロから始める人向けに「最初の1枚」の作り方を、最短ルートで解説します🍑</p>
+  </div>
+
+  <nav class="toc">
+    <div class="toc-title">📚 目次</div>
+    <ol>
+      <li><a href="#why">なぜアメリカでクレカが超重要なのか</a></li>
+      <li><a href="#credit-history">クレジットヒストリー（クレヒス）の正体</a></li>
+      <li><a href="#ssn-itin">SSN/ITINの違いと申込時の選択肢</a></li>
+      <li><a href="#first-cards">初心者がまず作るべきカード3選</a></li>
+      <li><a href="#rules">申込前に知っておくべき注意点</a></li>
+      <li><a href="#tips">クレヒスを最速で育てる5つのコツ</a></li>
+      <li><a href="#faq">よくある質問（FAQ）</a></li>
+      <li><a href="#summary">まとめ：最初の1枚はコレ！</a></li>
+    </ol>
+  </nav>
+
+  <h2 id="why">1. なぜアメリカでクレカが超重要なのか</h2>
+
+  <p>日本で「クレカ＝便利な決済手段」というイメージを持っている方も多いと思います。でも、アメリカではクレジットカードの役割が日本とは全く違います。</p>
+
+  <p>アメリカでは、<strong>クレジットスコア（信用スコア）があなたの「経済的な信用」</strong>を表します。このスコアが低いと、こんなことが起きます：</p>
+
+  <ul>
+    <li>アパートを借りられない（または高額な保証金が必要）</li>
+    <li>携帯電話の契約に追加デポジットが必要</li>
+    <li>車のローンが組めない、または金利が高くなる</li>
+    <li>住宅ローンの審査に通りにくい</li>
+    <li>公共料金（電気・ガス）でデポジットを要求される</li>
+  </ul>
+
+  <p>つまり、<span class="key-term">クレカを作る＝アメリカ生活のインフラを整える</span>ということ。「現金主義だから大丈夫」では済まないんです。</p>
+
+  <div class="callout">
+    <div class="callout-title">💡 ワンポイント</div>
+    <p>日本で持っているクレジットカードのヒストリーは、アメリカでは一切評価されません。ゼロからのスタートになります。これが多くの駐在員や留学生がつまずくポイントです。</p>
+  </div>
+
+  <h2 id="credit-history">2. クレジットヒストリー（クレヒス）の正体</h2>
+
+  <p>クレジットヒストリーとは、文字通り「クレジット利用の履歴」のこと。これがアメリカでは <strong>FICOスコア</strong> や <strong>VantageScore</strong> といった3桁の数字（300〜850）として可視化されます。</p>
+
+  <h3>スコアの目安</h3>
+
+  <div class="compare-table">
+    <table>
+      <thead>
+        <tr>
+          <th>スコア帯</th>
+          <th>評価</th>
+          <th>できること</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>800〜850</td>
+          <td>Excellent</td>
+          <td>最高金利・最高ボーナスのカード可</td>
+        </tr>
+        <tr>
+          <td>740〜799</td>
+          <td>Very Good</td>
+          <td>ほぼ全カード審査通過</td>
+        </tr>
+        <tr>
+          <td>670〜739</td>
+          <td>Good</td>
+          <td>標準カードは問題なし</td>
+        </tr>
+        <tr>
+          <td>580〜669</td>
+          <td>Fair</td>
+          <td>選択肢がやや限定</td>
+        </tr>
+        <tr>
+          <td>300〜579</td>
+          <td>Poor</td>
+          <td>セキュアドカードから始める必要あり</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>渡米直後の日本人は、スコアそのものがありません（「No Credit」状態）。これは0点とも違って、「測定不能」という扱い。だからまず<strong>「クレヒスを作る」ところから</strong>始める必要があります。</p>
+
+  <h3>スコアが上がる5つの要素</h3>
+
+  <p>FICOスコアは、以下の要素で計算されます：</p>
+
+  <ul>
+    <li><strong>支払い履歴（35%）</strong>：遅延なく支払っているか</li>
+    <li><strong>利用率（30%）</strong>：限度額に対してどれくらい使っているか</li>
+    <li><strong>クレヒスの長さ（15%）</strong>：いつから持っているか</li>
+    <li><strong>クレジットの種類（10%）</strong>：カード・ローン等のミックス</li>
+    <li><strong>新規申込（10%）</strong>：最近の申込数</li>
+  </ul>
+
+  <p>注目すべきは「<strong>利用率30%</strong>」。限度額の30%以下に抑えるのが理想と言われています。$1,000の限度額なら毎月$300以下に。</p>
+
+  <h2 id="ssn-itin">3. SSN/ITINの違いと申込時の選択肢</h2>
+
+  <p>クレカ申込時に必ず聞かれるのが、<strong>SSN（Social Security Number）</strong> または <strong>ITIN（Individual Taxpayer Identification Number）</strong> です。</p>
+
+  <h3>SSNとは</h3>
+
+  <p>米国市民や永住者、就労ビザ保持者などに発行される9桁の社会保障番号。アメリカでは身分証明として最も重要な番号で、クレカ申込のほぼすべての場面で要求されます。</p>
+
+  <h3>ITINとは</h3>
+
+  <p>SSNを持てない人（扶養家族のビザ保持者、留学生の家族など）が税務申告のために取得する番号。一部のクレカではSSNの代わりに使用できます。</p>
+
+  <h3>SSNもITINもない場合は？</h3>
+
+  <p>渡米直後でまだSSNが届いていない場合や、観光ビザなどでSSN/ITINがない場合でも、以下の選択肢があります：</p>
+
+  <ul>
+    <li><strong>パスポート＋ビザで申込めるカード</strong>：Chase Sapphire Preferred は申込時にパスポート番号が使えるケースあり</li>
+    <li><strong>銀行口座に紐づいたカード</strong>：Bank of America、Chase などで先に口座を作り、その流れでカード申込</li>
+    <li><strong>セキュアドカード（Secured Card）</strong>：デポジットを預けて作る、クレヒス育成専用カード</li>
+    <li><strong>留学生向けプログラム</strong>：Discover it Student など、SSNなしでも申込しやすい設計</li>
+  </ul>
+
+  <div class="callout warning">
+    <div class="callout-title">⚠️ 注意</div>
+    <p>「SSNなしで作れる」と謳っているカードでも、実際には申込時にSSN欄が必須だったり、後日提出を求められる場合があります。最新情報は必ず公式サイトで確認しましょう。</p>
+  </div>
+
+  <h2 id="first-cards">4. 初心者がまず作るべきカード3選</h2>
+
+  <p>では具体的に、渡米したての日本人がまず作るべきカードを3枚紹介します。これらは「審査通過率」「年会費無料」「クレヒス育成効果」のバランスで選定しました。</p>
+
+  <h3>① Discover it® Student Cash Back 🎓</h3>
+
+  <p><strong>こんな方に：</strong> 留学生・大学院生・若手社会人（クレヒスゼロから始める方）</p>
+
+  <p>クレヒスがない状態でも作りやすいカードの代表格。年会費完全無料で、初年度はキャッシュバックが2倍になる特典付き。F1/J1ビザの留学生にも申込実績多数。</p>
+
+  <ul>
+    <li>年会費：無料 🎉</li>
+    <li>還元：四半期ごとのカテゴリ5%、その他1%</li>
+    <li>海外手数料：なし ✅</li>
+    <li>ボーナス：初年度のキャッシュバック全額マッチ</li>
+  </ul>
+
+  <h3>② Bank of America Travel Rewards 🌏</h3>
+
+  <p><strong>こんな方に：</strong> Bank of Americaに口座を持っている方</p>
+
+  <p>BoAに口座があれば審査通過率が大きく上がります。年会費無料で海外手数料もなく、旅行関連の購入には1.5倍ポイントがつく優秀カード。</p>
+
+  <ul>
+    <li>年会費：無料 🎉</li>
+    <li>還元：すべて1.5pt、旅行購入1.5倍</li>
+    <li>海外手数料：なし ✅</li>
+    <li>ボーナス：90日で$1,000利用で25,000pt（$250相当）</li>
+  </ul>
+
+  <h3>③ Chase Freedom Unlimited® 🚀</h3>
+
+  <p><strong>こんな方に：</strong> 6ヶ月程度のクレヒスがある方、Chase銀行口座保有者</p>
+
+  <p>「すべて1.5%還元」というシンプルな構造が魅力。将来 Chase Sapphire Preferred と組み合わせると、爆発的にポイントが貯まる「Chaseトリフェクタ」の入り口になります。</p>
+
+  <ul>
+    <li>年会費：無料 🎉</li>
+    <li>還元：すべて1.5%、旅行5%</li>
+    <li>海外手数料：3% ⚠️</li>
+    <li>ボーナス：3ヶ月で$500利用で$200キャッシュ</li>
+  </ul>
+
+  <div class="cta-box">
+    <div class="cta-emoji">🧭</div>
+    <div class="cta-title">あなたに合うカードを30秒で診断！</div>
+    <div class="cta-desc">クレヒス・年会費・使い道・帰国頻度の4問に答えるだけ。<br>USカードナビが在米日本人向けに最適な1枚をレコメンドします。</div>
+    <a href="/" class="cta-btn">無料で診断してみる →</a>
+  </div>
+
+  <h2 id="rules">5. 申込前に知っておくべき注意点</h2>
+
+  <h3>Chase 5/24ルール</h3>
+
+  <p>Chaseのカードを申込む際、最大の壁となるのがこのルール。<strong>過去24ヶ月以内に5枚以上のクレジットカードを開設した人は、Chase のほとんどのカードに通らなくなります。</strong></p>
+
+  <p>これはChaseが公式に発表しているわけではないものの、業界では広く知られた事実。Chaseの良いカード（Sapphire系など）を将来狙うなら、最初の2年は申込数を抑えるのが賢明です。</p>
+
+  <h3>Hard Inquiry（ハード照会）</h3>
+
+  <p>カード申込時、発行会社はクレジットレポートに「Hard Inquiry」を残します。これは2年間記録に残り、短期間に複数あるとスコアが下がる原因に。<strong>1ヶ月に2枚以上の申込は避けるのが無難</strong>です。</p>
+
+  <h3>意味のない年会費は払わない</h3>
+
+  <p>初心者がやりがちな失敗が、「特典が豪華だから」と高額年会費のカードを最初に作ること。年会費は<strong>使いこなして元が取れるかどうか</strong>で判断しましょう。</p>
+
+  <h2 id="tips">6. クレヒスを最速で育てる5つのコツ</h2>
+
+  <p>カードを作っただけではクレヒスは育ちません。以下のポイントを意識すると、12〜18ヶ月で良好なスコア（700+）に到達できます。</p>
+
+  <h3>① 全額自動引き落とし設定</h3>
+
+  <p>支払い遅延は致命傷。1日でも遅れると、それだけでスコアが30〜100点下がることがあります。<strong>必ずAutoPayを設定し、銀行口座から全額自動引き落としに</strong>しましょう。</p>
+
+  <h3>② 利用率を30%以下にキープ</h3>
+
+  <p>限度額が$1,000なら、毎月の利用は$300以下に。これだけでスコアが安定します。利用が多くなりそうなら、月の途中で前払いするのもアリ。</p>
+
+  <h3>③ 古いカードは解約しない</h3>
+
+  <p>クレヒスの「長さ」がスコアに影響するため、最初に作ったカードは年会費無料なら基本ずっと持ち続けるのが鉄則。</p>
+
+  <h3>④ クレジットレポートを定期チェック</h3>
+
+  <p><strong>annualcreditreport.com</strong> で年1回無料でレポートを取得できます。誤った記録があれば訂正できるので、半年に1回はチェック推奨。</p>
+
+  <h3>⑤ 1年経ったら2枚目を検討</h3>
+
+  <p>1枚目で12ヶ月のヒストリーができたら、より良い特典のカード（Chase Sapphire Preferredなど）に挑戦できる土台ができます。焦らず一歩ずつ。</p>
+
+  <h2 id="faq">7. よくある質問（FAQ）</h2>
+
+  <div class="faq-item">
+    <div class="faq-q">渡米してすぐクレカは作れますか？</div>
+    <div class="faq-a">SSNが届けばすぐ申込可能です。SSN到着前でも、Bank of America等で銀行口座を作っておくと、後の申込がスムーズになります。Discover Studentは比較的早期に作りやすいカードの代表例です。</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">日本のクレカは使えますか？</div>
+    <div class="faq-a">使えますが、海外手数料（2〜3%）がかかります。また、日本のクレカで支払ってもアメリカでのクレヒスにはなりません。アメリカのクレカを作ることが必須です。</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">配偶者のクレカに「Authorized User」として追加するのは有効？</div>
+    <div class="faq-a">非常に有効です！主たるカード保持者のクレヒスを部分的に共有できるので、ゼロから始める方の最速ブースト方法のひとつ。家族で渡米する方は活用しましょう。</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">セキュアドカードって何ですか？</div>
+    <div class="faq-a">$200〜$500程度のデポジットを預けて作るカードで、クレヒスがない人向けの「練習用」カード。Discover it Securedや Capital One Platinum Securedが代表的。1年程度で通常カードに切り替わるのが一般的です。</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">日本に帰国する時、カードはどうなる？</div>
+    <div class="faq-a">解約しなくてもOKですが、住所変更を必ずしましょう。Chase等のUrポイントはANAマイルへ移行できるので、帰国前にポイント整理を。詳細は別記事で解説予定です。</div>
+  </div>
+
+  <h2 id="summary">8. まとめ：最初の1枚はコレ！</h2>
+
+  <p>渡米したての日本人がまず作るべきカードは、シンプルに以下の優先順位で考えてください：</p>
+
+  <ol>
+    <li><strong>SSNなし・クレヒスゼロ</strong> → Discover it Student または Bank of America Travel Rewards</li>
+    <li><strong>SSNあり・クレヒス6ヶ月以上</strong> → Chase Freedom Unlimited から始めて Sapphire 系へステップアップ</li>
+    <li><strong>SSNあり・配偶者がクレヒス保有</strong> → Authorized User追加でブースト</li>
+  </ol>
+
+  <p>クレヒス作りはマラソンです。焦らず、でも着実に。最初の1年で土台を作れば、2年目以降は人気のお得カードがどんどん作れるようになります🍑</p>
+
+  <div class="cta-box">
+    <div class="cta-emoji">🚀</div>
+    <div class="cta-title">迷ったら無料診断を試してみて！</div>
+    <div class="cta-desc">あなたの状況に合わせて、最適なクレジットカードを30秒でご提案します。AI相談機能で個別の質問もOK！</div>
+    <a href="/" class="cta-btn">USカードナビを使ってみる →</a>
+  </div>
+
+  <div class="article-footer">
+    <div class="author-box">
+      <div class="author-icon">🍑</div>
+      <div class="author-info">
+        <div class="author-name">AmePeach</div>
+        <div class="author-bio">米国駐在員（ジョージア州在住・家族5人）。クレカ・ポイント・投資を活用しながら、無理なくお得に暮らす情報を発信。</div>
+      </div>
+    </div>
+
+```
+<div class="disclosure">
+  <strong>📢 広告表示について</strong><br>
+  当サイトのリンクから申込されると、運営者に紹介料が入る場合があります。掲載内容は中立的な視点を心がけていますが、最終判断は各カード発行会社の公式サイトでご確認ください。本記事は個別の財務アドバイスではなく、一般的な情報提供を目的としています。
+</div>
+
+<div class="footer-nav">
+  <a href="/">アプリへ戻る</a> ·
+  <a href="/blog/">ブログ一覧</a> ·
+  <a href="/">運営者情報</a>
+</div>
+```
+
+  </div>
+</article>
+
+</body>
+</html>
