@@ -1032,7 +1032,8 @@ transition: transform 0.2s, opacity 0.2s;
   <div class="nav-item active" id="nav-list" onclick="switchTab('list')"><span>💳</span><span>カード一覧</span></div>
   <div class="nav-item" id="nav-quiz" onclick="switchTab('quiz')"><span>🧭</span><span>診断</span></div>
   <div class="nav-item" id="nav-chat" onclick="switchTab('chat')"><span>🤖</span><span>AI相談</span></div>
-  <div class="nav-item" id="nav-saved" onclick="switchTab('saved')"><span>⭐</span><span>保存済み</span></div>
+  <div class="nav-item" id="nav-blog" onclick="switchTab('blog')"><span>📖</span><span>ブログ</span></div>
+  <div class="nav-item" id="nav-saved" onclick="switchTab('saved')"><span>⭐</span><span>保存</span></div>
 </div>
 
 <!-- Footer Info Modal -->
@@ -1042,6 +1043,28 @@ transition: transform 0.2s, opacity 0.2s;
     <div class="modal-handle"></div>
     <button class="close-btn" onclick="closeInfoModalDirect()">✕</button>
     <div id="infoModalBody"></div>
+  </div>
+</div>
+
+<!-- Blog Section -->
+
+<div class="quiz-section" id="blogSection" style="padding:0 16px 100px;">
+  <div style="padding:24px 0 16px;text-align:center;">
+    <div style="font-size:1.1rem;font-weight:900;background:linear-gradient(135deg,#FFD600,#F5763A);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">📖 AmePeach ブログ</div>
+    <div style="font-size:0.75rem;color:var(--text-muted);margin-top:4px;">在米日本人のクレカ攻略記事</div>
+  </div>
+  <a href="/blog/first-credit-card.html" style="display:block;text-decoration:none;color:inherit;background:var(--card-bg);border:1px solid rgba(245,166,35,0.2);border-radius:16px;padding:18px;margin-bottom:14px;transition:transform 0.2s,border-color 0.2s;" onmouseover="this.style.transform='translateY(-2px)';this.style.borderColor='var(--orange)'" onmouseout="this.style.transform='translateY(0)';this.style.borderColor='rgba(245,166,35,0.2)'">
+    <div style="display:flex;gap:8px;align-items:center;margin-bottom:8px;flex-wrap:wrap;">
+      <span style="background:rgba(245,118,58,0.15);color:var(--orange);padding:3px 10px;border-radius:99px;font-size:0.68rem;font-weight:700;">クレカ初心者</span>
+      <span style="font-size:0.68rem;color:var(--text-muted);">2025年8月</span>
+      <span style="font-size:0.68rem;color:var(--text-muted);">📖 約10分</span>
+    </div>
+    <div style="font-size:1rem;font-weight:900;line-height:1.5;margin-bottom:6px;">アメリカでクレジットカードを作る完全ガイド</div>
+    <div style="font-size:0.78rem;color:var(--text-muted);line-height:1.6;">在米日本人がゼロから始める方法。SSN・ITINの違い、初心者におすすめのカード3選、クレヒスを最速で育てるコツまで完全網羅。</div>
+    <div style="margin-top:12px;font-size:0.78rem;color:var(--orange);font-weight:700;">続きを読む →</div>
+  </a>
+  <div style="text-align:center;padding:30px 20px;color:var(--text-muted);font-size:0.78rem;background:var(--card-bg);border-radius:12px;border:1px dashed var(--border);">
+    📝 新しい記事を準備中...<br>近日公開予定！
   </div>
 </div>
 
@@ -1345,7 +1368,8 @@ function switchTab(tab) {
   quizSection.classList.remove('active');
   chatSection.classList.remove('active');
   document.getElementById('savedSection').classList.remove('active');
-  ['nav-list','nav-quiz','nav-chat','nav-saved'].forEach(id => {
+  document.getElementById('blogSection').classList.remove('active');
+  ['nav-list','nav-quiz','nav-chat','nav-saved','nav-blog'].forEach(id => {
     const el = document.getElementById(id);
     if (el) el.classList.remove('active');
   });
@@ -1361,6 +1385,9 @@ function switchTab(tab) {
   } else if (tab === 'chat') {
     chatSection.classList.add('active');
     document.getElementById('nav-chat').classList.add('active');
+  } else if (tab === 'blog') {
+    document.getElementById('blogSection').classList.add('active');
+    document.getElementById('nav-blog').classList.add('active');
   } else if (tab === 'saved') {
     document.getElementById('savedSection').classList.add('active');
     document.getElementById('nav-saved').classList.add('active');
