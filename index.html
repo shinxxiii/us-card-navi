@@ -541,6 +541,23 @@ color: rgba(255,255,255,0.3);
 margin-top: 8px;
 }
 
+.debug-btn {
+display: block;
+width: calc(100% - 32px);
+margin: 8px 16px 0;
+padding: 10px;
+border-radius: 10px;
+border: 1px dashed rgba(255,255,255,0.12);
+background: transparent;
+color: var(–text-muted);
+font-family: ‘Zen Maru Gothic’, sans-serif;
+font-size: 0.72rem;
+cursor: pointer;
+text-align: center;
+transition: all 0.2s;
+}
+.debug-btn:hover { border-color: var(–orange); color: var(–orange); }
+
 /* Info modal content styling */
 .info-content h2 {
 font-size: 1.2rem;
@@ -899,6 +916,18 @@ transition: transform 0.2s, opacity 0.2s;
 </head>
 <body>
 
+<!-- お知らせバナー -->
+
+<div id="noticeBanner" style="background:linear-gradient(135deg,rgba(200,16,46,0.2),rgba(0,102,204,0.15));border-bottom:1px solid rgba(245,166,35,0.2);padding:10px 16px;display:flex;align-items:center;gap:10px;position:relative;z-index:20;">
+  <span style="font-size:1rem;flex-shrink:0;">✈️</span>
+  <div style="flex:1;min-width:0;">
+    <div style="font-size:0.72rem;font-weight:900;color:var(--gold);">📢 新着記事</div>
+    <div style="font-size:0.75rem;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">JAL・ANA USAカード完全ガイド公開！渡米直後のクレカ戦略</div>
+  </div>
+  <a href="/blog/jal-ana-usa-cards.html" style="flex-shrink:0;background:var(--orange);color:white;padding:5px 10px;border-radius:8px;text-decoration:none;font-size:0.7rem;font-weight:700;">読む</a>
+  <button onclick="document.getElementById('noticeBanner').style.display='none'" style="flex-shrink:0;background:transparent;border:none;color:var(--text-muted);font-size:1rem;cursor:pointer;padding:0 4px;">✕</button>
+</div>
+
 <div class="bg-blob blob1"></div>
 <div class="bg-blob blob2"></div>
 <div class="bg-blob blob3"></div>
@@ -987,6 +1016,7 @@ transition: transform 0.2s, opacity 0.2s;
     <a href="javascript:void(0)" onclick="openInfoModal('contact')">お問い合わせ</a>
   </div>
   <div class="footer-copyright">© 2025 AmePeach. All rights reserved.</div>
+  <button class="debug-btn" onclick="runDebugTest()">🔧 動作テスト（デバッグ）</button>
 </div>
 
 <!-- Quiz Section -->
@@ -1109,6 +1139,15 @@ transition: transform 0.2s, opacity 0.2s;
     <div style="display:flex;gap:8px;margin-top:14px;">
       <button class="apply-btn" id="modalApplyBtn" onclick="applyCard()" style="flex:1;">📝 公式サイトで申し込む</button>
       <button id="saveBtn" onclick="toggleSave()" style="width:52px;height:48px;border-radius:12px;border:2px solid rgba(255,255,255,0.15);background:transparent;color:white;font-size:1.4rem;cursor:pointer;flex-shrink:0;transition:all 0.2s;">⭐</button>
+    </div>
+    <!-- シェアボタン -->
+    <div style="display:flex;gap:8px;margin-top:10px;">
+      <button onclick="shareCard('x')" style="flex:1;padding:10px;border-radius:10px;border:1px solid rgba(255,255,255,0.1);background:rgba(0,0,0,0.3);color:white;font-family:'Zen Maru Gothic',sans-serif;font-size:0.78rem;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px;transition:all 0.2s;" onmouseover="this.style.borderColor='white'" onmouseout="this.style.borderColor='rgba(255,255,255,0.1)'">
+        𝕏 Xでシェア
+      </button>
+      <button onclick="shareCard('line')" style="flex:1;padding:10px;border-radius:10px;border:1px solid rgba(0,195,0,0.3);background:rgba(0,195,0,0.1);color:#00c300;font-family:'Zen Maru Gothic',sans-serif;font-size:0.78rem;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px;transition:all 0.2s;" onmouseover="this.style.background='rgba(0,195,0,0.2)'" onmouseout="this.style.background='rgba(0,195,0,0.1)'">
+        💬 LINEでシェア
+      </button>
     </div>
   </div>
 </div>
@@ -1475,6 +1514,54 @@ const cards = [
       tips: "ダラス・マイアミなどAAハブ近くに住む方に特におすすめ。日本路線もJALとのコードシェアで充実。",
       jpNote: "AAマイルはJALへの移行はできないが、JALとのコードシェア便に使用可能。"
     }
+  },
+  {
+    id: 10,
+    issuer: "JAL USA CARD",
+    name: "Basic / Premium",
+    emoji: "🔴",
+    accent: "#C8102E",
+    tags: ["beginner", "airline"],
+    tagLabels: { beginner: "👶初心者向け", airline: "✈️JAL系" },
+    annualFee: "$35〜$85",
+    signupBonus: "最大10,000 JALマイル",
+    signupCondition: "3ヶ月で$7,000利用（コード：JSPRG26）",
+    rewards: "JAL購入2x（Premium）、その他$2で1マイル（Basic）",
+    foreignFee: "なし ✅",
+    ssnRequired: "easy",
+    ssnNote: "クレヒスなし・SSNなしでも申込可能 ⭐",
+    difficulty: "★☆☆",
+    url: "https://www.jalusacard.com/en/new_enrollment_apr2026/",
+    details: {
+      pros: ["クレヒスゼロ・SSNなしで申込可能", "JALフライト毎回10%ボーナスマイル", "羽田・成田免税店5%オフ"],
+      cons: ["日常の還元率が低め（BasicはANA CARDより不利）", "クレヒス構築後は他カードへの乗り換え推奨"],
+      tips: "渡米直後の『最初の1枚』として最適。クレヒスができたらChase Sapphireへステップアップを！",
+      jpNote: "JAL派の渡米直後の定番カード。著者も渡米時に最初に作りました🍑"
+    }
+  },
+  {
+    id: 11,
+    issuer: "ANA CARD U.S.A.",
+    name: "Plus",
+    emoji: "🔵",
+    accent: "#0066CC",
+    tags: ["beginner", "airline"],
+    tagLabels: { beginner: "👶初心者向け", airline: "✈️ANA系" },
+    annualFee: "$85",
+    signupBonus: "5,000 ANAマイル",
+    signupCondition: "初回購入後",
+    rewards: "ANA購入 2x、その他 $1で1マイル",
+    foreignFee: "なし ✅",
+    ssnRequired: "easy",
+    ssnNote: "クレヒスなし・SSNなしでも申込可能 ⭐",
+    difficulty: "★☆☆",
+    url: "https://www.anacardusa.com/en/",
+    details: {
+      pros: ["クレヒスゼロ・SSNなしで申込可能", "ANA搭乗で25%ボーナスマイル", "国際線ビジネスクラスカウンターでプライオリティチェックイン"],
+      cons: ["年会費$85（JAL Basicの$35より割高）", "クレヒス構築後は他カードへの乗り換え推奨"],
+      tips: "ANA派の渡米直後の1枚として最適。フライト25%ボーナスが魅力。",
+      jpNote: "ANA派の定番クレヒスゼロカード。ANAはChase・Amexからの直接マイル移行も可能で便利。"
+    }
   }
 ];
 
@@ -1672,10 +1759,10 @@ function showResult() {
   const { 0: history, 1: fee, 2: goal, 3: japan, 4: family } = quizAnswers;
 
   // Scoring logic (9 cards now)
-  const scores = { 1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0, 7: 0, 8: 0, 9: 0 };
+  const scores = { 1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0, 7: 0, 8: 0, 9: 0, 10: 0, 11: 0 };
 
   // History
-  if (history === 'nohistory') { scores[3] += 3; scores[6] += 3; }
+  if (history === 'nohistory') { scores[3] += 3; scores[6] += 3; scores[10] += 4; scores[11] += 4; }
   else if (history === 'some') { scores[4] += 2; scores[6] += 2; scores[1] += 1; }
   else { scores[1] += 3; scores[2] += 3; scores[5] += 2; scores[7] += 2; scores[8] += 1; scores[9] += 1; }
 
@@ -1715,7 +1802,9 @@ function showResult() {
     6: "BoA口座があれば超作りやすい。旅行にも使えて年会費無料、初心者の入り口に最高！",
     7: "ホテル滞在・出張が多い方に最適。Hyattポイントの価値は業界最高水準。日本への帰国時にも使えます！",
     8: "デルタ航空をよく使う方に。特にアトランタ在住者には最強。荷物無料・優先搭乗など実用的な特典が充実。",
-    9: "American Airlinesをよく使う方に。JALとのコードシェア便にも使えるので日本路線にも応用可能！"
+    9: "American Airlinesをよく使う方に。JALとのコードシェア便にも使えるので日本路線にも応用可能！",
+    10: "クレヒスゼロ・SSNなしでも作れるJAL派の定番カード！渡米直後の最初の1枚として最適。JALフライト10%ボーナスも嬉しい特典です。",
+    11: "クレヒスゼロ・SSNなしでも作れるANA派の定番カード！フライト25%ボーナスとプライオリティチェックインが魅力。渡米直後の最初の1枚として最適。"
   };
 
   const resultCard = document.getElementById('resultCard');
@@ -2122,6 +2211,46 @@ function closeInfoModal(e) {
 
 function closeInfoModalDirect() {
   document.getElementById('infoModalOverlay').classList.remove('open');
+}
+
+// === シェア機能 ===
+function shareCard(platform) {
+  if (!currentCard) return;
+  const text = `🍑 AmePeach USカードナビで「${currentCard.name}」をチェック！\nウェルカムボーナス：${currentCard.signupBonus}\n${currentCard.url}\n\namepeach.com`;
+  const encodedText = encodeURIComponent(text);
+  if (platform === 'x') {
+    window.open(`https://twitter.com/intent/tweet?text=${encodedText}`, '_blank');
+  } else if (platform === 'line') {
+    window.open(`https://line.me/R/msg/text/?${encodedText}`, '_blank');
+  }
+}
+
+// === デバッグテスト ===
+function runDebugTest() {
+  const results = [];
+  // カード一覧チェック
+  results.push(`✅ カード総数: ${cards.length}枚`);
+  // 保存済みチェック
+  results.push(`✅ 保存済みカード: ${savedIds.length}枚`);
+  // GA確認
+  results.push(`✅ GA4: ${typeof gtag !== 'undefined' ? '動作中' : '❌ 未検出'}`);
+  // ローカルストレージ
+  try {
+    localStorage.setItem('test', '1');
+    localStorage.removeItem('test');
+    results.push(`✅ LocalStorage: 正常`);
+  } catch(e) {
+    results.push(`❌ LocalStorage: エラー`);
+  }
+  // タブ動作確認
+  const tabs = ['cardsGrid', 'quizSection', 'chatSection', 'blogSection', 'savedSection'];
+  const tabResults = tabs.map(id => document.getElementById(id) ? '✅' : '❌').join('');
+  results.push(`タブ要素: ${tabResults}`);
+  // バナー
+  const banner = document.getElementById('noticeBanner');
+  results.push(`✅ お知らせバナー: ${banner ? (banner.style.display === 'none' ? '非表示' : '表示中') : '❌ 未検出'}`);
+
+  alert('🔧 動作テスト結果\n\n' + results.join('\n') + '\n\n⚠️ 問題があった場合はAmePeachまでご連絡ください。');
 }
 </script>
 
