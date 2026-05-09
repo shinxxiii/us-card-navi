@@ -912,9 +912,45 @@ transition: transform 0.2s, opacity 0.2s;
   <div class="logo">🇺🇸 USカードナビ</div>
   <div class="tagline">アメリカ生活×お得を、わかりやすく</div>
   <div style="display:flex;flex-direction:column;align-items:center;gap:6px;margin-top:12px;">
-    <div class="updated-badge"><div class="pulse"></div>最終確認：2025年8月｜最新情報は各公式サイトで確認を</div>
+    <div class="updated-badge"><div class="pulse"></div>最終確認：2026年5月｜最新情報は各公式サイトで確認を</div>
   </div>
 </header>
+
+<!-- Latest Offers Section -->
+
+<div class="filter-section" id="offersSection" style="padding-bottom:4px;">
+  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;">
+    <div class="filter-label" style="margin-bottom:0;">🔥 注目カード</div>
+    <div style="font-size:0.65rem;color:var(--text-muted);">確認：2026年5月</div>
+  </div>
+  <div style="display:flex;gap:10px;overflow-x:auto;padding-bottom:12px;scrollbar-width:none;">
+    <div onclick="filterCards('travel', document.querySelector('.tab:nth-child(3)'))" style="flex-shrink:0;background:linear-gradient(135deg,rgba(0,212,255,0.15),rgba(0,212,255,0.05));border:1px solid rgba(0,212,255,0.3);border-radius:14px;padding:12px 14px;min-width:190px;cursor:pointer;">
+      <div style="font-size:0.65rem;color:#00D4FF;font-weight:700;margin-bottom:4px;">💎 CHASE</div>
+      <div style="font-size:0.88rem;font-weight:900;">Sapphire Preferred</div>
+      <div style="font-size:0.7rem;color:var(--text-muted);margin-top:3px;">旅行・食事3x ｜ ANA移行可</div>
+      <div style="font-size:0.68rem;color:#00D4FF;margin-top:4px;font-weight:700;">公式でボーナス確認 →</div>
+    </div>
+    <div style="flex-shrink:0;background:linear-gradient(135deg,rgba(255,214,0,0.15),rgba(255,214,0,0.05));border:1px solid rgba(255,214,0,0.3);border-radius:14px;padding:12px 14px;min-width:190px;cursor:pointer;">
+      <div style="font-size:0.65rem;color:#FFD600;font-weight:700;margin-bottom:4px;">🥇 AMEX</div>
+      <div style="font-size:0.88rem;font-weight:900;">Gold Card</div>
+      <div style="font-size:0.7rem;color:var(--text-muted);margin-top:3px;">食費・レストラン4x ｜ 家族向け</div>
+      <div style="font-size:0.68rem;color:#FFD600;margin-top:4px;font-weight:700;">公式でボーナス確認 →</div>
+    </div>
+    <div style="flex-shrink:0;background:linear-gradient(135deg,rgba(245,118,58,0.15),rgba(245,118,58,0.05));border:1px solid rgba(245,118,58,0.3);border-radius:14px;padding:12px 14px;min-width:190px;cursor:pointer;">
+      <div style="font-size:0.65rem;color:var(--orange);font-weight:700;margin-bottom:4px;">✈️ AMEX DELTA</div>
+      <div style="font-size:0.88rem;font-weight:900;">Gold SkyMiles</div>
+      <div style="font-size:0.7rem;color:var(--text-muted);margin-top:3px;">初年度無料 ｜ ATL在住に◎</div>
+      <div style="font-size:0.68rem;color:var(--orange);margin-top:4px;font-weight:700;">公式でボーナス確認 →</div>
+    </div>
+    <div style="flex-shrink:0;background:linear-gradient(135deg,rgba(139,92,246,0.15),rgba(139,92,246,0.05));border:1px solid rgba(139,92,246,0.3);border-radius:14px;padding:12px 14px;min-width:190px;cursor:pointer;">
+      <div style="font-size:0.65rem;color:#8B5CF6;font-weight:700;margin-bottom:4px;">🏨 CHASE</div>
+      <div style="font-size:0.88rem;font-weight:900;">World of Hyatt</div>
+      <div style="font-size:0.7rem;color:var(--text-muted);margin-top:3px;">毎年無料宿泊1泊付き</div>
+      <div style="font-size:0.68rem;color:#8B5CF6;margin-top:4px;font-weight:700;">公式でボーナス確認 →</div>
+    </div>
+  </div>
+  <div style="font-size:0.65rem;color:var(--text-muted);margin-top:-4px;padding-bottom:4px;">⚠️ ウェルカムボーナスは頻繁に変動します。申込前に必ず公式サイトで最新情報をご確認ください</div>
+</div>
 
 <div class="filter-section">
   <div class="filter-label">✦ 目的で絞り込む</div>
@@ -924,6 +960,8 @@ transition: transform 0.2s, opacity 0.2s;
     <button class="tab" onclick="filterCards('travel', this)">旅行・マイル</button>
     <button class="tab" onclick="filterCards('cashback', this)">キャッシュバック</button>
     <button class="tab" onclick="filterCards('noforeign', this)">海外手数料なし</button>
+    <button class="tab" onclick="filterCards('hotel', this)">ホテル</button>
+    <button class="tab" onclick="filterCards('airline', this)">航空会社系</button>
   </div>
 </div>
 
@@ -960,6 +998,7 @@ transition: transform 0.2s, opacity 0.2s;
       <div class="progress-dot" id="dot1"></div>
       <div class="progress-dot" id="dot2"></div>
       <div class="progress-dot" id="dot3"></div>
+      <div class="progress-dot" id="dot4"></div>
     </div>
 
 ```
@@ -993,6 +1032,8 @@ transition: transform 0.2s, opacity 0.2s;
     <button class="quiz-option" onclick="answer(2, 'travel')"><span class="opt-emoji">✈️</span>旅行・フライト・ホテル</button>
     <button class="quiz-option" onclick="answer(2, 'food')"><span class="opt-emoji">🍜</span>食費・レストラン・スーパー</button>
     <button class="quiz-option" onclick="answer(2, 'daily')"><span class="opt-emoji">🛒</span>日常の買い物全般</button>
+    <button class="quiz-option" onclick="answer(2, 'hotel')"><span class="opt-emoji">🏨</span>ホテル滞在・出張</button>
+    <button class="quiz-option" onclick="answer(2, 'airline')"><span class="opt-emoji">🦅</span>特定航空会社のマイル</button>
   </div>
 </div>
 
@@ -1003,6 +1044,17 @@ transition: transform 0.2s, opacity 0.2s;
   <div class="quiz-options">
     <button class="quiz-option" onclick="answer(3, 'often')"><span class="opt-emoji">🏠</span>年1回以上帰る</button>
     <button class="quiz-option" onclick="answer(3, 'rare')"><span class="opt-emoji">🌐</span>あまり帰らない</button>
+  </div>
+</div>
+
+<!-- Q5（新追加） -->
+<div class="quiz-step" id="step4">
+  <div class="quiz-q">👨‍👩‍👧‍👦 家族構成は？</div>
+  <div class="quiz-sub">家族のクレヒス戦略も考慮します</div>
+  <div class="quiz-options">
+    <button class="quiz-option" onclick="answer(4, 'single')"><span class="opt-emoji">👤</span>一人（または学生）</button>
+    <button class="quiz-option" onclick="answer(4, 'couple')"><span class="opt-emoji">👫</span>夫婦2人</button>
+    <button class="quiz-option" onclick="answer(4, 'family')"><span class="opt-emoji">👨‍👩‍👧‍👦</span>家族（子どもあり）</button>
   </div>
 </div>
 ```
@@ -1084,32 +1136,65 @@ transition: transform 0.2s, opacity 0.2s;
 <!-- Blog Section -->
 
 <div class="quiz-section" id="blogSection" style="padding:0 16px 100px;">
-  <div style="padding:24px 0 16px;text-align:center;">
-    <div style="font-size:1.1rem;font-weight:900;background:linear-gradient(135deg,#FFD600,#F5763A);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">📖 AmePeach ブログ</div>
-    <div style="font-size:0.75rem;color:var(--text-muted);margin-top:4px;">在米日本人のクレカ攻略記事</div>
+  <div style="padding:24px 0 20px;text-align:center;">
+    <div style="font-size:1.2rem;font-weight:900;background:linear-gradient(135deg,#FFD600,#F5763A);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:4px;">📖 AmePeach ブログ</div>
+    <div style="font-size:0.75rem;color:var(--text-muted);">在米日本人のクレカ攻略記事</div>
   </div>
-  <a href="/blog/first-credit-card.html" style="display:block;text-decoration:none;color:inherit;background:var(--card-bg);border:1px solid rgba(245,166,35,0.2);border-radius:16px;padding:18px;margin-bottom:14px;transition:transform 0.2s,border-color 0.2s;" onmouseover="this.style.transform='translateY(-2px)';this.style.borderColor='var(--orange)'" onmouseout="this.style.transform='translateY(0)';this.style.borderColor='rgba(245,166,35,0.2)'">
-    <div style="display:flex;gap:8px;align-items:center;margin-bottom:8px;flex-wrap:wrap;">
-      <span style="background:rgba(245,118,58,0.15);color:var(--orange);padding:3px 10px;border-radius:99px;font-size:0.68rem;font-weight:700;">クレカ初心者</span>
-      <span style="font-size:0.68rem;color:var(--text-muted);">2025年8月</span>
-      <span style="font-size:0.68rem;color:var(--text-muted);">📖 約10分</span>
+
+  <!-- 記事カード1 -->
+
+  <a href="/blog/first-credit-card.html" style="display:block;text-decoration:none;color:inherit;">
+    <div style="background:var(--card-bg);border:1px solid rgba(245,166,35,0.2);border-radius:20px;margin-bottom:16px;overflow:hidden;transition:transform 0.2s,box-shadow 0.2s;" onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='0 12px 30px rgba(0,0,0,0.3)'" onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='none'">
+      <!-- Header bar -->
+      <div style="background:linear-gradient(135deg,rgba(245,118,58,0.3),rgba(245,166,35,0.1));padding:16px 18px 12px;">
+        <div style="display:flex;gap:8px;align-items:center;margin-bottom:8px;flex-wrap:wrap;">
+          <span style="background:var(--orange);color:white;padding:3px 10px;border-radius:99px;font-size:0.68rem;font-weight:700;">🔰 クレカ初心者</span>
+          <span style="background:rgba(255,255,255,0.1);color:var(--text-muted);padding:3px 8px;border-radius:99px;font-size:0.68rem;">📖 約10分</span>
+        </div>
+        <div style="font-size:1.05rem;font-weight:900;line-height:1.4;color:var(--text);">アメリカでクレジットカードを作る完全ガイド</div>
+      </div>
+      <!-- Body -->
+      <div style="padding:12px 18px 16px;">
+        <div style="font-size:0.78rem;color:var(--text-muted);line-height:1.6;margin-bottom:12px;">在米日本人がゼロから始める方法。SSN・ITINの違い、初心者におすすめのカード3選、クレヒスを最速で育てるコツまで完全網羅。</div>
+        <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px;">
+          <span style="font-size:0.68rem;color:var(--text-muted);background:rgba(255,255,255,0.05);padding:2px 8px;border-radius:99px;"># SSNなし</span>
+          <span style="font-size:0.68rem;color:var(--text-muted);background:rgba(255,255,255,0.05);padding:2px 8px;border-radius:99px;"># クレヒス構築</span>
+          <span style="font-size:0.68rem;color:var(--text-muted);background:rgba(255,255,255,0.05);padding:2px 8px;border-radius:99px;"># 最初の1枚</span>
+        </div>
+        <div style="font-size:0.8rem;color:var(--orange);font-weight:700;display:flex;align-items:center;gap:4px;">続きを読む <span style="font-size:1rem;">→</span></div>
+      </div>
     </div>
-    <div style="font-size:1rem;font-weight:900;line-height:1.5;margin-bottom:6px;">アメリカでクレジットカードを作る完全ガイド</div>
-    <div style="font-size:0.78rem;color:var(--text-muted);line-height:1.6;">在米日本人がゼロから始める方法。SSN・ITINの違い、初心者におすすめのカード3選、クレヒスを最速で育てるコツまで完全網羅。</div>
-    <div style="margin-top:12px;font-size:0.78rem;color:var(--orange);font-weight:700;">続きを読む →</div>
   </a>
-  <a href="/blog/family-credit-card-strategy.html" style="display:block;text-decoration:none;color:inherit;background:var(--card-bg);border:1px solid rgba(245,166,35,0.2);border-radius:16px;padding:18px;margin-bottom:14px;transition:transform 0.2s,border-color 0.2s;" onmouseover="this.style.transform='translateY(-2px)';this.style.borderColor='var(--orange)'" onmouseout="this.style.transform='translateY(0)';this.style.borderColor='rgba(245,166,35,0.2)'">
-    <div style="display:flex;gap:8px;align-items:center;margin-bottom:8px;flex-wrap:wrap;">
-      <span style="background:rgba(245,118,58,0.15);color:var(--orange);padding:3px 10px;border-radius:99px;font-size:0.68rem;font-weight:700;">駐在員・家族向け</span>
-      <span style="font-size:0.68rem;color:var(--text-muted);">2025年8月</span>
-      <span style="font-size:0.68rem;color:var(--text-muted);">📖 約12分</span>
+
+  <!-- 記事カード2 -->
+
+  <a href="/blog/family-credit-card-strategy.html" style="display:block;text-decoration:none;color:inherit;">
+    <div style="background:var(--card-bg);border:1px solid rgba(139,92,246,0.25);border-radius:20px;margin-bottom:16px;overflow:hidden;transition:transform 0.2s,box-shadow 0.2s;" onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='0 12px 30px rgba(0,0,0,0.3)'" onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='none'">
+      <div style="background:linear-gradient(135deg,rgba(139,92,246,0.25),rgba(139,92,246,0.05));padding:16px 18px 12px;">
+        <div style="display:flex;gap:8px;align-items:center;margin-bottom:8px;flex-wrap:wrap;">
+          <span style="background:#8B5CF6;color:white;padding:3px 10px;border-radius:99px;font-size:0.68rem;font-weight:700;">👨‍👩‍👧‍👦 駐在員・家族向け</span>
+          <span style="background:rgba(255,255,255,0.1);color:var(--text-muted);padding:3px 8px;border-radius:99px;font-size:0.68rem;">📖 約12分</span>
+        </div>
+        <div style="font-size:1.05rem;font-weight:900;line-height:1.4;color:var(--text);">駐在員家族のクレカ戦略｜家族全員でポイントを最大化する完全ガイド</div>
+      </div>
+      <div style="padding:12px 18px 16px;">
+        <div style="font-size:0.78rem;color:var(--text-muted);line-height:1.6;margin-bottom:12px;">配偶者のクレヒス構築法、Authorized User活用、夫婦カードの最強コンボ、子どものクレカ戦略まで。家族全員で賢くポイントを貯める方法を解説。</div>
+        <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px;">
+          <span style="font-size:0.68rem;color:var(--text-muted);background:rgba(255,255,255,0.05);padding:2px 8px;border-radius:99px;"># 配偶者</span>
+          <span style="font-size:0.68rem;color:var(--text-muted);background:rgba(255,255,255,0.05);padding:2px 8px;border-radius:99px;"># 夫婦コンボ</span>
+          <span style="font-size:0.68rem;color:var(--text-muted);background:rgba(255,255,255,0.05);padding:2px 8px;border-radius:99px;"># ANAマイル</span>
+        </div>
+        <div style="font-size:0.8rem;color:#8B5CF6;font-weight:700;display:flex;align-items:center;gap:4px;">続きを読む <span style="font-size:1rem;">→</span></div>
+      </div>
     </div>
-    <div style="font-size:1rem;font-weight:900;line-height:1.5;margin-bottom:6px;">駐在員家族のクレカ戦略｜家族全員でポイントを最大化する完全ガイド</div>
-    <div style="font-size:0.78rem;color:var(--text-muted);line-height:1.6;">配偶者のクレヒス構築法、Authorized User活用、夫婦カードの最強コンボ、子どものクレカ戦略まで。家族全員で賢くポイントを貯める方法を解説。</div>
-    <div style="margin-top:12px;font-size:0.78rem;color:var(--orange);font-weight:700;">続きを読む →</div>
   </a>
-  <div style="text-align:center;padding:30px 20px;color:var(--text-muted);font-size:0.78rem;background:var(--card-bg);border-radius:12px;border:1px dashed var(--border);">
-    📝 新しい記事を準備中...<br>近日公開予定！
+
+  <!-- 準備中 -->
+
+  <div style="text-align:center;padding:24px 20px;color:var(--text-muted);font-size:0.78rem;background:var(--card-bg);border-radius:16px;border:1px dashed rgba(255,255,255,0.1);">
+    <div style="font-size:1.5rem;margin-bottom:8px;">✍️</div>
+    次の記事を準備中...<br>
+    <span style="font-size:0.7rem;margin-top:4px;display:block;">Chase 5/24ルール完全解説、ANAマイル攻略など近日公開予定！</span>
   </div>
 </div>
 
@@ -1271,6 +1356,78 @@ const cards = [
       tips: "BoAに口座を持つなら最初の1枚として非常に優秀！",
       jpNote: "既にBoAで口座を持っている在米日本人に特におすすめ。"
     }
+  },
+  {
+    id: 7,
+    issuer: "Chase",
+    name: "World of Hyatt",
+    emoji: "🏨",
+    accent: "#8B5CF6",
+    tags: ["travel", "hotel"],
+    tagLabels: { travel: "旅行向け", hotel: "🏨ホテル特化" },
+    annualFee: "$95",
+    signupBonus: "30,000 Hyattポイント",
+    signupCondition: "3ヶ月で$3,000利用",
+    rewards: "Hyatt利用 4x、旅行・食事 2x、その他 1x",
+    foreignFee: "なし ✅",
+    ssnRequired: "medium",
+    ssnNote: "クレヒス1年以上推奨",
+    difficulty: "★★☆",
+    url: "https://creditcards.chase.com/travel-credit-cards/hyatt",
+    details: {
+      pros: ["Hyattポイントは業界最高水準の価値", "毎年カテゴリ1-4の無料宿泊1泊付き", "Globalist会員へのステータスパスあり"],
+      cons: ["Hyattホテルが近くにないと恩恵が薄い", "Chase 5/24ルール対象"],
+      tips: "Hyatt Globalistは世界最強のホテルステータスとも言われる。出張が多い方は特に価値大。",
+      jpNote: "日本のハイアットリージェンシーや東京パークハイアットでも使えます。帰国時の宿泊に活用！"
+    }
+  },
+  {
+    id: 8,
+    issuer: "American Express",
+    name: "Delta SkyMiles® Gold",
+    emoji: "✈️",
+    accent: "#E31837",
+    tags: ["travel", "airline"],
+    tagLabels: { travel: "旅行向け", airline: "✈️デルタ系" },
+    annualFee: "$0（初年度無料）→ $150",
+    signupBonus: "50,000 デルタマイル",
+    signupCondition: "6ヶ月で$2,000利用",
+    rewards: "Delta・レストラン 2x、その他 1x",
+    foreignFee: "なし ✅",
+    ssnRequired: "medium",
+    ssnNote: "SSN必須（ITIN可の場合あり）",
+    difficulty: "★★☆",
+    url: "https://www.americanexpress.com/us/credit-cards/card/delta-skymiles-gold-american-express-card/",
+    details: {
+      pros: ["Deltaの優先搭乗権付き", "預け荷物1個無料（同伴者も）", "Delta利用が多い方には最強"],
+      cons: ["Deltaハブ以外の地域では恩恵が薄い", "マイルの期限管理が必要"],
+      tips: "アトランタ（ジョージア）在住者はDeltaハブなので特に相性◎！ジョージア駐在員に人気。",
+      jpNote: "デルタは日本（成田・羽田）への直行便あり。ただしANA/JALほどマイル移行の柔軟性はない。"
+    }
+  },
+  {
+    id: 9,
+    issuer: "Citi",
+    name: "AAdvantage® Platinum Select®",
+    emoji: "🦅",
+    accent: "#0066CC",
+    tags: ["travel", "airline"],
+    tagLabels: { travel: "旅行向け", airline: "✈️AA系" },
+    annualFee: "$0（初年度無料）→ $99",
+    signupBonus: "50,000 AAマイル",
+    signupCondition: "3ヶ月で$2,500利用",
+    rewards: "American Airlines 2x、レストラン・ガス 2x、その他 1x",
+    foreignFee: "なし ✅",
+    ssnRequired: "medium",
+    ssnNote: "SSN必須",
+    difficulty: "★★☆",
+    url: "https://www.citi.com/credit-cards/citi-aadvantage-platinum-select-world-elite-mastercard",
+    details: {
+      pros: ["預け荷物1個無料", "AA利用時25%マイルボーナス", "優先搭乗権付き"],
+      cons: ["AAのネットワークが限られる路線も", "Chase/Amexより特典が少なめ"],
+      tips: "ダラス・マイアミなどAAハブ近くに住む方に特におすすめ。日本路線もJALとのコードシェアで充実。",
+      jpNote: "AAマイルはJALへの移行はできないが、JALとのコードシェア便に使用可能。"
+    }
   }
 ];
 
@@ -1410,6 +1567,7 @@ function switchTab(tab) {
   listSection.style.display = 'none';
   cardsSection.style.display = 'none';
   document.getElementById('appFooter').style.display = 'none';
+  document.getElementById('offersSection').style.display = 'none';
   quizSection.classList.remove('active');
   chatSection.classList.remove('active');
   document.getElementById('savedSection').classList.remove('active');
@@ -1423,6 +1581,7 @@ function switchTab(tab) {
     listSection.style.display = '';
     cardsSection.style.display = '';
     document.getElementById('appFooter').style.display = '';
+    document.getElementById('offersSection').style.display = '';
     document.getElementById('nav-list').classList.add('active');
   } else if (tab === 'quiz') {
     quizSection.classList.add('active');
@@ -1448,11 +1607,11 @@ function answer(step, value) {
   quizAnswers[step] = value;
   document.getElementById(`dot${step}`).classList.add('done');
 
-  if (step < 3) {
+  if (step < 4) {
     document.getElementById(`step${step}`).classList.remove('active');
     currentStep = step + 1;
     document.getElementById(`step${currentStep}`).classList.add('active');
-    if (currentStep < 4) document.getElementById(`dot${currentStep}`).classList.add('done');
+    if (currentStep < 5) document.getElementById(`dot${currentStep}`).classList.add('done');
   } else {
     showResult();
   }
@@ -1463,28 +1622,35 @@ function showResult() {
   const resultSection = document.getElementById('resultSection');
   resultSection.classList.add('active');
 
-  const { 0: history, 1: fee, 2: goal, 3: japan } = quizAnswers;
+  const { 0: history, 1: fee, 2: goal, 3: japan, 4: family } = quizAnswers;
 
-  // Scoring logic
-  const scores = { 1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0 };
+  // Scoring logic (9 cards now)
+  const scores = { 1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0, 7: 0, 8: 0, 9: 0 };
 
   // History
   if (history === 'nohistory') { scores[3] += 3; scores[6] += 3; }
   else if (history === 'some') { scores[4] += 2; scores[6] += 2; scores[1] += 1; }
-  else { scores[1] += 3; scores[2] += 3; scores[5] += 2; }
+  else { scores[1] += 3; scores[2] += 3; scores[5] += 2; scores[7] += 2; scores[8] += 1; scores[9] += 1; }
 
   // Fee
   if (fee === 'free') { scores[3] += 3; scores[4] += 3; scores[6] += 3; }
-  else if (fee === 'ok95') { scores[1] += 2; scores[5] += 2; scores[4] += 1; }
-  else { scores[2] += 3; scores[1] += 2; }
+  else if (fee === 'ok95') { scores[1] += 2; scores[5] += 2; scores[7] += 2; scores[4] += 1; }
+  else { scores[2] += 3; scores[1] += 2; scores[7] += 2; scores[8] += 2; scores[9] += 1; }
 
   // Goal
   if (goal === 'travel') { scores[1] += 3; scores[5] += 3; scores[6] += 1; }
   else if (goal === 'food') { scores[2] += 3; scores[3] += 1; }
-  else { scores[4] += 3; scores[3] += 2; }
+  else if (goal === 'daily') { scores[4] += 3; scores[3] += 2; }
+  else if (goal === 'hotel') { scores[7] += 4; scores[1] += 1; }
+  else if (goal === 'airline') { scores[8] += 3; scores[9] += 3; scores[5] += 1; }
 
   // Japan
   if (japan === 'often') { scores[1] += 2; scores[5] += 2; scores[6] += 2; scores[2] += 1; }
+
+  // Family (new Q5)
+  if (family === 'single') { scores[3] += 2; scores[4] += 1; }
+  else if (family === 'couple') { scores[2] += 2; scores[1] += 1; }
+  else if (family === 'family') { scores[2] += 3; scores[7] += 2; scores[1] += 1; }
 
   // Sort
   const sorted = Object.entries(scores).sort((a, b) => b[1] - a[1]);
@@ -1495,11 +1661,14 @@ function showResult() {
 
   const reasons = {
     1: "旅行好きでクレヒスもある方に最適。ANA・JALマイルにも移行できる在米日本人の定番カード！",
-    2: "食費やスーパーを多く使う方に圧倒的。年会費は特典でほぼ回収できます。",
+    2: "食費やスーパーを多く使う方に圧倒的。家族持ちにも◎。年会費は特典でほぼ回収できます。",
     3: "クレヒスゼロからスタートできる貴重な1枚。まず実績を積むのに最適！",
     4: "すべての購入で1.5%と分かりやすく、Sapphireとの組み合わせも強力。年会費無料が嬉しい。",
     5: "シンプルにすべて2x還元。ANAマイルへの移行もできて日本帰国に役立つ。",
-    6: "BoA口座があれば超作りやすい。旅行にも使えて年会費無料、初心者の入り口に最高！"
+    6: "BoA口座があれば超作りやすい。旅行にも使えて年会費無料、初心者の入り口に最高！",
+    7: "ホテル滞在・出張が多い方に最適。Hyattポイントの価値は業界最高水準。日本への帰国時にも使えます！",
+    8: "デルタ航空をよく使う方に。特にアトランタ在住者には最強。荷物無料・優先搭乗など実用的な特典が充実。",
+    9: "American Airlinesをよく使う方に。JALとのコードシェア便にも使えるので日本路線にも応用可能！"
   };
 
   const resultCard = document.getElementById('resultCard');
@@ -1520,6 +1689,7 @@ function showResult() {
   const runnerEl = document.getElementById('runnerCards');
   runnerEl.innerHTML = runners.map(rid => {
     const rc = cards.find(c => c.id === rid);
+    if (!rc) return '';
     return `
       <div class="result-runner">
         <div class="runner-emoji">${rc.emoji}</div>
@@ -1575,36 +1745,56 @@ let isLoading = false;
 // Offline rule-based responses
 const offlineRules = [
   {
-    keywords: ['ssn', 'なし', 'ない', 'パスポート'],
-    reply: `SSNなしでも作れるカードはあります！🎉\n\n**おすすめ順：**\n① 🎓 Discover it® Student — クレヒスなし・SSNなしでも申込できるケースが多い。留学生に大人気！\n② 🌏 BoA Travel Rewards — Bank of Americaに口座があれば、パスポートで申込できることあり\n③ 💎 Chase Sapphire Preferred — パスポートで申込できるケースもあるが、クレヒスある方が安心\n\nまずはDiscoverかBoAから始めるのが現実的です✨\n他に質問があれば気軽にどうぞ！`
+    keywords: ['ssn', 'なし', 'ない', 'パスポート', 'itin'],
+    reply: `SSNなし・ITINでも作れるカードはあります！🎉\n\n**おすすめ順：**\n① 🎓 Discover it® Student — クレヒスなし・SSNなしでも申込できるケースが多い\n② 🌏 BoA Travel Rewards — Bank of Americaに口座があれば申込しやすい\n③ 💎 Chase Sapphire Preferred — パスポートで申込できるケースあり\n④ 🥇 Amex Gold — ITINで申込可能なケースあり\n\n**ITINとは？**\n就労ビザがない配偶者など、SSNを取得できない方が税務申告のために取得できる番号。税理士経由で3〜5ヶ月かかります。\n\nまずはDiscoverかBoAから始めるのが現実的です✨\n他に質問があれば気軽にどうぞ！`
   },
   {
-    keywords: ['クレヒス', '初めて', 'ゼロ', '初心者', '最初'],
-    reply: `クレヒスゼロからのスタートガイドです📚\n\n**ステップアップ順：**\n1️⃣ 🎓 Discover it® Student（作りやすい・年会費無料）\n2️⃣ 🌏 BoA Travel Rewards（BoA口座があればOK）\n3️⃣ 🚀 Chase Freedom Unlimited（6ヶ月〜1年後）\n4️⃣ 💎 Chase Sapphire Preferred（クレヒス1年以上〜）\n\n焦らず段階的に育てるのがコツ！最初の6ヶ月は遅延なく全額払いで実績を積みましょう💪\n他に質問があれば気軽にどうぞ！`
+    keywords: ['クレヒス', '初めて', 'ゼロ', '初心者', '最初', '作り方'],
+    reply: `クレヒスゼロからのスタートガイドです📚\n\n**ステップアップ順：**\n1️⃣ 🎓 Discover it® Student（作りやすい・年会費無料）\n2️⃣ 🌏 BoA Travel Rewards（BoA口座があればOK）\n3️⃣ 🚀 Chase Freedom Unlimited（6ヶ月〜1年後）\n4️⃣ 💎 Chase Sapphire Preferred（クレヒス1年以上〜）\n\n**配偶者のクレヒス構築には：**\nまずメインカードのAuthorized User（AU）に追加するのが最速！ChaseやAmexのAUは配偶者のクレヒスにも反映されます。\n\n焦らず段階的に育てるのがコツ！最初の6ヶ月は遅延なく全額払いで実績を積みましょう💪\n他に質問があれば気軽にどうぞ！`
   },
   {
-    keywords: ['ana', 'jal', 'マイル', '日本', '帰国', '飛行機'],
-    reply: `日本帰国のマイルを貯めるならこの2枚です✈️\n\n**① 💎 Chase Sapphire Preferred（おすすめ！）**\nUrポイント → ANAマイルへ移行可能（1pt = 1マイル）\n旅行・食事3x還元、年会費$95\n\n**② ✈️ Capital One Venture**\nANAマイルへ移行可能、すべて2x還元でシンプル！\n\nChase Sapphireは他にもANA以外の提携先が多く、柔軟に使えます🙌\n他に質問があれば気軽にどうぞ！`
+    keywords: ['ana', 'jal', 'マイル', '日本', '帰国', '飛行機', '航空'],
+    reply: `日本帰国のマイルを貯めるならこの選択肢です✈️\n\n**ANA移行可能：**\n① 💎 Chase Sapphire Preferred — Urポイント→ANAマイル（1:1）\n② ✈️ Capital One Venture — ANAマイルへ移行可能\n③ 🥇 Amex Gold — MRポイント→ANA（1:1）\n\n**Delta系（アトランタ在住者に特におすすめ）：**\n④ ✈️ Delta SkyMiles Gold — デルタマイルが直接貯まる\n\n**American Airlines系：**\n⑤ 🦅 Citi AAdvantage — JALとのコードシェア便に使用可能\n\nChase Sapphireは他にもANA以外の提携先が多く、最も柔軟に使えます🙌\n他に質問があれば気軽にどうぞ！`
   },
   {
-    keywords: ['食費', 'レストラン', '食事', 'スーパー', 'ご飯', '飲食'],
-    reply: `食費・レストランをお得にするなら断然コレ！🍜\n\n**🥇 Amex Gold Card（最強）**\nレストラン・スーパー 4x還元！\n年会費$250だけど毎月$20のクレジット（ダイニング＋Uber）で実質$10程度に\n\n**次点：🚀 Chase Freedom Unlimited**\nすべて1.5%還元、年会費無料でシンプル\n\n食費が多い方はAmex Goldの4x還元がかなり効いてきます💪\n他に質問があれば気軽にどうぞ！`
+    keywords: ['食費', 'レストラン', '食事', 'スーパー', 'ご飯', '飲食', 'グローサリー'],
+    reply: `食費・レストランをお得にするなら断然コレ！🍜\n\n**🥇 Amex Gold Card（最強）**\nレストラン・スーパー 4x還元！\n年会費$250だけど毎月$20のクレジット（ダイニング＋Uber）で実質$10程度に\n\n**家族持ちなら特に効果大：**\n家族5人の食費が月$1,500なら年間6,000pt（$60相当）以上の差が出ます💪\n\n**次点：🚀 Chase Freedom Unlimited**\nすべて1.5%還元、年会費無料でシンプル\n\n食費が多い方はAmex Goldの4x還元がかなり効いてきます！\n他に質問があれば気軽にどうぞ！`
   },
   {
-    keywords: ['年会費', '無料', 'タダ', '安い'],
-    reply: `年会費無料で使えるカードはこちら！🎉\n\n① 🎓 Discover it® Student — 初年度キャッシュバック2倍！\n② 🚀 Chase Freedom Unlimited — すべて1.5%還元でシンプル\n③ 🌏 BoA Travel Rewards — 海外手数料もなし、旅行にも使える\n\n無料カードでも十分お得に使えます。Chaseカードは後でSapphireと組み合わせると更に強力になりますよ✨\n他に質問があれば気軽にどうぞ！`
+    keywords: ['ホテル', 'hyatt', 'ハイアット', '宿泊', '出張'],
+    reply: `ホテル・出張向けならこちら！🏨\n\n**🏨 Chase World of Hyatt（おすすめ）**\n・Hyatt利用で4x還元\n・毎年カテゴリ1-4の無料宿泊1泊付き（年会費$95以上の価値！）\n・Hyattポイントは業界最高水準の価値\n・日本の東京パークハイアット、大阪なども対象\n\n**Hyattが近くにない場合：**\n💎 Chase Sapphire Preferred から始めてHyattカードと組み合わせると、旅行全般をカバーできます。\n\nHyattのGlobalistステータスは世界最強のホテルステータスとも言われます✨\n他に質問があれば気軽にどうぞ！`
+  },
+  {
+    keywords: ['デルタ', 'delta', 'アトランタ', 'atlanta', 'スカイマイル'],
+    reply: `Delta SkyMilesについてご案内します✈️\n\n**✈️ Delta SkyMiles® Gold Amex（おすすめ）**\n・ウェルカムボーナス：50,000マイル（6ヶ月$2,000利用）\n・Delta・レストラン 2x還元\n・初年度年会費無料（翌年$150）\n・預け荷物1個無料（同伴者も！）\n・優先搭乗権付き\n\n**アトランタ（ジョージア）在住者には特に最強！**\nデルタのハブ空港がATLなので、搭乗機会が多くなりポイントが貯まりやすいです。\n\n日本（成田・羽田）への直行便もあります🇯🇵\n他に質問があれば気軽にどうぞ！`
+  },
+  {
+    keywords: ['aa', 'american airlines', 'アメリカン', 'アドバンテージ', 'citi'],
+    reply: `American Airlines（AA）カードについてご案内します🦅\n\n**🦅 Citi AAdvantage® Platinum Select®**\n・ウェルカムボーナス：50,000 AAマイル（3ヶ月$2,500利用）\n・初年度年会費無料（翌年$99）\n・AA利用で2x、レストラン・ガス 2x\n・預け荷物無料・優先搭乗権\n\n**日本路線での活用：**\nAAマイルはJALとのコードシェア便に使用可能！日本への帰国時にも応用できます。ただしJALへの直接マイル移行はできません。\n\nダラス（DFW）・マイアミ（MIA）在住者に特においすすめです💪\n他に質問があれば気軽にどうぞ！`
+  },
+  {
+    keywords: ['家族', '配偶者', '夫婦', '子ども', 'authorized user', 'au'],
+    reply: `駐在員家族のクレカ戦略をご案内します👨‍👩‍👧‍👦\n\n**配偶者のクレヒス構築：**\n① まず本人のChase/AmexにAUとして追加（即日可能）\n② ITINを取得（就労ビザなしでも税理士経由で取得可能）\n③ 6〜12ヶ月後に配偶者名義のカードを申込\n\n**夫婦最強コンボ：**\n👨 本人：Chase Sapphire Preferred（旅行・食事3x）\n👩 配偶者：Amex Gold（食費4x）\n→ 役割分担でポイント2〜3倍に！\n\n**子どものカード：**\n13歳以上からAUに追加可能（Chase・Amex）\n早めに追加するほど大学進学時に有利になります。\n\n詳しくはブログ記事「駐在員家族のクレカ戦略」も参考にしてください📖\n他に質問があれば気軽にどうぞ！`
+  },
+  {
+    keywords: ['年会費', '無料', 'タダ', '安い', 'コスト'],
+    reply: `年会費無料で使えるカードはこちら！🎉\n\n① 🎓 Discover it® Student — 初年度キャッシュバック2倍！\n② 🚀 Chase Freedom Unlimited — すべて1.5%還元でシンプル\n③ 🌏 BoA Travel Rewards — 海外手数料もなし、旅行にも使える\n\n**初年度無料のカード：**\n④ ✈️ Delta SkyMiles Gold — 初年度無料、翌年$150\n⑤ 🦅 Citi AAdvantage — 初年度無料、翌年$99\n\n無料カードでも十分お得に使えます。ChaseカードはSapphireと組み合わせると更に強力になりますよ✨\n他に質問があれば気軽にどうぞ！`
   },
   {
     keywords: ['chase', 'sapphire'],
-    reply: `Chase Sapphire Preferred®について詳しく説明します💎\n\n**基本情報：**\n・年会費：$95\n・ウェルカムボーナス：60,000 Urポイント（3ヶ月$4,000利用）\n・旅行・食事 3x、その他 1x還元\n・海外手数料：なし✅\n\n**在米日本人ポイント：**\n・ANA・JALマイルへの移行可能！\n・Chase 5/24ルールに注意（過去24ヶ月で5枚以上申込むと審査落ちやすい）\n・SSNなしでもパスポートで申込できるケースあり\n\n在米日本人に最も人気のカードです🇯🇵\n他に質問があれば気軽にどうぞ！`
+    reply: `Chase Sapphire Preferred®について詳しく説明します💎\n\n**基本情報：**\n・年会費：$95\n・ウェルカムボーナス：60,000 Urポイント（3ヶ月$4,000利用）\n・旅行・食事 3x、その他 1x還元\n・海外手数料：なし✅\n\n**在米日本人ポイント：**\n・ANA・JALマイルへの移行可能！\n・Chase 5/24ルールに注意（過去24ヶ月で5枚以上申込むと審査落ちやすい）\n・SSNなしでもパスポートで申込できるケースあり\n・家族のAUに追加すれば配偶者のクレヒスも構築できる\n\n在米日本人に最も人気のカードです🇯🇵\n他に質問があれば気軽にどうぞ！`
   },
   {
     keywords: ['amex', 'american express', 'アメックス', 'gold'],
-    reply: `Amex Gold Cardについて詳しく説明します🥇\n\n**基本情報：**\n・年会費：$250\n・ウェルカムボーナス：60,000 MRポイント（6ヶ月$6,000利用）\n・レストラン・スーパー 4x、旅行 3x還元\n・海外手数料：なし✅\n\n**実質年会費は？**\n毎月$10ダイニングクレジット＋$10 Uberキャッシュ = 年$240\n実質負担は$10程度になります！\n\n食費が多い方には非常に強力なカードです💪\n他に質問があれば気軽にどうぞ！`
+    reply: `Amex Gold Cardについて詳しく説明します🥇\n\n**基本情報：**\n・年会費：$250\n・ウェルカムボーナス：60,000 MRポイント（6ヶ月$6,000利用）\n・レストラン・スーパー 4x、旅行 3x還元\n・海外手数料：なし✅\n\n**実質年会費は？**\n毎月$10ダイニングクレジット＋$10 Uberキャッシュ = 年$240\n実質負担は$10程度に！\n\n**家族向けポイント：**\nITINで配偶者名義での申込実績あり。食費4xは大家族ほど効果絶大です👨‍👩‍👧‍👦\n\n食費が多い方には非常に強力なカードです💪\n他に質問があれば気軽にどうぞ！`
+  },
+  {
+    keywords: ['5/24', 'ルール', 'チェース', 'chase rule'],
+    reply: `Chase 5/24ルールについて解説します📋\n\n**5/24ルールとは？**\n過去24ヶ月以内に5枚以上のクレジットカードを開設した場合、Chaseのほとんどのカードに審査が通らなくなるルールです。\n\n**注意点：**\n・Chaseが公式発表しているわけではないが業界では周知の事実\n・Authorized User（AU）として追加されたカードもカウントされる場合がある\n・ビジネスカードはカウントされないものも\n\n**対策：**\n・Chaseカードを最優先に申込む\n・他社カードは後回しにする\n・家族でタイミングをずらして申込む\n\nChase Sapphireを狙うなら、24ヶ月のカード枚数を管理することが重要です！\n他に質問があれば気軽にどうぞ！`
   },
   {
     keywords: ['比較', 'どっち', 'どれ', 'おすすめ', '迷'],
-    reply: `目的別おすすめをまとめました🎯\n\n**旅行・マイル重視：** 💎 Chase Sapphire Preferred\n**食費・スーパー重視：** 🥇 Amex Gold Card\n**初心者・クレヒスなし：** 🎓 Discover it Student\n**シンプルに全部お得：** ✈️ Capital One Venture\n**年会費無料で旅行も：** 🌏 BoA Travel Rewards\n\n下の「診断」タブで4問答えると、さらに詳しくあなたに合ったカードが分かります！\n他に質問があれば気軽にどうぞ！`
+    reply: `目的別おすすめをまとめました🎯\n\n**旅行・マイル重視：** 💎 Chase Sapphire Preferred\n**食費・スーパー重視：** 🥇 Amex Gold Card\n**ホテル・出張多め：** 🏨 Chase World of Hyatt\n**Delta利用（ATL在住）：** ✈️ Delta SkyMiles Gold\n**初心者・クレヒスなし：** 🎓 Discover it Student\n**シンプルに全部お得：** ✈️ Capital One Venture\n**AA系で日本へ：** 🦅 Citi AAdvantage\n\n下の「診断」タブで5問答えると、さらに詳しくあなたに合ったカードが分かります！\n他に質問があれば気軽にどうぞ！`
   }
 ];
 
