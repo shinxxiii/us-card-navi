@@ -54,8 +54,24 @@
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
 
-  html, body {
-    background: #0D1B2E !important;
+  /* PC対応：最大幅制限 */
+  @media (min-width: 600px) {
+    body {
+      display: flex;
+      justify-content: center;
+      background: #060E1A !important;
+    }
+    .pc-wrapper {
+      width: 100%;
+      max-width: 480px;
+      min-height: 100vh;
+      background: var(--bg);
+      position: relative;
+      box-shadow: 0 0 60px rgba(0,0,0,0.5);
+    }
+  }
+  @media (max-width: 599px) {
+    .pc-wrapper { width: 100%; }
   }
 
   body {
@@ -908,6 +924,7 @@
 </style>
 </head>
 <body>
+<div class="pc-wrapper">
 
 <!-- お知らせバナー -->
 <div id="noticeBanner" style="background:linear-gradient(135deg,rgba(201,168,76,0.2),rgba(201,168,76,0.08));border-bottom:1px solid rgba(201,168,76,0.2);padding:10px 16px;display:flex;align-items:center;gap:10px;position:relative;z-index:20;">
@@ -2292,5 +2309,6 @@ function runDebugTest() {
   alert('🔧 動作テスト結果\n\n' + results.join('\n') + '\n\n⚠️ 問題があった場合はAmePeachまでご連絡ください。');
 }
 </script>
+</div><!-- /pc-wrapper -->
 </body>
 </html>
