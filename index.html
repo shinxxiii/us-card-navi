@@ -979,13 +979,13 @@ transition: transform 0.2s, opacity 0.2s;
 
 <!-- お知らせバナー -->
 
-<div id="noticeBanner" style="background:linear-gradient(135deg,rgba(0,185,255,0.18),rgba(0,185,255,0.06));border-bottom:1px solid rgba(0,185,255,0.2);padding:10px 16px;display:flex;align-items:center;gap:10px;position:relative;z-index:20;">
-  <span style="font-size:1rem;flex-shrink:0;">🏦</span>
+<div id="noticeBanner" style="background:linear-gradient(135deg,rgba(139,92,246,0.2),rgba(139,92,246,0.06));border-bottom:1px solid rgba(139,92,246,0.2);padding:10px 16px;display:flex;align-items:center;gap:10px;position:relative;z-index:20;">
+  <span style="font-size:1rem;flex-shrink:0;">👨‍👩‍👧</span>
   <div style="flex:1;min-width:0;">
-    <div style="font-size:0.72rem;font-weight:900;color:#00B9FF;">📢 新着記事</div>
-    <div style="font-size:0.75rem;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">アメリカの銀行口座完全ガイド｜Chase・BoA・Wise徹底比較【2026年最新】</div>
+    <div style="font-size:0.72rem;font-weight:900;color:#8B5CF6;">📢 新着記事</div>
+    <div style="font-size:0.75rem;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">配偶者のクレカ戦略完全ガイド｜ITIN・AU・別カード申請を徹底解説</div>
   </div>
-  <a href="/blog/us-bank-account-guide.html" style="flex-shrink:0;background:#00B9FF;color:#0A1628;padding:5px 10px;border-radius:8px;text-decoration:none;font-size:0.7rem;font-weight:700;">読む</a>
+  <a href="/blog/spouse-credit-card-strategy.html" style="flex-shrink:0;background:#8B5CF6;color:white;padding:5px 10px;border-radius:8px;text-decoration:none;font-size:0.7rem;font-weight:700;">読む</a>
   <button onclick="document.getElementById('noticeBanner').style.display='none'" style="flex-shrink:0;background:transparent;border:none;color:var(--text-muted);font-size:1rem;cursor:pointer;padding:0 4px;">✕</button>
 </div>
 
@@ -2576,6 +2576,19 @@ const blogPosts = [
     desc: 'Chase・BoA・Wise・Charles Schwabを徹底比較。手数料免除の条件・必要書類・AutoPayの設定・日本への送金コスト比較まで完全解説。渡米直後に読みたい一冊。',
     tags: ['# Chase銀行', '# Wise送金', '# 手数料免除'],
     linkColor: '#00B9FF'
+  },
+  {
+    url: '/blog/spouse-credit-card-strategy.html',
+    category: 'family',
+    categoryLabel: '👨‍👩‍👧 家族・配偶者向け',
+    categoryColor: '#8B5CF6',
+    accentColor: 'rgba(139,92,246,0.2)',
+    borderColor: 'rgba(139,92,246,0.25)',
+    readTime: '約14分',
+    title: '【2026年最新】配偶者のクレカ戦略完全ガイド｜ITIN・Authorized User・別カード申請を徹底解説',
+    desc: '依存ビザ・就労不可の配偶者がクレカを作る3つの戦略を完全解説。AU追加・ITIN取得（Form W-7）・SSNなし対応カード。夫婦で独立したクレヒスを構築するロードマップ付き。',
+    tags: ['# ITIN取得', '# Authorized User', '# 配偶者クレヒス'],
+    linkColor: '#8B5CF6'
   }
 ];
 
