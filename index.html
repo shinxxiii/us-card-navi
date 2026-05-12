@@ -979,13 +979,13 @@ transition: transform 0.2s, opacity 0.2s;
 
 <!-- お知らせバナー -->
 
-<div id="noticeBanner" style="background:linear-gradient(135deg,rgba(245,118,58,0.2),rgba(245,166,35,0.1));border-bottom:1px solid rgba(245,118,58,0.2);padding:10px 16px;display:flex;align-items:center;gap:10px;position:relative;z-index:20;">
-  <span style="font-size:1rem;flex-shrink:0;">🛫</span>
+<div id="noticeBanner" style="background:linear-gradient(135deg,rgba(0,185,255,0.18),rgba(0,185,255,0.06));border-bottom:1px solid rgba(0,185,255,0.2);padding:10px 16px;display:flex;align-items:center;gap:10px;position:relative;z-index:20;">
+  <span style="font-size:1rem;flex-shrink:0;">🏦</span>
   <div style="flex:1;min-width:0;">
-    <div style="font-size:0.72rem;font-weight:900;color:var(--orange);">📢 新着記事</div>
-    <div style="font-size:0.75rem;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">【渡米前必読】財実準備完全ガイド｜クレカ・Amex・銀行口座</div>
+    <div style="font-size:0.72rem;font-weight:900;color:#00B9FF;">📢 新着記事</div>
+    <div style="font-size:0.75rem;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">アメリカの銀行口座完全ガイド｜Chase・BoA・Wise徹底比較【2026年最新】</div>
   </div>
-  <a href="/blog/before-moving-to-us.html" style="flex-shrink:0;background:var(--orange);color:white;padding:5px 10px;border-radius:8px;text-decoration:none;font-size:0.7rem;font-weight:700;">読む</a>
+  <a href="/blog/us-bank-account-guide.html" style="flex-shrink:0;background:#00B9FF;color:#0A1628;padding:5px 10px;border-radius:8px;text-decoration:none;font-size:0.7rem;font-weight:700;">読む</a>
   <button onclick="document.getElementById('noticeBanner').style.display='none'" style="flex-shrink:0;background:transparent;border:none;color:var(--text-muted);font-size:1rem;cursor:pointer;padding:0 4px;">✕</button>
 </div>
 
@@ -2563,6 +2563,19 @@ const blogPosts = [
     desc: '渡米・駐在前にやるべき財実準備を完全解説。Amex Global Transfer、日本のクレカ整理、Wise口座、アメリカの銀行口座準備。渡米前チェックリスト付き。',
     tags: ['# 渡米前準備', '# Amex Global Transfer', '# Wise'],
     linkColor: '#F5763A'
+  },
+  {
+    url: '/blog/us-bank-account-guide.html',
+    category: 'beginner',
+    categoryLabel: '🏦 銀行口座',
+    categoryColor: '#00B9FF',
+    accentColor: 'rgba(0,185,255,0.15)',
+    borderColor: 'rgba(0,185,255,0.25)',
+    readTime: '約14分',
+    title: '【2026年最新】アメリカの銀行口座完全ガイド｜Chase・Bank of America・Wise 在米日本人向け徹底比較',
+    desc: 'Chase・BoA・Wise・Charles Schwabを徹底比較。手数料免除の条件・必要書類・AutoPayの設定・日本への送金コスト比較まで完全解説。渡米直後に読みたい一冊。',
+    tags: ['# Chase銀行', '# Wise送金', '# 手数料免除'],
+    linkColor: '#00B9FF'
   }
 ];
 
