@@ -379,8 +379,8 @@ transform: scale(0.98);
 .modal-overlay {
 position: fixed;
 inset: 0;
-background: rgba(0,0,0,0.7);
-backdrop-filter: blur(8px);
+background: rgba(0,0,0,0.75);
+backdrop-filter: blur(10px);
 z-index: 100;
 display: flex;
 align-items: flex-end;
@@ -395,15 +395,16 @@ pointer-events: all;
 }
 
 .modal {
-background: var(–card-bg);
-border-radius: 24px 24px 0 0;
-padding: 24px 20px 40px;
+background: #1A2E45;
+border-radius: 28px 28px 0 0;
+padding: 8px 20px 40px;
 width: 100%;
-max-height: 80vh;
+max-height: 85vh;
 overflow-y: auto;
 transform: translateY(100%);
 transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
-border-top: 3px solid var(–modal-accent, var(–pink));
+border-top: 4px solid var(–modal-accent, var(–pink));
+box-shadow: 0 -8px 40px rgba(0,0,0,0.5);
 }
 
 .modal-overlay.open .modal {
@@ -411,38 +412,82 @@ transform: translateY(0);
 }
 
 .modal-handle {
-width: 40px; height: 4px;
-background: rgba(255,255,255,0.2);
+width: 48px; height: 5px;
+background: rgba(255,255,255,0.15);
 border-radius: 99px;
-margin: 0 auto 20px;
+margin: 14px auto 20px;
 }
 
 .modal-title {
 font-size: 1.3rem;
 font-weight: 900;
+margin-bottom: 4px;
+}
+
+.modal-issuer-badge {
+display: inline-block;
+font-size: 0.65rem;
+font-weight: 900;
+letter-spacing: 0.1em;
+color: var(–modal-accent, var(–pink));
+background: rgba(255,255,255,0.06);
+padding: 3px 10px;
+border-radius: 99px;
 margin-bottom: 16px;
+}
+
+.modal-stats {
+display: grid;
+grid-template-columns: 1fr 1fr 1fr;
+gap: 8px;
+margin-bottom: 16px;
+}
+
+.modal-stat {
+background: rgba(255,255,255,0.05);
+border-radius: 12px;
+padding: 10px 8px;
+text-align: center;
+}
+
+.modal-stat-label {
+font-size: 0.6rem;
+color: #9DB8D4;
+margin-bottom: 4px;
+}
+
+.modal-stat-value {
+font-size: 0.82rem;
+font-weight: 900;
 }
 
 .detail-section {
-margin-bottom: 16px;
+background: rgba(255,255,255,0.04);
+border-radius: 14px;
+padding: 14px;
+margin-bottom: 10px;
 }
 
 .detail-section h3 {
-font-size: 0.7rem;
-color: var(–text-muted);
-text-transform: uppercase;
-letter-spacing: 0.1em;
-margin-bottom: 8px;
+font-size: 0.72rem;
+color: #9DB8D4;
+font-weight: 900;
+letter-spacing: 0.05em;
+margin-bottom: 10px;
 }
 
 .detail-section p, .detail-section li {
 font-size: 0.85rem;
-line-height: 1.6;
-color: rgba(255,255,255,0.85);
+line-height: 1.65;
+color: rgba(255,255,255,0.88);
 }
 
 .detail-section ul {
 padding-left: 16px;
+}
+
+.detail-section li {
+margin-bottom: 4px;
 }
 
 .close-btn {
@@ -1260,11 +1305,31 @@ transition: transform 0.2s, opacity 0.2s;
 <div class="quiz-section" id="savedSection" style="padding:0 16px 100px;">
   <div style="padding:20px 0 12px;text-align:center;">
     <div style="font-size:1rem;font-weight:900;background:linear-gradient(135deg,var(--yellow),var(--pink));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">⭐ 保存済みカード</div>
-    <div style="font-size:0.72rem;color:var(--text-muted);margin-top:3px;">気になるカードをここにストック</div>
+    <div style="font-size:0.72rem;color:var(--text-muted);margin-top:3px;">気になるカードをストック・比較</div>
   </div>
+
+  <!-- 比較ボタン -->
+
+  <div id="compareBar" style="display:none;background:rgba(245,166,35,0.12);border:1px solid rgba(245,166,35,0.3);border-radius:14px;padding:12px 16px;margin-bottom:16px;align-items:center;justify-content:space-between;">
+    <div style="font-size:0.78rem;color:#FFD600;font-weight:700;">📊 <span id="compareCount">0</span>枚選択中（最大3枚）</div>
+    <button onclick="showComparison()" id="compareBtn" style="background:#FFD600;border:none;color:#0A1628;padding:7px 16px;border-radius:8px;font-family:'Zen Maru Gothic',sans-serif;font-weight:900;font-size:0.78rem;cursor:pointer;opacity:0.5;" disabled>比較する</button>
+  </div>
+
   <div id="savedCards"></div>
-  <div id="savedEmpty" style="text-align:center;padding:40px 20px;color:var(--text-muted);font-size:0.85rem;display:none;">
-    まだ保存されていません。<br>カード詳細の ⭐ ボタンで追加できます！
+  <div id="savedEmpty" style="text-align:center;padding:40px 20px;color:var(--text-muted);font-size:0.85rem;">
+    <div style="font-size:2.5rem;margin-bottom:12px;">⭐</div>
+    まだ保存されていません。<br>
+    <span style="font-size:0.78rem;">カード詳細の ⭐ ボタンで追加できます！</span>
+  </div>
+
+  <!-- 比較モーダル -->
+
+  <div id="comparisonModal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.92);z-index:200;overflow-y:auto;-webkit-overflow-scrolling:touch;overscroll-behavior:contain;padding:0 0 40px;">
+    <div style="position:sticky;top:0;background:#0A1628;padding:14px 16px;z-index:1;border-bottom:1px solid rgba(255,255,255,0.08);display:flex;justify-content:space-between;align-items:center;">
+      <div style="font-size:1rem;font-weight:900;color:#FFD600;">📊 カード比較</div>
+      <button onclick="closeComparison()" style="background:rgba(255,255,255,0.12);border:none;color:white;width:36px;height:36px;border-radius:50%;font-size:1rem;cursor:pointer;">✕</button>
+    </div>
+    <div id="comparisonContent" style="padding:16px 16px 60px;"></div>
   </div>
 </div>
 
@@ -1616,25 +1681,53 @@ function openModal(id, e) {
 
   const body = document.getElementById('modalBody');
   body.innerHTML = `
-    <div class="modal-title">${card.emoji} ${card.name}</div>
-    <div class="bonus-bar">
-      <div class="bonus-label">🎁 ウェルカムボーナス</div>
-      <div class="bonus-text">${card.signupBonus}</div>
-      <div style="font-size:0.75rem;color:rgba(255,255,255,0.5);margin-top:2px;">${card.signupCondition}</div>
+    <div style="display:flex;align-items:center;gap:12px;margin-bottom:6px;">
+      <div style="font-size:2.2rem;">${card.emoji}</div>
+      <div>
+        <div class="modal-issuer-badge">${card.issuer}</div>
+        <div class="modal-title">${card.name}</div>
+      </div>
     </div>
+
+    <div style="background:linear-gradient(135deg,rgba(255,255,255,0.08),rgba(255,255,255,0.03));border-radius:14px;padding:14px;margin-bottom:12px;border-left:3px solid ${card.accent};">
+      <div style="font-size:0.65rem;color:${card.accent};font-weight:900;margin-bottom:6px;">🎁 ウェルカムボーナス</div>
+      <div style="font-size:1rem;font-weight:900;">${card.signupBonus}</div>
+      <div style="font-size:0.72rem;color:#9DB8D4;margin-top:3px;">${card.signupCondition}</div>
+    </div>
+
+    <div class="modal-stats">
+      <div class="modal-stat">
+        <div class="modal-stat-label">年会費</div>
+        <div class="modal-stat-value">${card.annualFee}</div>
+      </div>
+      <div class="modal-stat">
+        <div class="modal-stat-label">海外手数料</div>
+        <div class="modal-stat-value" style="color:#5DBE8A;">${card.foreignFee}</div>
+      </div>
+      <div class="modal-stat">
+        <div class="modal-stat-label">難易度</div>
+        <div class="modal-stat-value">${card.difficulty}</div>
+      </div>
+    </div>
+
+    <div class="modal-stat" style="margin-bottom:12px;text-align:left;padding:10px 12px;">
+      <div class="modal-stat-label" style="margin-bottom:4px;">💳 還元率</div>
+      <div style="font-size:0.82rem;font-weight:700;">${card.rewards}</div>
+    </div>
+
     <div class="detail-section">
       <h3>✅ メリット</h3>
       <ul>${card.details.pros.map(p => `<li>${p}</li>`).join('')}</ul>
     </div>
     <div class="detail-section">
-      <h3>⚠️ デメリット</h3>
+      <h3>⚠️ 注意点</h3>
       <ul>${card.details.cons.map(c => `<li>${c}</li>`).join('')}</ul>
     </div>
     <div class="detail-section">
       <h3>💡 攻略ポイント</h3>
       <p>${card.details.tips}</p>
     </div>
-    <div class="detail-section" style="background:rgba(255,255,255,0.04);border-radius:12px;padding:12px;">
+    <div class="detail-section" style="border-left:3px solid #C8102E;">
       <h3>🇯🇵 在米日本人メモ</h3>
       <p>${card.details.jpNote}</p>
     </div>
@@ -1734,10 +1827,9 @@ function showResult() {
 
   const { 0: history, 1: fee, 2: goal, 3: japan, 4: family } = quizAnswers;
 
-  // Scoring logic (9 cards now)
   const scores = { 1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0, 7: 0, 8: 0, 9: 0, 10: 0, 11: 0 };
 
-  // History - クレヒスなし → JAL/ANAカードを強く推薦
+  // History
   if (history === 'nohistory') { scores[3] += 2; scores[6] += 2; scores[10] += 5; scores[11] += 5; }
   else if (history === 'some') { scores[4] += 2; scores[6] += 2; scores[1] += 1; scores[10] += 1; scores[11] += 1; }
   else { scores[1] += 3; scores[2] += 3; scores[5] += 2; scores[7] += 2; scores[8] += 1; scores[9] += 1; }
@@ -1755,11 +1847,10 @@ function showResult() {
   else if (goal === 'airline') { scores[8] += 3; scores[9] += 3; scores[5] += 1; }
 
   // Japan
-  // Japan travel - JAL/ANAカードと日本便カードを強化
   if (japan === 'often') { scores[1] += 2; scores[5] += 2; scores[10] += 3; scores[11] += 3; scores[2] += 1; }
   else if (japan === 'sometimes') { scores[1] += 1; scores[10] += 2; scores[11] += 2; }
 
-  // Family (new Q5)
+  // Family
   if (family === 'single') { scores[3] += 2; scores[4] += 1; }
   else if (family === 'couple') { scores[2] += 2; scores[1] += 1; }
   else if (family === 'family') { scores[2] += 3; scores[7] += 2; scores[1] += 1; }
@@ -1767,22 +1858,28 @@ function showResult() {
   // Sort
   const sorted = Object.entries(scores).sort((a, b) => b[1] - a[1]);
   const topId = parseInt(sorted[0][0]);
-  const runners = sorted.slice(1, 3).map(s => parseInt(s[0]));
+  const runners = sorted.slice(1, 4).map(s => parseInt(s[0]));
 
   const top = cards.find(c => c.id === topId);
 
+  // 詳細な理由（回答に応じて動的に生成）
+  const historyLabel = history === 'nohistory' ? 'クレヒスなし' : history === 'some' ? 'クレヒス6ヶ月〜1年' : 'クレヒス1年以上';
+  const goalLabel = { travel: '旅行・マイル', food: '食費・外食', daily: '日常の買い物', hotel: 'ホテル', airline: '特定航空マイル' }[goal] || '';
+  const familyLabel = { single: '一人暮らし', couple: '夫婦', family: '家族' }[family] || '';
+  const japanLabel = japan === 'often' ? '年1回以上帰国' : 'あまり帰国しない';
+
   const reasons = {
-    1: "旅行好きでクレヒスもある方に最適。ANA・JALマイルにも移行できる在米日本人の定番カード！",
-    2: "食費やスーパーを多く使う方に圧倒的。家族持ちにも◎。年会費は特典でほぼ回収できます。",
-    3: "クレヒスゼロからスタートできる貴重な1枚。まず実績を積むのに最適！",
-    4: "すべての購入で1.5%と分かりやすく、Sapphireとの組み合わせも強力。年会費無料が嬉しい。",
-    5: "シンプルにすべて2x還元。ANAマイルへの移行もできて日本帰国に役立つ。",
-    6: "BoA口座があれば超作りやすい。旅行にも使えて年会費無料、初心者の入り口に最高！",
-    7: "ホテル滞在・出張が多い方に最適。Hyattポイントの価値は業界最高水準。日本への帰国時にも使えます！",
-    8: "デルタ航空をよく使う方に。特にアトランタ在住者には最強。荷物無料・優先搭乗など実用的な特典が充実。",
-    9: "American Airlinesをよく使う方に。JALとのコードシェア便にも使えるので日本路線にも応用可能！",
-    10: "クレヒスゼロ・SSNなしでも作れるJAL派の定番カード！渡米直後の最初の1枚として最適。JALフライト10%ボーナスも嬉しい特典です。",
-    11: "クレヒスゼロ・SSNなしでも作れるANA派の定番カード！フライト25%ボーナスとプライオリティチェックインが魅力。渡米直後の最初の1枚として最適。"
+    1: `${historyLabel}・${goalLabel}の方に最適。Chase Sapphire Preferredは旅行・食事3x還元に加え、UrポイントをANAマイルに1:1移行できる在米日本人の定番カードです。Chase 5/24ルールに注意しながら最優先で申し込みましょう。`,
+    2: `${familyLabel}で${goalLabel}を重視するならAmex Gold一択。食費・スーパー4x還元は業界最強クラス。毎月のUber Cash・ダイニングクレジットを活用すれば年会費$325も実質$0になります。ANAマイルへ直接1:1移行可能。`,
+    3: `${historyLabel}からスタートできる貴重な1枚がDiscover it Student。まず6〜12ヶ月でクレヒスを積み上げてから、Chase SapphireやAmex Goldへステップアップしましょう。年会費無料で初年度キャッシュバック全額マッチが嬉しい。`,
+    4: `すべての購入で1.5x還元とシンプルなChase Freedom Unlimited。年会費無料でChase Sapphireとの組み合わせ（Chaseトリフェクタ）で真価を発揮します。まずここから始めてSapphireを追加するのがおすすめのロードマップです。`,
+    5: `${japanLabel}の方にCapital One Ventureはおすすめ。すべて2xマイルでシンプル、ANAマイルへの移行もできます。Chase・Amexに比べるとポイント移行先は少なめですが、使い勝手のよさが魅力です。`,
+    6: `${historyLabel}でBoA口座をお持ちなら、BoA Travel Rewardsが最も作りやすい選択肢です。年会費無料・海外手数料なし・1.5pt還元とシンプルで使いやすく、初めてのアメリカカードとして最適。`,
+    7: `${goalLabel}・${familyLabel}の方にChase World of Hyattがベストマッチ。毎年カテゴリ1-4の無料宿泊1泊付きで年会費$95以上の価値があります。日本の東京・大阪のHyattでも使えます。`,
+    8: `特定航空マイルを重視する方、特にアトランタ在住の方にDelta SkyMiles Gold Amexが最適です。デルタのハブ空港ATLを拠点にすれば積算マイルが一気に増えます。荷物無料・優先搭乗で実用的な特典も充実。`,
+    9: `${goalLabel}でAmerican Airlines系をお使いの方にCiti AAdvantageがベスト。JALとのコードシェア便にも使えるので日本帰国時にも応用できます。ダラス・マイアミ在住者に特におすすめです。`,
+    10: `${historyLabel}・${japanLabel}の方にJAL USA Cardが最適な第一歩です。クレヒスなし・SSNなしでも申込でき、JALフライトのたびに10%ボーナスマイルが貯まります。6〜12ヶ月後にChase Sapphireへのステップアップがベストなロードマップです。`,
+    11: `${historyLabel}・${japanLabel}のANA派にANA CARD U.S.A. Plusが最適です。クレヒスなし・SSNなしでもOK、フライト25%ボーナスとプライオリティチェックインが魅力。渡米直後の最初の1枚として渡米直後から積み上げを始めましょう。`
   };
 
   const resultCard = document.getElementById('resultCard');
@@ -1791,30 +1888,61 @@ function showResult() {
     <div class="result-emoji">${top.emoji}</div>
     <div class="result-label">${top.issuer}</div>
     <div class="result-name">${top.name}</div>
-    <div style="margin:10px 0;padding:10px;background:rgba(255,255,255,0.05);border-radius:10px;">
+    <div style="margin:12px 0;padding:12px;background:rgba(255,255,255,0.06);border-radius:12px;">
       <div style="font-size:0.65rem;color:var(--pink);font-weight:700;margin-bottom:4px;">🎁 ウェルカムボーナス</div>
-      <div style="font-size:0.9rem;font-weight:900;">${top.signupBonus}</div>
+      <div style="font-size:0.95rem;font-weight:900;">${top.signupBonus}</div>
       <div style="font-size:0.7rem;color:rgba(255,255,255,0.5);margin-top:2px;">${top.signupCondition}</div>
     </div>
-    <div class="result-reason">${reasons[topId]}</div>
-    <button class="apply-btn" style="background:${top.accent};margin-top:16px;" onclick="window.open('${top.url}','_blank')">📝 申し込みページへ →</button>
+    <div style="margin:12px 0;padding:12px;background:rgba(255,255,255,0.04);border-radius:12px;">
+      <div style="font-size:0.65rem;color:#9DB8D4;font-weight:700;margin-bottom:6px;">💡 あなたにおすすめの理由</div>
+      <div class="result-reason" style="font-size:0.82rem;line-height:1.7;">${reasons[topId]}</div>
+    </div>
+    <div style="margin:12px 0;padding:10px;background:rgba(255,255,255,0.04);border-radius:12px;display:flex;justify-content:space-between;align-items:center;">
+      <div>
+        <div style="font-size:0.65rem;color:#9DB8D4;margin-bottom:2px;">年会費</div>
+        <div style="font-size:0.85rem;font-weight:700;">${top.annualFee}</div>
+      </div>
+      <div>
+        <div style="font-size:0.65rem;color:#9DB8D4;margin-bottom:2px;">海外手数料</div>
+        <div style="font-size:0.85rem;font-weight:700;">${top.foreignFee}</div>
+      </div>
+      <div>
+        <div style="font-size:0.65rem;color:#9DB8D4;margin-bottom:2px;">難易度</div>
+        <div style="font-size:0.85rem;font-weight:700;">${top.difficulty}</div>
+      </div>
+    </div>
+    <div style="display:flex;gap:8px;margin-top:16px;">
+      <button class="apply-btn" style="background:${top.accent};flex:1;" onclick="window.open('${top.url}','_blank')">📝 公式サイトで申し込む →</button>
+      <button style="background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);color:white;padding:0 14px;border-radius:12px;font-family:'Zen Maru Gothic',sans-serif;font-size:0.78rem;cursor:pointer;font-weight:700;" onclick="openCardModal(${top.id})">詳細</button>
+    </div>
   `;
 
   const runnerEl = document.getElementById('runnerCards');
-  runnerEl.innerHTML = runners.map(rid => {
+  runnerEl.innerHTML = `
+    <div style="font-size:0.75rem;color:#9DB8D4;margin:20px 0 10px;font-weight:700;">📋 次点候補（3枚）</div>
+  ` + runners.map(rid => {
     const rc = cards.find(c => c.id === rid);
     if (!rc) return '';
     return `
-      <div class="result-runner">
+      <div class="result-runner" onclick="openCardModal(${rc.id})" style="cursor:pointer;">
         <div class="runner-emoji">${rc.emoji}</div>
         <div class="runner-info">
           <div class="runner-name">${rc.name}</div>
           <div class="runner-why">${rc.issuer} ｜ 年会費 ${rc.annualFee}</div>
         </div>
-        <button style="background:${rc.accent};border:none;color:white;padding:8px 12px;border-radius:10px;font-family:'Zen Maru Gothic',sans-serif;font-weight:700;font-size:0.75rem;cursor:pointer;" onclick="window.open('${rc.url}','_blank')">詳細</button>
+        <div style="color:${rc.accent};font-size:0.75rem;font-weight:700;">詳細 →</div>
       </div>
     `;
   }).join('');
+
+  // 結果シェアボタンを追加
+  const shareText = `USカードナビのAI診断で「${top.name}」がおすすめに！\nあなたも試してみて👇\nhttps://amepeach.com`;
+  runnerEl.innerHTML += `
+    <div style="margin-top:20px;display:flex;gap:8px;">
+      <button onclick="navigator.share ? navigator.share({title:'USカードナビ診断結果',text:'${shareText}'}) : window.open('https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}','_blank')" style="flex:1;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);color:white;padding:10px;border-radius:12px;font-family:'Zen Maru Gothic',sans-serif;font-size:0.78rem;cursor:pointer;font-weight:700;">📤 結果をシェア</button>
+      <button onclick="retryQuiz()" style="flex:1;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);color:white;padding:10px;border-radius:12px;font-family:'Zen Maru Gothic',sans-serif;font-size:0.78rem;cursor:pointer;font-weight:700;">🔄 再診断する</button>
+    </div>
+  `;
 }
 
 function retryQuiz() {
@@ -2015,6 +2143,7 @@ async function sendMessage() {
 
 // === SAVED CARDS ===
 let savedIds = JSON.parse(localStorage.getItem('savedCards') || '[]');
+let compareIds = new Set();
 
 function toggleSave() {
   if (!currentCard) return;
@@ -2045,13 +2174,101 @@ function updateSaveBtn() {
   }
 }
 
+function toggleCompare(id) {
+  if (compareIds.has(id)) {
+    compareIds.delete(id);
+  } else {
+    if (compareIds.size >= 3) { alert('比較は最大3枚までです'); return; }
+    compareIds.add(id);
+  }
+  updateCompareBar();
+  renderSaved();
+}
+
+function updateCompareBar() {
+  const bar = document.getElementById('compareBar');
+  const btn = document.getElementById('compareBtn');
+  const count = document.getElementById('compareCount');
+  if (!bar) return;
+  bar.style.display = compareIds.size > 0 ? 'flex' : 'none';
+  count.textContent = compareIds.size;
+  btn.disabled = compareIds.size < 2;
+  btn.style.opacity = compareIds.size >= 2 ? '1' : '0.5';
+}
+
+function showComparison() {
+  const selected = [...compareIds].map(id => cards.find(c => c.id === id)).filter(Boolean);
+  if (selected.length < 2) return;
+  document.body.style.overflow = 'hidden';
+  const modal = document.getElementById('comparisonModal');
+  const content = document.getElementById('comparisonContent');
+  const cols = selected.length;
+
+  const rows = [
+    { label: '年会費', key: 'annualFee' },
+    { label: '海外手数料', key: 'foreignFee' },
+    { label: '難易度', key: 'difficulty' },
+    { label: 'ボーナス', key: 'signupBonus' },
+    { label: 'ボーナス条件', key: 'signupCondition' },
+    { label: '還元率', key: 'rewards' },
+    { label: 'SSN', key: 'ssnNote' },
+  ];
+
+  content.innerHTML = `
+    <div style="display:grid;grid-template-columns:repeat(${cols},1fr);gap:8px;margin-bottom:16px;">
+      ${selected.map(c => `
+        <div style="background:#1A2E45;border-radius:12px;padding:12px;text-align:center;border-top:3px solid ${c.accent};">
+          <div style="font-size:1.5rem;">${c.emoji}</div>
+          <div style="font-size:0.65rem;font-weight:900;color:${c.accent};margin:4px 0 2px;">${c.issuer}</div>
+          <div style="font-size:0.75rem;font-weight:900;line-height:1.3;">${c.name}</div>
+        </div>
+      `).join('')}
+    </div>
+    ${rows.map(row => `
+      <div style="margin-bottom:8px;">
+        <div style="font-size:0.62rem;color:#9DB8D4;font-weight:700;margin-bottom:5px;">${row.label}</div>
+        <div style="display:grid;grid-template-columns:repeat(${cols},1fr);gap:8px;">
+          ${selected.map(c => `<div style="background:rgba(255,255,255,0.05);border-radius:8px;padding:8px;font-size:0.72rem;line-height:1.4;">${c[row.key] || '-'}</div>`).join('')}
+        </div>
+      </div>
+    `).join('')}
+    <div style="margin-top:12px;">
+      <div style="font-size:0.62rem;color:#9DB8D4;font-weight:700;margin-bottom:5px;">✅ メリット</div>
+      <div style="display:grid;grid-template-columns:repeat(${cols},1fr);gap:8px;">
+        ${selected.map(c => `
+          <div style="background:rgba(93,190,138,0.08);border-radius:8px;padding:8px;">
+            ${c.details.pros.map(p => `<div style="font-size:0.7rem;margin-bottom:3px;padding-left:6px;border-left:2px solid #5DBE8A;line-height:1.4;">・${p}</div>`).join('')}
+          </div>
+        `).join('')}
+      </div>
+    </div>
+    <div style="margin-top:8px;">
+      <div style="font-size:0.62rem;color:#9DB8D4;font-weight:700;margin-bottom:5px;">🇯🇵 在米日本人メモ</div>
+      <div style="display:grid;grid-template-columns:repeat(${cols},1fr);gap:8px;">
+        ${selected.map(c => `<div style="background:rgba(200,16,46,0.06);border-radius:8px;padding:8px;font-size:0.7rem;line-height:1.5;">${c.details.jpNote}</div>`).join('')}
+      </div>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(${cols},1fr);gap:8px;margin-top:16px;">
+      ${selected.map(c => `<button onclick="window.open('${c.url}','_blank')" style="background:${c.accent};border:none;color:#0A1628;padding:10px;border-radius:10px;font-family:'Zen Maru Gothic',sans-serif;font-weight:900;font-size:0.72rem;cursor:pointer;">申し込む →</button>`).join('')}
+    </div>
+  `;
+  modal.style.display = 'block';
+}
+
+function closeComparison() {
+  document.getElementById('comparisonModal').style.display = 'none';
+  document.body.style.overflow = '';
+}
+
 function renderSaved() {
   const container = document.getElementById('savedCards');
   const empty = document.getElementById('savedEmpty');
+  if (!container) return;
   container.innerHTML = '';
 
   if (savedIds.length === 0) {
     empty.style.display = 'block';
+    updateCompareBar();
     return;
   }
   empty.style.display = 'none';
@@ -2059,26 +2276,30 @@ function renderSaved() {
   savedIds.forEach(id => {
     const card = cards.find(c => c.id === id);
     if (!card) return;
+    const isSelected = compareIds.has(id);
     const div = document.createElement('div');
-    div.style.cssText = 'background:var(--card-bg);border-radius:16px;padding:16px;margin-bottom:12px;border:1px solid rgba(255,255,255,0.07);display:flex;align-items:center;gap:12px;';
+    div.style.cssText = `background:#1A2E45;border-radius:16px;padding:16px;margin-bottom:10px;border:2px solid ${isSelected ? 'rgba(245,166,35,0.6)' : 'rgba(255,255,255,0.08)'};display:flex;align-items:center;gap:12px;transition:border-color 0.2s;`;
     div.innerHTML = `
       <div style="font-size:1.8rem;">${card.emoji}</div>
       <div style="flex:1;">
-        <div style="font-size:0.7rem;color:var(--text-muted);">${card.issuer}</div>
-        <div style="font-size:0.95rem;font-weight:900;">${card.name}</div>
-        <div style="font-size:0.72rem;color:var(--yellow);margin-top:2px;">${card.signupBonus}</div>
+        <div style="font-size:0.68rem;color:#9DB8D4;">${card.issuer}</div>
+        <div style="font-size:0.92rem;font-weight:900;">${card.name}</div>
+        <div style="font-size:0.7rem;color:var(--yellow);margin-top:2px;">${card.signupBonus}</div>
       </div>
-      <div style="display:flex;flex-direction:column;gap:6px;">
-        <button onclick="window.open('${card.url}','_blank')" style="background:${card.accent};border:none;color:white;padding:7px 12px;border-radius:8px;font-family:'Zen Maru Gothic',sans-serif;font-weight:700;font-size:0.72rem;cursor:pointer;">申込む</button>
-        <button onclick="removeSaved(${card.id})" style="background:transparent;border:1px solid rgba(255,255,255,0.15);color:var(--text-muted);padding:5px 8px;border-radius:8px;font-size:0.7rem;cursor:pointer;">削除</button>
+      <div style="display:flex;flex-direction:column;gap:6px;align-items:flex-end;">
+        <button onclick="openCardModal(${card.id})" style="background:${card.accent};border:none;color:#0A1628;padding:6px 10px;border-radius:8px;font-family:'Zen Maru Gothic',sans-serif;font-weight:700;font-size:0.7rem;cursor:pointer;">詳細</button>
+        <button onclick="toggleCompare(${card.id})" style="background:${isSelected ? 'rgba(245,166,35,0.2)' : 'rgba(255,255,255,0.06)'};border:1px solid ${isSelected ? 'rgba(245,166,35,0.5)' : 'rgba(255,255,255,0.15)'};color:${isSelected ? 'var(--amber)' : 'var(--text-muted)'};padding:5px 8px;border-radius:8px;font-size:0.68rem;cursor:pointer;font-family:'Zen Maru Gothic',sans-serif;font-weight:700;">${isSelected ? '✓ 比較中' : '+ 比較'}</button>
+        <button onclick="removeSaved(${card.id})" style="background:transparent;border:none;color:rgba(255,255,255,0.25);font-size:0.65rem;cursor:pointer;">削除</button>
       </div>
     `;
     container.appendChild(div);
   });
+  updateCompareBar();
 }
 
 function removeSaved(id) {
   savedIds = savedIds.filter(i => i !== id);
+  compareIds.delete(id);
   localStorage.setItem('savedCards', JSON.stringify(savedIds));
   renderSaved();
 }
