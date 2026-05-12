@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
@@ -10,6 +11,7 @@
 <meta name="description" content="在米日本人のためのクレジットカード攻略アプリ。AI診断で最適なカードを30秒で提案。SSNなし対応カードや日本帰国時のマイル戦略も網羅。">
 
 <!-- Open Graph / Twitter Card -->
+
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://amepeach.com/">
 <meta property="og:title" content="USカードナビ 🇺🇸 在米日本人のためのクレカ攻略アプリ">
@@ -24,916 +26,921 @@
 <meta name="twitter:image" content="https://amepeach.com/og-image.png">
 
 <!-- Favicons -->
+
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
 <link rel="icon" type="image/x-icon" href="/favicon.ico">
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 
 <!-- Google tag (gtag.js) -->
+
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-XB5X4LK6FL"></script>
+
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
   gtag('config', 'G-XB5X4LK6FL');
 </script>
+
 <link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;500;700;900&family=Baloo+2:wght@700;800&family=Yusei+Magic&family=Mochiy+Pop+One&display=swap" rel="stylesheet">
 <style>
   :root {
-    --pink: #F5A623;        /* AmePeach orange-gold as primary accent */
-    --yellow: #FFD600;      /* gold */
-    --cyan: #4A9EDB;        /* softer blue (navy-ish) */
-    --purple: #1B3A6B;      /* deep navy */
-    --green: #5DBE8A;       /* muted green */
-    --orange: #F5763A;      /* peach orange */
-    --bg: #0D1B2E;          /* deep navy bg */
-    --card-bg: #162438;     /* card navy */
-    --text: #FFF8EE;        /* warm white */
-    --text-muted: #8EA8C3;  /* muted navy-blue */
-  }
-
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-
-  /* PC対応：最大幅制限 */
-  @media (min-width: 600px) {
-    body {
-      display: flex;
-      justify-content: center;
-      background: #060E1A !important;
-    }
-    .pc-wrapper {
-      width: 100%;
-      max-width: 480px;
-      min-height: 100vh;
-      background: var(--bg);
-      position: relative;
-      box-shadow: 0 0 60px rgba(0,0,0,0.5);
-    }
-  }
-  @media (max-width: 599px) {
-    .pc-wrapper { width: 100%; }
-  }
-
-  body {
-    font-family: 'Zen Maru Gothic', sans-serif;
-    background: var(--bg);
-    color: var(--text);
-    min-height: 100vh;
-    overflow-x: hidden;
-  }
-
-  /* BG blobs */
-  .bg-blob {
-    position: fixed;
-    border-radius: 50%;
-    filter: blur(80px);
-    opacity: 0.15;
-    pointer-events: none;
-    z-index: 0;
-  }
-  .blob1 { width: 500px; height: 500px; background: #F5A623; top: -100px; left: -100px; }
-  .blob2 { width: 400px; height: 400px; background: #1B3A6B; bottom: 100px; right: -100px; }
-  .blob3 { width: 300px; height: 300px; background: #F5763A; top: 50%; left: 40%; }
-
-  /* Header */
-  header {
-    position: relative;
-    z-index: 10;
-    padding: 24px 20px 0;
-    text-align: center;
-  }
-
-  .logo {
-    font-family: 'Zen Maru Gothic', sans-serif;
-    font-size: 2rem;
-    font-weight: 900;
-    color: #FFD600;
-    line-height: 1.2;
-    animation: fadeDown 0.6s ease;
-    letter-spacing: 0.02em;
-  }
-
-  .logo .pop-char {
-    display: inline-block;
-    animation: wiggle 2.5s ease-in-out infinite;
-  }
-  .logo .pop-char:nth-child(2) { animation-delay: 0.15s; }
-  .logo .pop-char:nth-child(3) { animation-delay: 0.3s; }
-  .logo .pop-char:nth-child(4) { animation-delay: 0.45s; }
-  .logo .pop-char:nth-child(5) { animation-delay: 0.6s; }
-  .logo .pop-char:nth-child(6) { animation-delay: 0.75s; }
-
-  @keyframes wiggle {
-    0%, 100% { transform: translateY(0) rotate(0deg); }
-    25% { transform: translateY(-3px) rotate(-2deg); }
-    75% { transform: translateY(-1px) rotate(2deg); }
-  }
-
-  .tagline {
-    font-size: 0.85rem;
-    color: var(--text-muted);
-    margin-top: 6px;
-    animation: fadeDown 0.8s ease;
-  }
-
-  /* Filter tabs */
-  .filter-section {
-    position: relative;
-    z-index: 10;
-    padding: 20px 16px 12px;
-    animation: fadeUp 0.7s ease;
-  }
-
-  .filter-label {
-    font-size: 0.75rem;
-    color: var(--text-muted);
-    margin-bottom: 10px;
-    letter-spacing: 0.05em;
-  }
-
-  .filter-tabs {
-    display: flex;
-    gap: 8px;
-    flex-wrap: wrap;
-  }
-
-  .tab {
-    padding: 8px 16px;
-    border-radius: 999px;
-    border: 2px solid transparent;
-    background: var(--card-bg);
-    color: var(--text-muted);
-    font-family: 'Zen Maru Gothic', sans-serif;
-    font-size: 0.8rem;
-    font-weight: 700;
-    cursor: pointer;
-    transition: all 0.2s;
-    white-space: nowrap;
-  }
-
-  .tab.active, .tab:hover {
-    background: var(--orange);
-    color: white;
-    border-color: var(--orange);
-    transform: translateY(-2px);
-  }
-
-  /* Cards grid */
-  .cards-section {
-    position: relative;
-    z-index: 10;
-    padding: 0 16px 100px;
-    display: grid;
-    gap: 16px;
-  }
-
-  .card {
-    background: var(--card-bg);
-    border-radius: 20px;
-    padding: 20px;
-    border: 1px solid rgba(255,255,255,0.07);
-    cursor: pointer;
-    transition: transform 0.25s, box-shadow 0.25s;
-    animation: fadeUp 0.5s ease backwards;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .card::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 3px;
-    background: var(--accent);
-  }
-
-  .card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 16px 40px rgba(0,0,0,0.4);
-  }
-
-  .card-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    margin-bottom: 14px;
-  }
-
-  .card-issuer {
-    font-size: 0.7rem;
-    color: var(--text-muted);
-    margin-bottom: 4px;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-  }
-
-  .card-name {
-    font-size: 1.05rem;
-    font-weight: 900;
-    line-height: 1.2;
-  }
-
-  .card-emoji {
-    font-size: 2rem;
-    filter: drop-shadow(0 2px 8px rgba(0,0,0,0.3));
-  }
-
-  /* Tags */
-  .tags {
-    display: flex;
-    gap: 6px;
-    flex-wrap: wrap;
-    margin-bottom: 14px;
-  }
-
-  .tag {
-    padding: 3px 10px;
-    border-radius: 999px;
-    font-size: 0.7rem;
-    font-weight: 700;
-    background: rgba(255,255,255,0.08);
-    color: var(--text-muted);
-  }
-
-  .tag.hot {
-    background: rgba(255,77,141,0.2);
-    color: var(--pink);
-  }
-
-  .tag.beginner {
-    background: rgba(0,230,118,0.2);
-    color: var(--green);
-  }
-
-  .tag.travel {
-    background: rgba(0,212,255,0.2);
-    color: var(--cyan);
-  }
-
-  .tag.cashback {
-    background: rgba(255,214,0,0.2);
-    color: var(--yellow);
-  }
-
-  .tag.noforeign {
-    background: rgba(139,92,246,0.2);
-    color: var(--purple);
-  }
-
-  /* Stats row */
-  .stats-row {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
-    margin-bottom: 14px;
-  }
-
-  .stat-box {
-    background: rgba(255,255,255,0.04);
-    border-radius: 12px;
-    padding: 10px 12px;
-  }
-
-  .stat-label {
-    font-size: 0.65rem;
-    color: var(--text-muted);
-    margin-bottom: 2px;
-  }
-
-  .stat-value {
-    font-size: 0.95rem;
-    font-weight: 900;
-    color: var(--accent-color, var(--text));
-  }
-
-  /* Welcome bonus highlight */
-  .bonus-bar {
-    background: linear-gradient(135deg, rgba(245,166,35,0.15), rgba(245,118,58,0.1));
-    border: 1px solid rgba(245,166,35,0.3);
-    border-radius: 12px;
-    padding: 10px 14px;
-    margin-bottom: 14px;
-  }
-
-  .bonus-label {
-    font-size: 0.65rem;
-    color: var(--orange);
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    margin-bottom: 2px;
-  }
-
-  .bonus-text {
-    font-size: 0.85rem;
-    font-weight: 700;
-  }
-
-  /* SSN note */
-  .ssn-note {
-    font-size: 0.7rem;
-    color: var(--text-muted);
-    display: flex;
-    align-items: center;
-    gap: 4px;
-  }
-
-  .ssn-dot {
-    width: 8px; height: 8px;
-    border-radius: 50%;
-    background: var(--green);
-    flex-shrink: 0;
-  }
-
-  .ssn-dot.warn { background: var(--yellow); }
-  .ssn-dot.hard { background: var(--pink); }
-
-  /* Apply button */
-  .apply-btn {
-    display: block;
-    width: 100%;
-    margin-top: 14px;
-    padding: 12px;
-    border-radius: 12px;
-    border: none;
-    background: var(--accent);
-    color: white;
-    font-family: 'Zen Maru Gothic', sans-serif;
-    font-size: 0.9rem;
-    font-weight: 900;
-    cursor: pointer;
-    transition: opacity 0.2s, transform 0.2s;
-  }
-
-  .apply-btn:hover {
-    opacity: 0.85;
-    transform: scale(0.98);
-  }
-
-  /* Detail modal */
-  .modal-overlay {
-    position: fixed;
-    inset: 0;
-    background: rgba(0,0,0,0.7);
-    backdrop-filter: blur(8px);
-    z-index: 100;
-    display: flex;
-    align-items: flex-end;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.3s;
-  }
-
-  .modal-overlay.open {
-    opacity: 1;
-    pointer-events: all;
-  }
-
-  .modal {
-    background: var(--card-bg);
-    border-radius: 24px 24px 0 0;
-    padding: 24px 20px 40px;
-    width: 100%;
-    max-height: 80vh;
-    overflow-y: auto;
-    transform: translateY(100%);
-    transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
-    border-top: 3px solid var(--modal-accent, var(--pink));
-  }
-
-  .modal-overlay.open .modal {
-    transform: translateY(0);
-  }
-
-  .modal-handle {
-    width: 40px; height: 4px;
-    background: rgba(255,255,255,0.2);
-    border-radius: 99px;
-    margin: 0 auto 20px;
-  }
-
-  .modal-title {
-    font-size: 1.3rem;
-    font-weight: 900;
-    margin-bottom: 16px;
-  }
-
-  .detail-section {
-    margin-bottom: 16px;
-  }
-
-  .detail-section h3 {
-    font-size: 0.7rem;
-    color: var(--text-muted);
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    margin-bottom: 8px;
-  }
-
-  .detail-section p, .detail-section li {
-    font-size: 0.85rem;
-    line-height: 1.6;
-    color: rgba(255,255,255,0.85);
-  }
-
-  .detail-section ul {
-    padding-left: 16px;
-  }
-
-  .close-btn {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    background: rgba(255,255,255,0.1);
-    border: none;
-    color: white;
-    width: 32px; height: 32px;
-    border-radius: 50%;
-    font-size: 1rem;
-    cursor: pointer;
-    display: flex; align-items: center; justify-content: center;
-  }
-
-  /* Bottom nav */
-  .bottom-nav {
-    position: fixed;
-    bottom: 0; left: 0; right: 0;
-    background: rgba(13,27,46,0.92);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    padding: 12px 0 20px;
-    display: flex;
-    justify-content: space-around;
-    z-index: 50;
-    border-top: 1px solid rgba(245,166,35,0.15);
-  }
-
-  .nav-item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 4px;
-    font-size: 0.65rem;
-    color: var(--text-muted);
-    cursor: pointer;
-    transition: color 0.2s;
-  }
-
-  .nav-item.active { color: var(--orange); }
-  .nav-item span:first-child { font-size: 1.3rem; }
-
-  /* === FOOTER & DISCLOSURE === */
-  .app-footer {
-    position: relative;
-    z-index: 10;
-    padding: 0 16px 110px;
-    margin-top: 30px;
-  }
-
-  .disclosure-box {
-    background: rgba(245,166,35,0.08);
-    border: 1px solid rgba(245,166,35,0.2);
-    border-radius: 12px;
-    padding: 12px 14px;
-    display: flex;
-    gap: 10px;
-    align-items: flex-start;
-    margin-bottom: 18px;
-  }
-
-  .disclosure-icon {
-    font-size: 1.2rem;
-    flex-shrink: 0;
-  }
-
-  .disclosure-text {
-    font-size: 0.7rem;
-    line-height: 1.6;
-    color: var(--text-muted);
-  }
-
-  .disclosure-text strong {
-    color: var(--orange);
-    display: inline-block;
-    margin-bottom: 2px;
-  }
-
-  .footer-links {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 4px 8px;
-    padding: 14px 0;
-    border-top: 1px solid rgba(255,255,255,0.06);
-  }
-
-  .footer-links a {
-    color: var(--text-muted);
-    text-decoration: none;
-    font-size: 0.72rem;
-    font-weight: 700;
-    transition: color 0.2s;
-  }
-
-  .footer-links a:hover {
-    color: var(--orange);
-  }
-
-  .footer-sep {
-    color: rgba(255,255,255,0.15);
-    font-size: 0.72rem;
-  }
-
-  .footer-copyright {
-    text-align: center;
-    font-size: 0.65rem;
-    color: rgba(255,255,255,0.3);
-    margin-top: 8px;
-  }
-
-  .debug-btn {
-    display: block;
-    width: calc(100% - 32px);
-    margin: 8px 16px 0;
-    padding: 10px;
-    border-radius: 10px;
-    border: 1px dashed rgba(255,255,255,0.12);
-    background: transparent;
-    color: var(--text-muted);
-    font-family: 'Zen Maru Gothic', sans-serif;
-    font-size: 0.72rem;
-    cursor: pointer;
-    text-align: center;
-    transition: all 0.2s;
-  }
-  .debug-btn:hover { border-color: var(--orange); color: var(--orange); }
-
-  /* Info modal content styling */
-  .info-content h2 {
-    font-size: 1.2rem;
-    font-weight: 900;
-    margin-bottom: 14px;
-    color: var(--orange);
-  }
-
-  .info-content h3 {
-    font-size: 0.85rem;
-    font-weight: 900;
-    margin: 18px 0 6px;
-    color: var(--yellow);
-  }
-
-  .info-content p, .info-content li {
-    font-size: 0.82rem;
-    line-height: 1.7;
-    color: rgba(255,255,255,0.85);
-    margin-bottom: 8px;
-  }
-
-  .info-content ul {
-    padding-left: 18px;
-    margin-bottom: 10px;
-  }
-
-  .info-content .info-meta {
-    font-size: 0.7rem;
-    color: var(--text-muted);
-    margin-top: 16px;
-    padding-top: 12px;
-    border-top: 1px solid rgba(255,255,255,0.08);
-  }
-
-  /* Animations */
-  @keyframes fadeDown {
-    from { opacity: 0; transform: translateY(-16px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-
-  .updated-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 4px;
-    font-size: 0.65rem;
-    color: var(--green);
-    background: rgba(0,230,118,0.1);
-    padding: 3px 8px;
-    border-radius: 99px;
-    margin-bottom: 16px;
-  }
-
-  .pulse {
-    width: 6px; height: 6px;
-    background: var(--green);
-    border-radius: 50%;
-    animation: pulse 1.5s infinite;
-  }
-
-  @keyframes pulse {
-    0%, 100% { opacity: 1; transform: scale(1); }
-    50% { opacity: 0.5; transform: scale(1.4); }
-  }
-
-  /* === QUIZ === */
-  .quiz-section {
-    display: none;
-    position: relative;
-    z-index: 10;
-    padding: 0 16px 100px;
-  }
-
-  .quiz-section.active { display: block; }
-
-  .quiz-card {
-    background: var(--card-bg);
-    border-radius: 20px;
-    padding: 24px 20px;
-    border: 1px solid rgba(255,255,255,0.07);
-    margin-bottom: 16px;
-  }
-
-  .quiz-step {
-    display: none;
-  }
-  .quiz-step.active { display: block; }
-
-  .quiz-progress {
-    display: flex;
-    gap: 6px;
-    margin-bottom: 20px;
-  }
-
-  .progress-dot {
-    height: 4px;
-    flex: 1;
-    border-radius: 99px;
-    background: rgba(255,255,255,0.1);
-    transition: background 0.3s;
-  }
-  .progress-dot.done { background: var(--orange); }
-
-  .quiz-q {
-    font-size: 1.1rem;
-    font-weight: 900;
-    margin-bottom: 6px;
-    line-height: 1.4;
-  }
-
-  .quiz-sub {
-    font-size: 0.75rem;
-    color: var(--text-muted);
-    margin-bottom: 20px;
-  }
-
-  .quiz-options {
-    display: grid;
-    gap: 10px;
-  }
-
-  .quiz-option {
-    background: rgba(255,255,255,0.04);
-    border: 2px solid rgba(255,255,255,0.08);
-    border-radius: 14px;
-    padding: 14px 16px;
-    cursor: pointer;
-    transition: all 0.2s;
-    text-align: left;
-    font-family: 'Zen Maru Gothic', sans-serif;
-    color: var(--text);
-    font-size: 0.9rem;
-    font-weight: 700;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-
-  .quiz-option:hover {
-    border-color: var(--orange);
-    background: rgba(245,118,58,0.1);
-    transform: translateX(4px);
-  }
-
-  .quiz-option .opt-emoji { font-size: 1.4rem; }
-
-  /* Result */
-  .result-section { display: none; }
-  .result-section.active { display: block; }
-
-  .result-card {
-    background: linear-gradient(135deg, var(--card-bg), rgba(255,77,141,0.08));
-    border: 2px solid var(--result-color, var(--pink));
-    border-radius: 20px;
-    padding: 24px 20px;
-    margin-bottom: 16px;
-    text-align: center;
-  }
-
-  .result-emoji { font-size: 3rem; margin-bottom: 12px; }
-  .result-label { font-size: 0.7rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 4px; }
-  .result-name { font-size: 1.4rem; font-weight: 900; margin-bottom: 8px; }
-  .result-reason { font-size: 0.85rem; color: rgba(255,255,255,0.8); line-height: 1.6; }
-
-  .result-runner {
-    background: var(--card-bg);
-    border-radius: 16px;
-    padding: 16px;
-    margin-bottom: 12px;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-  }
-
-  .runner-emoji { font-size: 1.6rem; }
-  .runner-info { flex: 1; }
-  .runner-name { font-size: 0.9rem; font-weight: 900; }
-  .runner-why { font-size: 0.72rem; color: var(--text-muted); margin-top: 2px; }
-
-  .retry-btn {
-    display: block;
-    width: 100%;
-    padding: 14px;
-    border-radius: 14px;
-    border: 2px solid rgba(255,255,255,0.15);
-    background: transparent;
-    color: var(--text);
-    font-family: 'Zen Maru Gothic', sans-serif;
-    font-size: 0.9rem;
-    font-weight: 700;
-    cursor: pointer;
-    margin-top: 8px;
-    transition: all 0.2s;
-  }
-  .retry-btn:hover { border-color: var(--orange); color: var(--orange); }
-
-  /* === AI CHAT === */
-  .chat-section {
-    display: none;
-    position: relative;
-    z-index: 10;
-    padding: 0 16px;
-    flex-direction: column;
-    height: calc(100vh - 140px);
-  }
-  .chat-section.active { display: flex; }
-
-  .chat-header {
-    padding: 16px 0 12px;
-    text-align: center;
-  }
-  .chat-header-title {
-    font-size: 1rem;
-    font-weight: 900;
-    background: linear-gradient(135deg, #FFD600, #F5763A);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
-  .chat-header-sub {
-    font-size: 0.72rem;
-    color: var(--text-muted);
-    margin-top: 3px;
-  }
-
-  .chat-messages {
-    flex: 1;
-    overflow-y: auto;
-    padding: 8px 0 12px;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-  }
-
-  .chat-bubble {
-    max-width: 88%;
-    padding: 12px 14px;
-    border-radius: 18px;
-    font-size: 0.85rem;
-    line-height: 1.6;
-    animation: fadeUp 0.3s ease;
-  }
-
-  .chat-bubble.ai {
-    background: var(--card-bg);
-    border: 1px solid rgba(255,255,255,0.07);
-    border-bottom-left-radius: 4px;
-    align-self: flex-start;
-  }
-
-  .chat-bubble.user {
-    background: linear-gradient(135deg, #F5763A, #c0511e);
-    border-bottom-right-radius: 4px;
-    align-self: flex-end;
-    color: white;
-  }
-
-  .ai-name {
-    font-size: 0.65rem;
-    color: #F5A623;
-    font-weight: 700;
-    margin-bottom: 4px;
-  }
-
-  .typing-indicator {
-    display: flex;
-    gap: 4px;
-    align-items: center;
-    padding: 4px 0;
-  }
-  .typing-dot {
-    width: 7px; height: 7px;
-    border-radius: 50%;
-    background: var(--text-muted);
-    animation: typingBounce 1.2s infinite;
-  }
-  .typing-dot:nth-child(2) { animation-delay: 0.2s; }
-  .typing-dot:nth-child(3) { animation-delay: 0.4s; }
-
-  @keyframes typingBounce {
-    0%, 60%, 100% { transform: translateY(0); opacity: 0.4; }
-    30% { transform: translateY(-6px); opacity: 1; }
-  }
-
-  .suggested-chips {
-    display: flex;
-    gap: 8px;
-    flex-wrap: wrap;
-    padding: 4px 0 10px;
-  }
-
-  .chip {
-    padding: 7px 13px;
-    border-radius: 999px;
-    background: rgba(255,255,255,0.06);
-    border: 1px solid rgba(255,255,255,0.12);
-    color: var(--text);
-    font-family: 'Zen Maru Gothic', sans-serif;
-    font-size: 0.75rem;
-    font-weight: 700;
-    cursor: pointer;
-    transition: all 0.2s;
-    white-space: nowrap;
-  }
-  .chip:hover {
-    background: rgba(245,118,58,0.15);
-    border-color: var(--orange);
-    color: var(--orange);
-  }
-
-  .chat-input-row {
-    display: flex;
-    gap: 8px;
-    padding: 10px 0 16px;
-    align-items: flex-end;
-  }
-
-  .chat-input {
-    flex: 1;
-    background: var(--card-bg);
-    border: 1px solid rgba(255,255,255,0.1);
-    border-radius: 16px;
-    padding: 12px 14px;
-    color: var(--text);
-    font-family: 'Zen Maru Gothic', sans-serif;
-    font-size: 0.85rem;
-    resize: none;
-    outline: none;
-    transition: border-color 0.2s;
-    max-height: 100px;
-  }
-  .chat-input:focus { border-color: var(--orange); }
-  .chat-input::placeholder { color: var(--text-muted); }
-
-  .send-btn {
-    width: 44px; height: 44px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, #F5A623, #F5763A);
-    border: none;
-    color: white;
-    font-size: 1.1rem;
-    cursor: pointer;
-    display: flex; align-items: center; justify-content: center;
-    flex-shrink: 0;
-    transition: transform 0.2s, opacity 0.2s;
-  }
-  .send-btn:hover { transform: scale(1.08); }
-  .send-btn:disabled { opacity: 0.4; cursor: not-allowed; transform: none; }
+    --pink: #F5A623;
+    --yellow: #FFD600;
+    --cyan: #4A9EDB;
+    --purple: #1B3A6B;
+    --green: #5DBE8A;
+    --orange: #F5763A;
+    --bg: #0A1628;
+    --card-bg: #1A2E45;
+    --text: #FFF8EE;
+    --text-muted: #9DB8D4;
+  }
+
+- { margin: 0; padding: 0; box-sizing: border-box; }
+
+html {
+background: #0A1628 !important;
+}
+
+/* PC対応：最大幅制限 */
+@media (min-width: 600px) {
+body {
+display: flex;
+justify-content: center;
+background: #060E1A !important;
+}
+.pc-wrapper {
+width: 100%;
+max-width: 480px;
+min-height: 100vh;
+background: #0A1628 !important;
+position: relative;
+box-shadow: 0 0 60px rgba(0,0,0,0.6);
+}
+}
+@media (max-width: 599px) {
+.pc-wrapper {
+width: 100%;
+background: #0A1628 !important;
+min-height: 100vh;
+}
+}
+
+body {
+font-family: ‘Zen Maru Gothic’, sans-serif;
+background: #0A1628 !important;
+color: #FFF8EE;
+min-height: 100vh;
+overflow-x: hidden;
+}
+
+/* BG blobs - 完全に非表示に */
+.bg-blob { display: none; }
+
+/* Header */
+header {
+position: relative;
+z-index: 10;
+padding: 24px 20px 0;
+text-align: center;
+background: #0A1628;
+}
+
+.logo {
+font-family: ‘Zen Maru Gothic’, sans-serif;
+font-size: 2rem;
+font-weight: 900;
+color: #FFD600;
+line-height: 1.2;
+animation: fadeDown 0.6s ease;
+letter-spacing: 0.02em;
+}
+
+.logo .pop-char {
+display: inline-block;
+animation: wiggle 2.5s ease-in-out infinite;
+}
+.logo .pop-char:nth-child(2) { animation-delay: 0.15s; }
+.logo .pop-char:nth-child(3) { animation-delay: 0.3s; }
+.logo .pop-char:nth-child(4) { animation-delay: 0.45s; }
+.logo .pop-char:nth-child(5) { animation-delay: 0.6s; }
+.logo .pop-char:nth-child(6) { animation-delay: 0.75s; }
+
+@keyframes wiggle {
+0%, 100% { transform: translateY(0) rotate(0deg); }
+25% { transform: translateY(-3px) rotate(-2deg); }
+75% { transform: translateY(-1px) rotate(2deg); }
+}
+
+.tagline {
+font-size: 0.85rem;
+color: var(–text-muted);
+margin-top: 6px;
+animation: fadeDown 0.8s ease;
+}
+
+/* Filter tabs */
+.filter-section {
+position: relative;
+z-index: 10;
+padding: 20px 16px 12px;
+animation: fadeUp 0.7s ease;
+}
+
+.filter-label {
+font-size: 0.75rem;
+color: var(–text-muted);
+margin-bottom: 10px;
+letter-spacing: 0.05em;
+}
+
+.filter-tabs {
+display: flex;
+gap: 8px;
+flex-wrap: wrap;
+}
+
+.tab {
+padding: 8px 16px;
+border-radius: 999px;
+border: 2px solid transparent;
+background: var(–card-bg);
+color: var(–text-muted);
+font-family: ‘Zen Maru Gothic’, sans-serif;
+font-size: 0.8rem;
+font-weight: 700;
+cursor: pointer;
+transition: all 0.2s;
+white-space: nowrap;
+}
+
+.tab.active, .tab:hover {
+background: var(–orange);
+color: white;
+border-color: var(–orange);
+transform: translateY(-2px);
+}
+
+/* Cards grid */
+.cards-section {
+position: relative;
+z-index: 10;
+padding: 0 16px 100px;
+display: grid;
+gap: 16px;
+}
+
+.card {
+background: #1A2E45;
+border-radius: 20px;
+padding: 20px;
+border: 1px solid rgba(255,255,255,0.1);
+cursor: pointer;
+transition: transform 0.25s, box-shadow 0.25s;
+animation: fadeUp 0.5s ease backwards;
+position: relative;
+overflow: hidden;
+}
+
+.card::before {
+content: ‘’;
+position: absolute;
+top: 0; left: 0; right: 0;
+height: 3px;
+background: var(–accent);
+}
+
+.card:hover {
+transform: translateY(-4px);
+box-shadow: 0 16px 40px rgba(0,0,0,0.4);
+}
+
+.card-header {
+display: flex;
+justify-content: space-between;
+align-items: flex-start;
+margin-bottom: 14px;
+}
+
+.card-issuer {
+font-size: 0.7rem;
+color: var(–text-muted);
+margin-bottom: 4px;
+text-transform: uppercase;
+letter-spacing: 0.08em;
+}
+
+.card-name {
+font-size: 1.05rem;
+font-weight: 900;
+line-height: 1.2;
+}
+
+.card-emoji {
+font-size: 2rem;
+filter: drop-shadow(0 2px 8px rgba(0,0,0,0.3));
+}
+
+/* Tags */
+.tags {
+display: flex;
+gap: 6px;
+flex-wrap: wrap;
+margin-bottom: 14px;
+}
+
+.tag {
+padding: 3px 10px;
+border-radius: 999px;
+font-size: 0.7rem;
+font-weight: 700;
+background: rgba(255,255,255,0.08);
+color: var(–text-muted);
+}
+
+.tag.hot {
+background: rgba(255,77,141,0.2);
+color: var(–pink);
+}
+
+.tag.beginner {
+background: rgba(0,230,118,0.2);
+color: var(–green);
+}
+
+.tag.travel {
+background: rgba(0,212,255,0.2);
+color: var(–cyan);
+}
+
+.tag.cashback {
+background: rgba(255,214,0,0.2);
+color: var(–yellow);
+}
+
+.tag.noforeign {
+background: rgba(139,92,246,0.2);
+color: var(–purple);
+}
+
+/* Stats row */
+.stats-row {
+display: grid;
+grid-template-columns: 1fr 1fr;
+gap: 10px;
+margin-bottom: 14px;
+}
+
+.stat-box {
+background: rgba(255,255,255,0.04);
+border-radius: 12px;
+padding: 10px 12px;
+}
+
+.stat-label {
+font-size: 0.65rem;
+color: var(–text-muted);
+margin-bottom: 2px;
+}
+
+.stat-value {
+font-size: 0.95rem;
+font-weight: 900;
+color: var(–accent-color, var(–text));
+}
+
+/* Welcome bonus highlight */
+.bonus-bar {
+background: linear-gradient(135deg, rgba(245,166,35,0.15), rgba(245,118,58,0.1));
+border: 1px solid rgba(245,166,35,0.3);
+border-radius: 12px;
+padding: 10px 14px;
+margin-bottom: 14px;
+}
+
+.bonus-label {
+font-size: 0.65rem;
+color: var(–orange);
+font-weight: 700;
+text-transform: uppercase;
+letter-spacing: 0.08em;
+margin-bottom: 2px;
+}
+
+.bonus-text {
+font-size: 0.85rem;
+font-weight: 700;
+}
+
+/* SSN note */
+.ssn-note {
+font-size: 0.7rem;
+color: var(–text-muted);
+display: flex;
+align-items: center;
+gap: 4px;
+}
+
+.ssn-dot {
+width: 8px; height: 8px;
+border-radius: 50%;
+background: var(–green);
+flex-shrink: 0;
+}
+
+.ssn-dot.warn { background: var(–yellow); }
+.ssn-dot.hard { background: var(–pink); }
+
+/* Apply button */
+.apply-btn {
+display: block;
+width: 100%;
+margin-top: 14px;
+padding: 12px;
+border-radius: 12px;
+border: none;
+background: var(–accent);
+color: white;
+font-family: ‘Zen Maru Gothic’, sans-serif;
+font-size: 0.9rem;
+font-weight: 900;
+cursor: pointer;
+transition: opacity 0.2s, transform 0.2s;
+}
+
+.apply-btn:hover {
+opacity: 0.85;
+transform: scale(0.98);
+}
+
+/* Detail modal */
+.modal-overlay {
+position: fixed;
+inset: 0;
+background: rgba(0,0,0,0.7);
+backdrop-filter: blur(8px);
+z-index: 100;
+display: flex;
+align-items: flex-end;
+opacity: 0;
+pointer-events: none;
+transition: opacity 0.3s;
+}
+
+.modal-overlay.open {
+opacity: 1;
+pointer-events: all;
+}
+
+.modal {
+background: var(–card-bg);
+border-radius: 24px 24px 0 0;
+padding: 24px 20px 40px;
+width: 100%;
+max-height: 80vh;
+overflow-y: auto;
+transform: translateY(100%);
+transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+border-top: 3px solid var(–modal-accent, var(–pink));
+}
+
+.modal-overlay.open .modal {
+transform: translateY(0);
+}
+
+.modal-handle {
+width: 40px; height: 4px;
+background: rgba(255,255,255,0.2);
+border-radius: 99px;
+margin: 0 auto 20px;
+}
+
+.modal-title {
+font-size: 1.3rem;
+font-weight: 900;
+margin-bottom: 16px;
+}
+
+.detail-section {
+margin-bottom: 16px;
+}
+
+.detail-section h3 {
+font-size: 0.7rem;
+color: var(–text-muted);
+text-transform: uppercase;
+letter-spacing: 0.1em;
+margin-bottom: 8px;
+}
+
+.detail-section p, .detail-section li {
+font-size: 0.85rem;
+line-height: 1.6;
+color: rgba(255,255,255,0.85);
+}
+
+.detail-section ul {
+padding-left: 16px;
+}
+
+.close-btn {
+position: absolute;
+top: 20px;
+right: 20px;
+background: rgba(255,255,255,0.1);
+border: none;
+color: white;
+width: 32px; height: 32px;
+border-radius: 50%;
+font-size: 1rem;
+cursor: pointer;
+display: flex; align-items: center; justify-content: center;
+}
+
+/* Bottom nav */
+.bottom-nav {
+position: fixed;
+bottom: 0; left: 0; right: 0;
+background: rgba(13,27,46,0.92);
+backdrop-filter: blur(12px);
+-webkit-backdrop-filter: blur(12px);
+padding: 12px 0 20px;
+display: flex;
+justify-content: space-around;
+z-index: 50;
+border-top: 1px solid rgba(245,166,35,0.15);
+}
+
+.nav-item {
+display: flex;
+flex-direction: column;
+align-items: center;
+gap: 4px;
+font-size: 0.65rem;
+color: var(–text-muted);
+cursor: pointer;
+transition: color 0.2s;
+}
+
+.nav-item.active { color: var(–orange); }
+.nav-item span:first-child { font-size: 1.3rem; }
+
+/* === FOOTER & DISCLOSURE === */
+.app-footer {
+position: relative;
+z-index: 10;
+padding: 0 16px 110px;
+margin-top: 30px;
+}
+
+.disclosure-box {
+background: rgba(245,166,35,0.08);
+border: 1px solid rgba(245,166,35,0.2);
+border-radius: 12px;
+padding: 12px 14px;
+display: flex;
+gap: 10px;
+align-items: flex-start;
+margin-bottom: 18px;
+}
+
+.disclosure-icon {
+font-size: 1.2rem;
+flex-shrink: 0;
+}
+
+.disclosure-text {
+font-size: 0.7rem;
+line-height: 1.6;
+color: var(–text-muted);
+}
+
+.disclosure-text strong {
+color: var(–orange);
+display: inline-block;
+margin-bottom: 2px;
+}
+
+.footer-links {
+display: flex;
+justify-content: center;
+flex-wrap: wrap;
+gap: 4px 8px;
+padding: 14px 0;
+border-top: 1px solid rgba(255,255,255,0.06);
+}
+
+.footer-links a {
+color: var(–text-muted);
+text-decoration: none;
+font-size: 0.72rem;
+font-weight: 700;
+transition: color 0.2s;
+}
+
+.footer-links a:hover {
+color: var(–orange);
+}
+
+.footer-sep {
+color: rgba(255,255,255,0.15);
+font-size: 0.72rem;
+}
+
+.footer-copyright {
+text-align: center;
+font-size: 0.65rem;
+color: rgba(255,255,255,0.3);
+margin-top: 8px;
+}
+
+.debug-btn {
+display: block;
+width: calc(100% - 32px);
+margin: 8px 16px 0;
+padding: 10px;
+border-radius: 10px;
+border: 1px dashed rgba(255,255,255,0.12);
+background: transparent;
+color: var(–text-muted);
+font-family: ‘Zen Maru Gothic’, sans-serif;
+font-size: 0.72rem;
+cursor: pointer;
+text-align: center;
+transition: all 0.2s;
+}
+.debug-btn:hover { border-color: var(–orange); color: var(–orange); }
+
+/* Info modal content styling */
+.info-content h2 {
+font-size: 1.2rem;
+font-weight: 900;
+margin-bottom: 14px;
+color: var(–orange);
+}
+
+.info-content h3 {
+font-size: 0.85rem;
+font-weight: 900;
+margin: 18px 0 6px;
+color: var(–yellow);
+}
+
+.info-content p, .info-content li {
+font-size: 0.82rem;
+line-height: 1.7;
+color: rgba(255,255,255,0.85);
+margin-bottom: 8px;
+}
+
+.info-content ul {
+padding-left: 18px;
+margin-bottom: 10px;
+}
+
+.info-content .info-meta {
+font-size: 0.7rem;
+color: var(–text-muted);
+margin-top: 16px;
+padding-top: 12px;
+border-top: 1px solid rgba(255,255,255,0.08);
+}
+
+/* Animations */
+@keyframes fadeDown {
+from { opacity: 0; transform: translateY(-16px); }
+to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeUp {
+from { opacity: 0; transform: translateY(20px); }
+to { opacity: 1; transform: translateY(0); }
+}
+
+.updated-badge {
+display: inline-flex;
+align-items: center;
+gap: 4px;
+font-size: 0.65rem;
+color: var(–green);
+background: rgba(0,230,118,0.1);
+padding: 3px 8px;
+border-radius: 99px;
+margin-bottom: 16px;
+}
+
+.pulse {
+width: 6px; height: 6px;
+background: var(–green);
+border-radius: 50%;
+animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+0%, 100% { opacity: 1; transform: scale(1); }
+50% { opacity: 0.5; transform: scale(1.4); }
+}
+
+/* === QUIZ === */
+.quiz-section {
+display: none;
+position: relative;
+z-index: 10;
+padding: 0 16px 100px;
+}
+
+.quiz-section.active { display: block; }
+
+.quiz-card {
+background: var(–card-bg);
+border-radius: 20px;
+padding: 24px 20px;
+border: 1px solid rgba(255,255,255,0.07);
+margin-bottom: 16px;
+}
+
+.quiz-step {
+display: none;
+}
+.quiz-step.active { display: block; }
+
+.quiz-progress {
+display: flex;
+gap: 6px;
+margin-bottom: 20px;
+}
+
+.progress-dot {
+height: 4px;
+flex: 1;
+border-radius: 99px;
+background: rgba(255,255,255,0.1);
+transition: background 0.3s;
+}
+.progress-dot.done { background: var(–orange); }
+
+.quiz-q {
+font-size: 1.1rem;
+font-weight: 900;
+margin-bottom: 6px;
+line-height: 1.4;
+}
+
+.quiz-sub {
+font-size: 0.75rem;
+color: var(–text-muted);
+margin-bottom: 20px;
+}
+
+.quiz-options {
+display: grid;
+gap: 10px;
+}
+
+.quiz-option {
+background: rgba(255,255,255,0.04);
+border: 2px solid rgba(255,255,255,0.08);
+border-radius: 14px;
+padding: 14px 16px;
+cursor: pointer;
+transition: all 0.2s;
+text-align: left;
+font-family: ‘Zen Maru Gothic’, sans-serif;
+color: var(–text);
+font-size: 0.9rem;
+font-weight: 700;
+display: flex;
+align-items: center;
+gap: 10px;
+}
+
+.quiz-option:hover {
+border-color: var(–orange);
+background: rgba(245,118,58,0.1);
+transform: translateX(4px);
+}
+
+.quiz-option .opt-emoji { font-size: 1.4rem; }
+
+/* Result */
+.result-section { display: none; }
+.result-section.active { display: block; }
+
+.result-card {
+background: linear-gradient(135deg, var(–card-bg), rgba(255,77,141,0.08));
+border: 2px solid var(–result-color, var(–pink));
+border-radius: 20px;
+padding: 24px 20px;
+margin-bottom: 16px;
+text-align: center;
+}
+
+.result-emoji { font-size: 3rem; margin-bottom: 12px; }
+.result-label { font-size: 0.7rem; color: var(–text-muted); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 4px; }
+.result-name { font-size: 1.4rem; font-weight: 900; margin-bottom: 8px; }
+.result-reason { font-size: 0.85rem; color: rgba(255,255,255,0.8); line-height: 1.6; }
+
+.result-runner {
+background: var(–card-bg);
+border-radius: 16px;
+padding: 16px;
+margin-bottom: 12px;
+display: flex;
+align-items: center;
+gap: 12px;
+}
+
+.runner-emoji { font-size: 1.6rem; }
+.runner-info { flex: 1; }
+.runner-name { font-size: 0.9rem; font-weight: 900; }
+.runner-why { font-size: 0.72rem; color: var(–text-muted); margin-top: 2px; }
+
+.retry-btn {
+display: block;
+width: 100%;
+padding: 14px;
+border-radius: 14px;
+border: 2px solid rgba(255,255,255,0.15);
+background: transparent;
+color: var(–text);
+font-family: ‘Zen Maru Gothic’, sans-serif;
+font-size: 0.9rem;
+font-weight: 700;
+cursor: pointer;
+margin-top: 8px;
+transition: all 0.2s;
+}
+.retry-btn:hover { border-color: var(–orange); color: var(–orange); }
+
+/* === AI CHAT === */
+.chat-section {
+display: none;
+position: relative;
+z-index: 10;
+padding: 0 16px;
+flex-direction: column;
+height: calc(100vh - 140px);
+}
+.chat-section.active { display: flex; }
+
+.chat-header {
+padding: 16px 0 12px;
+text-align: center;
+}
+.chat-header-title {
+font-size: 1rem;
+font-weight: 900;
+background: linear-gradient(135deg, #FFD600, #F5763A);
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+background-clip: text;
+}
+.chat-header-sub {
+font-size: 0.72rem;
+color: var(–text-muted);
+margin-top: 3px;
+}
+
+.chat-messages {
+flex: 1;
+overflow-y: auto;
+padding: 8px 0 12px;
+display: flex;
+flex-direction: column;
+gap: 12px;
+}
+
+.chat-bubble {
+max-width: 88%;
+padding: 12px 14px;
+border-radius: 18px;
+font-size: 0.85rem;
+line-height: 1.6;
+animation: fadeUp 0.3s ease;
+}
+
+.chat-bubble.ai {
+background: var(–card-bg);
+border: 1px solid rgba(255,255,255,0.07);
+border-bottom-left-radius: 4px;
+align-self: flex-start;
+}
+
+.chat-bubble.user {
+background: linear-gradient(135deg, #F5763A, #c0511e);
+border-bottom-right-radius: 4px;
+align-self: flex-end;
+color: white;
+}
+
+.ai-name {
+font-size: 0.65rem;
+color: #F5A623;
+font-weight: 700;
+margin-bottom: 4px;
+}
+
+.typing-indicator {
+display: flex;
+gap: 4px;
+align-items: center;
+padding: 4px 0;
+}
+.typing-dot {
+width: 7px; height: 7px;
+border-radius: 50%;
+background: var(–text-muted);
+animation: typingBounce 1.2s infinite;
+}
+.typing-dot:nth-child(2) { animation-delay: 0.2s; }
+.typing-dot:nth-child(3) { animation-delay: 0.4s; }
+
+@keyframes typingBounce {
+0%, 60%, 100% { transform: translateY(0); opacity: 0.4; }
+30% { transform: translateY(-6px); opacity: 1; }
+}
+
+.suggested-chips {
+display: flex;
+gap: 8px;
+flex-wrap: wrap;
+padding: 4px 0 10px;
+}
+
+.chip {
+padding: 7px 13px;
+border-radius: 999px;
+background: rgba(255,255,255,0.06);
+border: 1px solid rgba(255,255,255,0.12);
+color: var(–text);
+font-family: ‘Zen Maru Gothic’, sans-serif;
+font-size: 0.75rem;
+font-weight: 700;
+cursor: pointer;
+transition: all 0.2s;
+white-space: nowrap;
+}
+.chip:hover {
+background: rgba(245,118,58,0.15);
+border-color: var(–orange);
+color: var(–orange);
+}
+
+.chat-input-row {
+display: flex;
+gap: 8px;
+padding: 10px 0 16px;
+align-items: flex-end;
+}
+
+.chat-input {
+flex: 1;
+background: var(–card-bg);
+border: 1px solid rgba(255,255,255,0.1);
+border-radius: 16px;
+padding: 12px 14px;
+color: var(–text);
+font-family: ‘Zen Maru Gothic’, sans-serif;
+font-size: 0.85rem;
+resize: none;
+outline: none;
+transition: border-color 0.2s;
+max-height: 100px;
+}
+.chat-input:focus { border-color: var(–orange); }
+.chat-input::placeholder { color: var(–text-muted); }
+
+.send-btn {
+width: 44px; height: 44px;
+border-radius: 50%;
+background: linear-gradient(135deg, #F5A623, #F5763A);
+border: none;
+color: white;
+font-size: 1.1rem;
+cursor: pointer;
+display: flex; align-items: center; justify-content: center;
+flex-shrink: 0;
+transition: transform 0.2s, opacity 0.2s;
+}
+.send-btn:hover { transform: scale(1.08); }
+.send-btn:disabled { opacity: 0.4; cursor: not-allowed; transform: none; }
 </style>
+
 </head>
 <body>
 <div class="pc-wrapper">
 
 <!-- お知らせバナー -->
-<div id="noticeBanner" style="background:linear-gradient(135deg,rgba(245,118,58,0.2),rgba(201,168,76,0.1));border-bottom:1px solid rgba(245,118,58,0.2);padding:10px 16px;display:flex;align-items:center;gap:10px;position:relative;z-index:20;">
-  <span style="font-size:1rem;flex-shrink:0;">⚠️</span>
+
+<div id="noticeBanner" style="background:linear-gradient(135deg,rgba(245,118,58,0.2),rgba(245,166,35,0.1));border-bottom:1px solid rgba(245,118,58,0.2);padding:10px 16px;display:flex;align-items:center;gap:10px;position:relative;z-index:20;">
+  <span style="font-size:1rem;flex-shrink:0;">🛫</span>
   <div style="flex:1;min-width:0;">
     <div style="font-size:0.72rem;font-weight:900;color:var(--orange);">📢 新着記事</div>
-    <div style="font-size:0.75rem;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">渡米前にAmexを作るべき理由｜Global Transfer完全ガイド【後悔しないで】</div>
+    <div style="font-size:0.75rem;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">【渡米前必読】財実準備完全ガイド｜クレカ・Amex・銀行口座</div>
   </div>
-  <a href="/blog/amex-global-transfer.html" style="flex-shrink:0;background:var(--orange);color:white;padding:5px 10px;border-radius:8px;text-decoration:none;font-size:0.7rem;font-weight:700;">読む</a>
+  <a href="/blog/before-moving-to-us.html" style="flex-shrink:0;background:var(--orange);color:white;padding:5px 10px;border-radius:8px;text-decoration:none;font-size:0.7rem;font-weight:700;">読む</a>
   <button onclick="document.getElementById('noticeBanner').style.display='none'" style="flex-shrink:0;background:transparent;border:none;color:var(--text-muted);font-size:1rem;cursor:pointer;padding:0 4px;">✕</button>
 </div>
 
@@ -955,6 +962,7 @@
 </header>
 
 <!-- 注目カードセクション（改善版） -->
+
 <div class="filter-section" id="offersSection" style="padding-bottom:4px;">
   <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">
     <div class="filter-label" style="margin-bottom:0;">🔥 注目カード</div>
@@ -962,60 +970,62 @@
   </div>
   <div style="display:flex;gap:10px;overflow-x:auto;padding-bottom:12px;scrollbar-width:none;-webkit-overflow-scrolling:touch;">
 
-    <!-- Chase Sapphire -->
-    <div onclick="openCardModal(1)" style="flex-shrink:0;background:linear-gradient(135deg,rgba(0,212,255,0.15),rgba(0,212,255,0.05));border:1.5px solid rgba(0,212,255,0.35);border-radius:16px;padding:14px 15px;width:180px;cursor:pointer;transition:transform 0.2s,box-shadow 0.2s;" onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='0 8px 24px rgba(0,0,0,0.3)'" onmouseout="this.style.transform='none';this.style.boxShadow='none'">
-      <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px;">
-        <div style="font-size:0.62rem;color:#00D4FF;font-weight:900;letter-spacing:0.05em;">CHASE</div>
-        <div style="font-size:0.62rem;background:rgba(0,212,255,0.2);color:#00D4FF;padding:2px 6px;border-radius:99px;font-weight:700;">人気No.1</div>
-      </div>
-      <div style="font-size:0.92rem;font-weight:900;margin-bottom:4px;line-height:1.3;">Sapphire<br>Preferred</div>
-      <div style="font-size:0.68rem;color:var(--text-muted);margin-bottom:8px;">旅行・食事3x</div>
-      <div style="font-size:0.7rem;color:#00D4FF;font-weight:700;background:rgba(0,212,255,0.1);border-radius:6px;padding:4px 6px;text-align:center;">60,000pt bonus</div>
-    </div>
+```
+<!-- Chase Sapphire -->
+<div onclick="openCardModal(1)" style="flex-shrink:0;background:linear-gradient(135deg,rgba(0,212,255,0.25),rgba(0,212,255,0.12));border:1.5px solid rgba(0,212,255,0.5);border-radius:16px;padding:14px 15px;width:180px;cursor:pointer;transition:transform 0.2s,box-shadow 0.2s;" onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='0 8px 24px rgba(0,0,0,0.4)'" onmouseout="this.style.transform='none';this.style.boxShadow='none'">
+  <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px;">
+    <div style="font-size:0.62rem;color:#00D4FF;font-weight:900;letter-spacing:0.05em;">CHASE</div>
+    <div style="font-size:0.62rem;background:rgba(0,212,255,0.25);color:#00D4FF;padding:2px 6px;border-radius:99px;font-weight:700;">人気No.1</div>
+  </div>
+  <div style="font-size:0.92rem;font-weight:900;margin-bottom:4px;line-height:1.3;color:#FFF8EE;">Sapphire<br>Preferred</div>
+  <div style="font-size:0.68rem;color:#8EA8C3;margin-bottom:8px;">旅行・食事3x</div>
+  <div style="font-size:0.7rem;color:#00D4FF;font-weight:700;background:rgba(0,212,255,0.15);border-radius:6px;padding:4px 6px;text-align:center;">60,000pt bonus</div>
+</div>
 
-    <!-- Amex Gold -->
-    <div onclick="openCardModal(2)" style="flex-shrink:0;background:linear-gradient(135deg,rgba(201,168,76,0.2),rgba(201,168,76,0.05));border:1.5px solid rgba(201,168,76,0.4);border-radius:16px;padding:14px 15px;width:180px;cursor:pointer;transition:transform 0.2s,box-shadow 0.2s;" onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='0 8px 24px rgba(0,0,0,0.3)'" onmouseout="this.style.transform='none';this.style.boxShadow='none'">
-      <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px;">
-        <div style="font-size:0.62rem;color:#C9A84C;font-weight:900;letter-spacing:0.05em;">AMEX</div>
-        <div style="font-size:0.62rem;background:rgba(201,168,76,0.2);color:#C9A84C;padding:2px 6px;border-radius:99px;font-weight:700;">食費最強</div>
-      </div>
-      <div style="font-size:0.92rem;font-weight:900;margin-bottom:4px;line-height:1.3;">Gold<br>Card</div>
-      <div style="font-size:0.68rem;color:var(--text-muted);margin-bottom:8px;">食費・外食4x</div>
-      <div style="font-size:0.7rem;color:#C9A84C;font-weight:700;background:rgba(201,168,76,0.1);border-radius:6px;padding:4px 6px;text-align:center;">100,000pt bonus</div>
-    </div>
+<!-- Amex Gold -->
+<div onclick="openCardModal(2)" style="flex-shrink:0;background:linear-gradient(135deg,rgba(201,168,76,0.3),rgba(201,168,76,0.12));border:1.5px solid rgba(201,168,76,0.55);border-radius:16px;padding:14px 15px;width:180px;cursor:pointer;transition:transform 0.2s,box-shadow 0.2s;" onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='0 8px 24px rgba(0,0,0,0.4)'" onmouseout="this.style.transform='none';this.style.boxShadow='none'">
+  <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px;">
+    <div style="font-size:0.62rem;color:#C9A84C;font-weight:900;letter-spacing:0.05em;">AMEX</div>
+    <div style="font-size:0.62rem;background:rgba(201,168,76,0.25);color:#C9A84C;padding:2px 6px;border-radius:99px;font-weight:700;">食費最強</div>
+  </div>
+  <div style="font-size:0.92rem;font-weight:900;margin-bottom:4px;line-height:1.3;color:#FFF8EE;">Gold<br>Card</div>
+  <div style="font-size:0.68rem;color:#8EA8C3;margin-bottom:8px;">食費・外食4x</div>
+  <div style="font-size:0.7rem;color:#C9A84C;font-weight:700;background:rgba(201,168,76,0.15);border-radius:6px;padding:4px 6px;text-align:center;">100,000pt bonus</div>
+</div>
 
-    <!-- JAL USA Card -->
-    <div onclick="openCardModal(10)" style="flex-shrink:0;background:linear-gradient(135deg,rgba(200,16,46,0.15),rgba(200,16,46,0.05));border:1.5px solid rgba(200,16,46,0.35);border-radius:16px;padding:14px 15px;width:180px;cursor:pointer;transition:transform 0.2s,box-shadow 0.2s;" onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='0 8px 24px rgba(0,0,0,0.3)'" onmouseout="this.style.transform='none';this.style.boxShadow='none'">
-      <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px;">
-        <div style="font-size:0.62rem;color:#C8102E;font-weight:900;letter-spacing:0.05em;">JAL USA</div>
-        <div style="font-size:0.62rem;background:rgba(200,16,46,0.15);color:#C8102E;padding:2px 6px;border-radius:99px;font-weight:700;">🆕クレヒスなし</div>
-      </div>
-      <div style="font-size:0.92rem;font-weight:900;margin-bottom:4px;line-height:1.3;">JAL USA<br>Card</div>
-      <div style="font-size:0.68rem;color:var(--text-muted);margin-bottom:8px;">SSNなしで申込可</div>
-      <div style="font-size:0.7rem;color:#C8102E;font-weight:700;background:rgba(200,16,46,0.1);border-radius:6px;padding:4px 6px;text-align:center;">10,000マイル bonus</div>
-    </div>
+<!-- JAL USA Card -->
+<div onclick="openCardModal(10)" style="flex-shrink:0;background:linear-gradient(135deg,rgba(200,16,46,0.25),rgba(200,16,46,0.1));border:1.5px solid rgba(200,16,46,0.5);border-radius:16px;padding:14px 15px;width:180px;cursor:pointer;transition:transform 0.2s,box-shadow 0.2s;" onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='0 8px 24px rgba(0,0,0,0.4)'" onmouseout="this.style.transform='none';this.style.boxShadow='none'">
+  <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px;">
+    <div style="font-size:0.62rem;color:#E8304A;font-weight:900;letter-spacing:0.05em;">JAL USA</div>
+    <div style="font-size:0.62rem;background:rgba(200,16,46,0.2);color:#E8304A;padding:2px 6px;border-radius:99px;font-weight:700;">🆕クレヒスなし</div>
+  </div>
+  <div style="font-size:0.92rem;font-weight:900;margin-bottom:4px;line-height:1.3;color:#FFF8EE;">JAL USA<br>Card</div>
+  <div style="font-size:0.68rem;color:#8EA8C3;margin-bottom:8px;">SSNなしで申込可</div>
+  <div style="font-size:0.7rem;color:#E8304A;font-weight:700;background:rgba(200,16,46,0.15);border-radius:6px;padding:4px 6px;text-align:center;">10,000マイル bonus</div>
+</div>
 
-    <!-- ANA CARD -->
-    <div onclick="openCardModal(11)" style="flex-shrink:0;background:linear-gradient(135deg,rgba(0,102,204,0.15),rgba(0,102,204,0.05));border:1.5px solid rgba(0,102,204,0.35);border-radius:16px;padding:14px 15px;width:180px;cursor:pointer;transition:transform 0.2s,box-shadow 0.2s;" onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='0 8px 24px rgba(0,0,0,0.3)'" onmouseout="this.style.transform='none';this.style.boxShadow='none'">
-      <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px;">
-        <div style="font-size:0.62rem;color:#0066CC;font-weight:900;letter-spacing:0.05em;">ANA USA</div>
-        <div style="font-size:0.62rem;background:rgba(0,102,204,0.15);color:#0066CC;padding:2px 6px;border-radius:99px;font-weight:700;">🆕クレヒスなし</div>
-      </div>
-      <div style="font-size:0.92rem;font-weight:900;margin-bottom:4px;line-height:1.3;">ANA CARD<br>U.S.A. Plus</div>
-      <div style="font-size:0.68rem;color:var(--text-muted);margin-bottom:8px;">海外手数料なし</div>
-      <div style="font-size:0.7rem;color:#0066CC;font-weight:700;background:rgba(0,102,204,0.1);border-radius:6px;padding:4px 6px;text-align:center;">5,000マイル bonus</div>
-    </div>
+<!-- ANA CARD -->
+<div onclick="openCardModal(11)" style="flex-shrink:0;background:linear-gradient(135deg,rgba(0,102,204,0.25),rgba(0,102,204,0.1));border:1.5px solid rgba(0,102,204,0.5);border-radius:16px;padding:14px 15px;width:180px;cursor:pointer;transition:transform 0.2s,box-shadow 0.2s;" onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='0 8px 24px rgba(0,0,0,0.4)'" onmouseout="this.style.transform='none';this.style.boxShadow='none'">
+  <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px;">
+    <div style="font-size:0.62rem;color:#4A9EDB;font-weight:900;letter-spacing:0.05em;">ANA USA</div>
+    <div style="font-size:0.62rem;background:rgba(0,102,204,0.2);color:#4A9EDB;padding:2px 6px;border-radius:99px;font-weight:700;">🆕クレヒスなし</div>
+  </div>
+  <div style="font-size:0.92rem;font-weight:900;margin-bottom:4px;line-height:1.3;color:#FFF8EE;">ANA CARD<br>U.S.A. Plus</div>
+  <div style="font-size:0.68rem;color:#8EA8C3;margin-bottom:8px;">海外手数料なし</div>
+  <div style="font-size:0.7rem;color:#4A9EDB;font-weight:700;background:rgba(0,102,204,0.15);border-radius:6px;padding:4px 6px;text-align:center;">5,000マイル bonus</div>
+</div>
 
-    <!-- Delta Gold -->
-    <div onclick="openCardModal(8)" style="flex-shrink:0;background:linear-gradient(135deg,rgba(245,118,58,0.15),rgba(245,118,58,0.05));border:1.5px solid rgba(245,118,58,0.3);border-radius:16px;padding:14px 15px;width:180px;cursor:pointer;transition:transform 0.2s,box-shadow 0.2s;" onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='0 8px 24px rgba(0,0,0,0.3)'" onmouseout="this.style.transform='none';this.style.boxShadow='none'">
-      <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px;">
-        <div style="font-size:0.62rem;color:var(--orange);font-weight:900;letter-spacing:0.05em;">AMEX DELTA</div>
-        <div style="font-size:0.62rem;background:rgba(245,118,58,0.15);color:var(--orange);padding:2px 6px;border-radius:99px;font-weight:700;">ATL在住◎</div>
-      </div>
-      <div style="font-size:0.92rem;font-weight:900;margin-bottom:4px;line-height:1.3;">Delta Gold<br>SkyMiles</div>
-      <div style="font-size:0.68rem;color:var(--text-muted);margin-bottom:8px;">初年度無料</div>
-      <div style="font-size:0.7rem;color:var(--orange);font-weight:700;background:rgba(245,118,58,0.1);border-radius:6px;padding:4px 6px;text-align:center;">80,000マイル bonus</div>
-    </div>
+<!-- Delta Gold -->
+<div onclick="openCardModal(8)" style="flex-shrink:0;background:linear-gradient(135deg,rgba(245,118,58,0.25),rgba(245,118,58,0.1));border:1.5px solid rgba(245,118,58,0.45);border-radius:16px;padding:14px 15px;width:180px;cursor:pointer;transition:transform 0.2s,box-shadow 0.2s;" onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='0 8px 24px rgba(0,0,0,0.4)'" onmouseout="this.style.transform='none';this.style.boxShadow='none'">
+  <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px;">
+    <div style="font-size:0.62rem;color:#F5763A;font-weight:900;letter-spacing:0.05em;">AMEX DELTA</div>
+    <div style="font-size:0.62rem;background:rgba(245,118,58,0.2);color:#F5763A;padding:2px 6px;border-radius:99px;font-weight:700;">ATL在住◎</div>
+  </div>
+  <div style="font-size:0.92rem;font-weight:900;margin-bottom:4px;line-height:1.3;color:#FFF8EE;">Delta Gold<br>SkyMiles</div>
+  <div style="font-size:0.68rem;color:#8EA8C3;margin-bottom:8px;">初年度無料</div>
+  <div style="font-size:0.7rem;color:#F5763A;font-weight:700;background:rgba(245,118,58,0.15);border-radius:6px;padding:4px 6px;text-align:center;">80,000マイル bonus</div>
+</div>
+```
 
   </div>
   <div style="font-size:0.63rem;color:var(--text-muted);padding-bottom:4px;">⚠️ ボーナスは頻繁に変動します。申込前に必ず公式サイトで最新情報をご確認ください　👆タップで詳細</div>
@@ -1037,6 +1047,7 @@
 <div class="cards-section" id="cardsGrid"></div>
 
 <!-- Affiliate Disclosure & Footer -->
+
 <div class="app-footer" id="appFooter">
   <div class="disclosure-box">
     <div class="disclosure-icon">📢</div>
@@ -1059,6 +1070,7 @@
 </div>
 
 <!-- Quiz Section -->
+
 <div class="quiz-section" id="quizSection">
   <div class="quiz-card">
     <div class="quiz-progress">
@@ -1069,64 +1081,68 @@
       <div class="progress-dot" id="dot4"></div>
     </div>
 
-    <!-- Q1 -->
-    <div class="quiz-step active" id="step0">
-      <div class="quiz-q">🪪 アメリカでのクレヒス歴は？</div>
-      <div class="quiz-sub">審査通過のしやすさに関わります</div>
-      <div class="quiz-options">
-        <button class="quiz-option" onclick="answer(0, 'nohistory')"><span class="opt-emoji">🆕</span>まだない・作りたて</button>
-        <button class="quiz-option" onclick="answer(0, 'some')"><span class="opt-emoji">📅</span>6ヶ月〜1年くらい</button>
-        <button class="quiz-option" onclick="answer(0, 'solid')"><span class="opt-emoji">💪</span>1年以上・安定してる</button>
-      </div>
-    </div>
+```
+<!-- Q1 -->
+<div class="quiz-step active" id="step0">
+  <div class="quiz-q">🪪 アメリカでのクレヒス歴は？</div>
+  <div class="quiz-sub">審査通過のしやすさに関わります</div>
+  <div class="quiz-options">
+    <button class="quiz-option" onclick="answer(0, 'nohistory')"><span class="opt-emoji">🆕</span>まだない・作りたて</button>
+    <button class="quiz-option" onclick="answer(0, 'some')"><span class="opt-emoji">📅</span>6ヶ月〜1年くらい</button>
+    <button class="quiz-option" onclick="answer(0, 'solid')"><span class="opt-emoji">💪</span>1年以上・安定してる</button>
+  </div>
+</div>
 
-    <!-- Q2 -->
-    <div class="quiz-step" id="step1">
-      <div class="quiz-q">💸 年会費についてどう思う？</div>
-      <div class="quiz-sub">特典で回収できれば払う派？完全無料派？</div>
-      <div class="quiz-options">
-        <button class="quiz-option" onclick="answer(1, 'free')"><span class="opt-emoji">🙅</span>絶対無料がいい</button>
-        <button class="quiz-option" onclick="answer(1, 'ok95')"><span class="opt-emoji">🤔</span>$100以下なら検討する</button>
-        <button class="quiz-option" onclick="answer(1, 'any')"><span class="opt-emoji">💎</span>特典があれば高くてもOK</button>
-      </div>
-    </div>
+<!-- Q2 -->
+<div class="quiz-step" id="step1">
+  <div class="quiz-q">💸 年会費についてどう思う？</div>
+  <div class="quiz-sub">特典で回収できれば払う派？完全無料派？</div>
+  <div class="quiz-options">
+    <button class="quiz-option" onclick="answer(1, 'free')"><span class="opt-emoji">🙅</span>絶対無料がいい</button>
+    <button class="quiz-option" onclick="answer(1, 'ok95')"><span class="opt-emoji">🤔</span>$100以下なら検討する</button>
+    <button class="quiz-option" onclick="answer(1, 'any')"><span class="opt-emoji">💎</span>特典があれば高くてもOK</button>
+  </div>
+</div>
 
-    <!-- Q3 -->
-    <div class="quiz-step" id="step2">
-      <div class="quiz-q">🎯 一番お得にしたいのは？</div>
-      <div class="quiz-sub">メインの使い道を教えて</div>
-      <div class="quiz-options">
-        <button class="quiz-option" onclick="answer(2, 'travel')"><span class="opt-emoji">✈️</span>旅行・フライト・ホテル</button>
-        <button class="quiz-option" onclick="answer(2, 'food')"><span class="opt-emoji">🍜</span>食費・レストラン・スーパー</button>
-        <button class="quiz-option" onclick="answer(2, 'daily')"><span class="opt-emoji">🛒</span>日常の買い物全般</button>
-        <button class="quiz-option" onclick="answer(2, 'hotel')"><span class="opt-emoji">🏨</span>ホテル滞在・出張</button>
-        <button class="quiz-option" onclick="answer(2, 'airline')"><span class="opt-emoji">🦅</span>特定航空会社のマイル</button>
-      </div>
-    </div>
+<!-- Q3 -->
+<div class="quiz-step" id="step2">
+  <div class="quiz-q">🎯 一番お得にしたいのは？</div>
+  <div class="quiz-sub">メインの使い道を教えて</div>
+  <div class="quiz-options">
+    <button class="quiz-option" onclick="answer(2, 'travel')"><span class="opt-emoji">✈️</span>旅行・フライト・ホテル</button>
+    <button class="quiz-option" onclick="answer(2, 'food')"><span class="opt-emoji">🍜</span>食費・レストラン・スーパー</button>
+    <button class="quiz-option" onclick="answer(2, 'daily')"><span class="opt-emoji">🛒</span>日常の買い物全般</button>
+    <button class="quiz-option" onclick="answer(2, 'hotel')"><span class="opt-emoji">🏨</span>ホテル滞在・出張</button>
+    <button class="quiz-option" onclick="answer(2, 'airline')"><span class="opt-emoji">🦅</span>特定航空会社のマイル</button>
+  </div>
+</div>
 
-    <!-- Q4 -->
-    <div class="quiz-step" id="step3">
-      <div class="quiz-q">🇯🇵 日本への一時帰国はある？</div>
-      <div class="quiz-sub">海外手数料の有無が重要になります</div>
-      <div class="quiz-options">
-        <button class="quiz-option" onclick="answer(3, 'often')"><span class="opt-emoji">🏠</span>年1回以上帰る</button>
-        <button class="quiz-option" onclick="answer(3, 'rare')"><span class="opt-emoji">🌐</span>あまり帰らない</button>
-      </div>
-    </div>
+<!-- Q4 -->
+<div class="quiz-step" id="step3">
+  <div class="quiz-q">🇯🇵 日本への一時帰国はある？</div>
+  <div class="quiz-sub">海外手数料の有無が重要になります</div>
+  <div class="quiz-options">
+    <button class="quiz-option" onclick="answer(3, 'often')"><span class="opt-emoji">🏠</span>年1回以上帰る</button>
+    <button class="quiz-option" onclick="answer(3, 'rare')"><span class="opt-emoji">🌐</span>あまり帰らない</button>
+  </div>
+</div>
 
-    <!-- Q5（新追加） -->
-    <div class="quiz-step" id="step4">
-      <div class="quiz-q">👨‍👩‍👧‍👦 家族構成は？</div>
-      <div class="quiz-sub">家族のクレヒス戦略も考慮します</div>
-      <div class="quiz-options">
-        <button class="quiz-option" onclick="answer(4, 'single')"><span class="opt-emoji">👤</span>一人（または学生）</button>
-        <button class="quiz-option" onclick="answer(4, 'couple')"><span class="opt-emoji">👫</span>夫婦2人</button>
-        <button class="quiz-option" onclick="answer(4, 'family')"><span class="opt-emoji">👨‍👩‍👧‍👦</span>家族（子どもあり）</button>
-      </div>
-    </div>
+<!-- Q5（新追加） -->
+<div class="quiz-step" id="step4">
+  <div class="quiz-q">👨‍👩‍👧‍👦 家族構成は？</div>
+  <div class="quiz-sub">家族のクレヒス戦略も考慮します</div>
+  <div class="quiz-options">
+    <button class="quiz-option" onclick="answer(4, 'single')"><span class="opt-emoji">👤</span>一人（または学生）</button>
+    <button class="quiz-option" onclick="answer(4, 'couple')"><span class="opt-emoji">👫</span>夫婦2人</button>
+    <button class="quiz-option" onclick="answer(4, 'family')"><span class="opt-emoji">👨‍👩‍👧‍👦</span>家族（子どもあり）</button>
+  </div>
+</div>
+```
+
   </div>
 
   <!-- Result -->
+
   <div class="result-section" id="resultSection">
     <div style="font-size:0.75rem;color:var(--text-muted);margin-bottom:12px;text-align:center;">🎉 あなたへのおすすめはコレ！</div>
     <div class="result-card" id="resultCard"></div>
@@ -1137,6 +1153,7 @@
 </div>
 
 <!-- AI Chat Section -->
+
 <div class="chat-section" id="chatSection">
   <div class="chat-header">
     <div class="chat-header-title">🍑 AmePeach 相談室</div>
@@ -1146,13 +1163,15 @@
   <div class="chat-messages" id="chatMessages">
     <div class="chat-bubble ai">
       <div class="ai-name">✨ AmePeach AI 🍑</div>
-      こんにちは！在米日本人向けクレカ専門AIです🇺🇸<br>SSNの有無、クレヒスの状況、旅行・食費など、どんな悩みでも気軽に聞いてください！
+      こんにちは！在米日本人向けクレカ専門AIです🇺🇸<br>渡米前の準備・クレヒスゼロ・マイル・ポイ活など、どんな悩みでも気軽に聞いてください！
     </div>
     <div class="suggested-chips" id="chipArea">
-      <button class="chip" onclick="sendChip('SSNなしでも作れるカードある？')">SSNなしでも作れる？</button>
+      <button class="chip" onclick="sendChip('渡米前にやるべき準備は？')">渡米前の準備は？</button>
+      <button class="chip" onclick="sendChip('Amex Global Transferって何？')">Global Transferとは？</button>
       <button class="chip" onclick="sendChip('クレヒスゼロから始めるには？')">クレヒスゼロから</button>
       <button class="chip" onclick="sendChip('日本帰国のANAマイルを貯めたい')">ANAマイル貯めたい</button>
-      <button class="chip" onclick="sendChip('Chase Sapphireは留学生でも作れる？')">留学生でも作れる？</button>
+      <button class="chip" onclick="sendChip('TopCashbackやFetchなどポイ活を教えて')">ポイ活を教えて</button>
+      <button class="chip" onclick="sendChip('Chaseトリフェクタとは？')">Chaseトリフェクタ</button>
     </div>
   </div>
 
@@ -1163,6 +1182,7 @@
 </div>
 
 <!-- Modal -->
+
 <div class="modal-overlay" id="modalOverlay" onclick="closeModal(event)">
   <div class="modal" id="modalContent">
     <div class="modal-handle"></div>
@@ -1185,6 +1205,7 @@
 </div>
 
 <!-- Bottom nav -->
+
 <div class="bottom-nav">
   <div class="nav-item active" id="nav-list" onclick="switchTab('list')"><span>💳</span><span>カード一覧</span></div>
   <div class="nav-item" id="nav-quiz" onclick="switchTab('quiz')"><span>🧭</span><span>診断</span></div>
@@ -1194,6 +1215,7 @@
 </div>
 
 <!-- Footer Info Modal -->
+
 <div class="modal-overlay" id="infoModalOverlay" onclick="closeInfoModal(event)">
   <div class="modal" id="infoModalContent" style="max-height: 85vh;">
     <div class="modal-handle"></div>
@@ -1203,6 +1225,7 @@
 </div>
 
 <!-- Blog Section -->
+
 <div class="quiz-section" id="blogSection" style="padding:0 16px 100px;">
   <div style="padding:24px 0 16px;text-align:center;">
     <div style="font-size:1.2rem;font-weight:900;background:linear-gradient(135deg,#FFD600,#F5763A);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:4px;">📖 AmePeach ブログ</div>
@@ -1210,6 +1233,7 @@
   </div>
 
   <!-- ブログタブ -->
+
   <div style="display:flex;gap:8px;overflow-x:auto;padding-bottom:12px;scrollbar-width:none;margin-bottom:16px;">
     <button onclick="filterBlog('all', this)" class="blog-tab blog-tab-active" style="flex-shrink:0;padding:7px 14px;border-radius:99px;border:1px solid rgba(245,166,35,0.5);background:rgba(245,166,35,0.15);color:var(--amber);font-family:'Zen Maru Gothic',sans-serif;font-size:0.75rem;font-weight:700;cursor:pointer;white-space:nowrap;">すべて</button>
     <button onclick="filterBlog('beginner', this)" class="blog-tab" style="flex-shrink:0;padding:7px 14px;border-radius:99px;border:1px solid var(--border);background:transparent;color:var(--text-muted);font-family:'Zen Maru Gothic',sans-serif;font-size:0.75rem;font-weight:700;cursor:pointer;white-space:nowrap;">🔰 初心者</button>
@@ -1221,6 +1245,7 @@
   </div>
 
   <!-- 記事一覧（JS生成） -->
+
   <div id="blogList"></div>
 
   <div style="text-align:center;padding:24px 20px;color:var(--text-muted);font-size:0.78rem;background:var(--card-bg);border-radius:16px;border:1px dashed rgba(255,255,255,0.1);">
@@ -1231,6 +1256,7 @@
 </div>
 
 <!-- Saved Section -->
+
 <div class="quiz-section" id="savedSection" style="padding:0 16px 100px;">
   <div style="padding:20px 0 12px;text-align:center;">
     <div style="font-size:1rem;font-weight:900;background:linear-gradient(135deg,var(--yellow),var(--pink));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">⭐ 保存済みカード</div>
@@ -1581,7 +1607,7 @@ function filterCards(filter, btn) {
 }
 
 function openModal(id, e) {
-  e.stopPropagation();
+  if (e) e.stopPropagation();
   const card = cards.find(c => c.id === id);
   if (!card) return;
   currentCard = card;
@@ -1616,6 +1642,11 @@ function openModal(id, e) {
 
   document.getElementById('modalOverlay').classList.add('open');
   updateSaveBtn();
+}
+
+// 注目カードセクションからのタップ用エイリアス
+function openCardModal(id) {
+  openModal(id, null);
 }
 
 function closeModal(e) {
@@ -1828,6 +1859,26 @@ let isLoading = false;
 // Offline rule-based responses
 const offlineRules = [
   {
+    keywords: ['global transfer', 'グローバルトランスファー', 'グローバル移行', '日本 amex', '渡米前 amex', '日本で amex'],
+    reply: `Amex Global Transferについてご案内します🌏\n\n**Amex Global Transferとは？**\n日本のAmexカードを持っていれば、渡米直後でもクレヒスゼロ・SSNなしでアメリカのAmexカードに申込める制度です！\n\n**条件：**\n・日本のAmexカードを最低3ヶ月以上保有（6ヶ月以上推奨）\n・アメリカの住所（家族・知人宅でもOK）\n・パスポート（SSNの代わり）\n\n**申込方法：**\namericanexpress.com/en-us/company/about-us/moving-abroad/ からオンラインで申込可能。\n\n**おすすめ申込カード：**\n🥇 Amex Gold — 食費4x・MRポイントをすぐ積み上げられる最強選択！\n\n**注意：**\n渡米後に知っても遅い！日本在住中にAmexを作っておくことが絶対条件です。\n\n詳しくはブログ記事「渡米前にAmexを作るべき理由」もご覧ください📖\n他に質問があれば気軽にどうぞ！`
+  },
+  {
+    keywords: ['渡米前', '準備', '渡米準備', '赴任前', '引越し前', '渡航前'],
+    reply: `渡米前にやるべき財実準備をまとめました📋\n\n**🥇 最優先：Amexカードを日本で作る**\nAmex Global Transferで渡米直後からAmex Goldに申込める。渡米3〜6ヶ月前に作っておくのが鉄則！\n\n**✈️ 渡米直後：**\n① JAL/ANA USAカード申込（クレヒスなし・SSNなし対応）\n② Global TransferでAmex Gold申込\n③ アメリカの銀行口座開設（Chase/BoAが便利）\n\n**💎 6〜12ヶ月後：**\n④ Chase Sapphire Preferred申込\n⑤ Amex Gold×Chase Sapphireの最強コンボ完成！\n\n**その他：**\n・日本のAmexはMRポイントをアメリカに移行可能\n・クレヒスは「全額払い・遅延なし」で着実に育てる\n\n詳しくはブログ「渡米前にやるべき財実準備完全ガイド」もご覧ください！\n他に質問があれば気軽にどうぞ！`
+  },
+  {
+    keywords: ['トリフェクタ', 'trifecta', 'freedom', 'freedom unlimited', 'freedom flex'],
+    reply: `Chaseトリフェクタについてご案内します💎\n\n**トリフェクタとは？**\nChase Sapphire + Freedom Unlimited + Freedom Flexの3枚を組み合わせて、UrポイントをMAX効率で貯める戦略です。\n\n**各カードの役割：**\n💎 Sapphire Preferred — 旅行・食事3x（ポイント集約・移行の核）\n🚀 Freedom Unlimited — すべて1.5x（年会費無料・日常の買い物に）\n🎯 Freedom Flex — 四半期ボーナス5x（Amazon・ガス・食料品等）\n\n**ポイント集約の仕組み：**\nFreedom系のUrポイントをSapphireに集約 → ANAマイル等へ1:1移行可能！\n\n**家族での活用：**\n同一世帯のChaseアカウント間でポイント移行もできます。\n\n**申込順序：**\n① Sapphire → ② Freedom Unlimited → ③ Freedom Flex（間隔を3〜6ヶ月あけて）\n\n詳しくはブログ「Chaseトリフェクタ完全解説」をご覧ください📖\n他に質問があれば気軽にどうぞ！`
+  },
+  {
+    keywords: ['ポイ活', 'topcashback', 'rakuten', 'fetch', 'ibotta', 'cashback', 'キャッシュバック'],
+    reply: `アメリカでのポイ活・キャッシュバック情報です💰\n\n**クレカと組み合わせる最強ポイ活：**\n\n🏆 TopCashback — 業界最高水準の還元率・手数料0%・7,000店舗以上\n🛍️ Rakuten — Amex Goldユーザーは現金→MRポイント変換でさらにお得\n📸 Fetch — レシートを撮るだけ・事前準備不要・Ibottaと同じレシートで二重取り可\n🛒 Ibotta — スーパーの特定商品で$0.25〜$5現金バック\n🚗 Chase DashPass — Sapphire持ちなら2027年末まで無料・月$10プロモ付き\n🎁 割引ギフトカード — Raiseで2〜20%オフのギフトカードを先買い\n\n**スーパー最強コンボ：**\nAmex Gold（4x MR）+ Ibotta（現金バック）+ Fetch（ポイント）の三重取り！\n\n**年間節約目安：**\n全部活用すれば年間$500〜800以上の節約が現実的です。\n\n詳しくはブログ「アメリカでのポイ活6選」をご覧ください📖\n他に質問があれば気軽にどうぞ！`
+  },
+  {
+    keywords: ['jal usa', 'jal card', 'jalカード', 'ana card', 'anaカード', 'クレヒスなし', 'ssn なし'],
+    reply: `クレヒスなし・SSNなしで作れるカードをご案内します🆕\n\n**渡米直後の鉄板2択：**\n\n🔴 JAL USA Card（$35〜$85/年）\n・クレヒスなし・SSNなしでOK\n・JALフライト毎回10%ボーナスマイル\n・プロモコード「JSPRG26」で10,000マイル\n・2024年10月リニューアル済み\n\n🔵 ANA CARD U.S.A. Plus（$85/年）\n・クレヒスなし・SSNなしでOK（後からSSN登録可）\n・ANA搭乗25%ボーナスマイル\n・ビジネスクラスカウンターでプライオリティチェックイン\n\n**どちらを選ぶ？**\nJAL派 → JAL USA Card\nANA派 → ANA CARD U.S.A.\nコスト重視 → JAL Basic（$35/年）が最安\n\n**次のステップ：**\n6〜12ヶ月後にChase Sapphireへステップアップ！\n\nブログ「JAL・ANA USAカード完全ガイド」も参考にどうぞ📖\n他に質問があれば気軽にどうぞ！`
+  },
+  {
     keywords: ['ssn', 'なし', 'ない', 'パスポート', 'itin'],
     reply: `SSNなし・ITINでも作れるカードはあります！🎉\n\n**おすすめ順：**\n① 🎓 Discover it® Student — クレヒスなし・SSNなしでも申込できるケースが多い\n② 🌏 BoA Travel Rewards — Bank of Americaに口座があれば申込しやすい\n③ 💎 Chase Sapphire Preferred — パスポートで申込できるケースあり\n④ 🥇 Amex Gold — ITINで申込可能なケースあり\n\n**ITINとは？**\n就労ビザがない配偶者など、SSNを取得できない方が税務申告のために取得できる番号。税理士経由で3〜5ヶ月かかります。\n\nまずはDiscoverかBoAから始めるのが現実的です✨\n他に質問があれば気軽にどうぞ！`
   },
@@ -1869,7 +1920,7 @@ const offlineRules = [
   },
   {
     keywords: ['amex', 'american express', 'アメックス', 'gold'],
-    reply: `Amex Gold Cardについて詳しく説明します🥇\n\n**基本情報：**\n・年会費：$250\n・ウェルカムボーナス：60,000 MRポイント（6ヶ月$6,000利用）\n・レストラン・スーパー 4x、旅行 3x還元\n・海外手数料：なし✅\n\n**実質年会費は？**\n毎月$10ダイニングクレジット＋$10 Uberキャッシュ = 年$240\n実質負担は$10程度に！\n\n**家族向けポイント：**\nITINで配偶者名義での申込実績あり。食費4xは大家族ほど効果絶大です👨‍👩‍👧‍👦\n\n食費が多い方には非常に強力なカードです💪\n他に質問があれば気軽にどうぞ！`
+    reply: `Amex Gold Cardについて詳しく説明します🥇\n\n**基本情報（2026年最新）：**\n・年会費：$325\n・ウェルカムボーナス：最大100,000 MRポイント（6ヶ月$8,000利用）\n・レストラン・スーパー 4x、フライト直接購入 3x\n・海外手数料：なし✅\n\n**毎月回収できるクレジット：**\n・Uber Cash $10/月\n・ダイニングクレジット $10/月（Grubhub等）\n・Resyクレジット $50×年2回\n・Dunkin'クレジット $7/月\n合計年間$424以上 → 年会費$325を上回る！\n\n**ANAマイルへの移行：**\nMRポイント → ANAマイル（直接1:1）\nMRポイント → BA Avios → JALマイル（1:1:1）\n\n詳しくはブログ「Amex Gold完全攻略」をご覧ください📖\n他に質問があれば気軽にどうぞ！`
   },
   {
     keywords: ['5/24', 'ルール', 'チェース', 'chase rule'],
@@ -2278,6 +2329,19 @@ const blogPosts = [
     desc: '渡米前に日本でAmexを作るだけで、アメリカでクレヒスゼロでもAmex Goldに申込める。著者の実体験の後悔から学ぶ完全ガイド。渡米準備中の方は必読。',
     tags: ['# Global Transfer', '# 渡米準備', '# クレヒスなし'],
     linkColor: '#C9A84C'
+  },
+  {
+    url: '/blog/before-moving-to-us.html',
+    category: 'beginner',
+    categoryLabel: '🛫 渡米前準備',
+    categoryColor: '#F5763A',
+    accentColor: 'rgba(245,118,58,0.2)',
+    borderColor: 'rgba(245,118,58,0.25)',
+    readTime: '約14分',
+    title: '【渡米前必読】アメリカ移住前にやるべき財実準備完全ガイド｜クレカ・Amex・銀行口座',
+    desc: '渡米・駐在前にやるべき財実準備を完全解説。Amex Global Transfer、日本のクレカ整理、Wise口座、アメリカの銀行口座準備。渡米前チェックリスト付き。',
+    tags: ['# 渡米前準備', '# Amex Global Transfer', '# Wise'],
+    linkColor: '#F5763A'
   }
 ];
 
@@ -2366,6 +2430,7 @@ function runDebugTest() {
   alert('🔧 動作テスト結果\n\n' + results.join('\n') + '\n\n⚠️ 問題があった場合はAmePeachまでご連絡ください。');
 }
 </script>
+
 </div><!-- /pc-wrapper -->
 </body>
 </html>
