@@ -954,39 +954,71 @@
   </div>
 </header>
 
-<!-- Latest Offers Section -->
+<!-- 注目カードセクション（改善版） -->
 <div class="filter-section" id="offersSection" style="padding-bottom:4px;">
-  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;">
+  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">
     <div class="filter-label" style="margin-bottom:0;">🔥 注目カード</div>
-    <div style="font-size:0.65rem;color:var(--text-muted);">確認：2026年5月</div>
+    <div style="font-size:0.65rem;color:var(--text-muted);">2026年5月確認</div>
   </div>
-  <div style="display:flex;gap:10px;overflow-x:auto;padding-bottom:12px;scrollbar-width:none;">
-    <div onclick="filterCards('travel', document.querySelector('.tab:nth-child(3)'))" style="flex-shrink:0;background:linear-gradient(135deg,rgba(0,212,255,0.15),rgba(0,212,255,0.05));border:1px solid rgba(0,212,255,0.3);border-radius:14px;padding:12px 14px;min-width:190px;cursor:pointer;">
-      <div style="font-size:0.65rem;color:#00D4FF;font-weight:700;margin-bottom:4px;">💎 CHASE</div>
-      <div style="font-size:0.88rem;font-weight:900;">Sapphire Preferred</div>
-      <div style="font-size:0.7rem;color:var(--text-muted);margin-top:3px;">旅行・食事3x ｜ ANA移行可</div>
-      <div style="font-size:0.68rem;color:#00D4FF;margin-top:4px;font-weight:700;">公式でボーナス確認 →</div>
+  <div style="display:flex;gap:10px;overflow-x:auto;padding-bottom:12px;scrollbar-width:none;-webkit-overflow-scrolling:touch;">
+
+    <!-- Chase Sapphire -->
+    <div onclick="openCardModal(1)" style="flex-shrink:0;background:linear-gradient(135deg,rgba(0,212,255,0.15),rgba(0,212,255,0.05));border:1.5px solid rgba(0,212,255,0.35);border-radius:16px;padding:14px 15px;width:180px;cursor:pointer;transition:transform 0.2s,box-shadow 0.2s;" onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='0 8px 24px rgba(0,0,0,0.3)'" onmouseout="this.style.transform='none';this.style.boxShadow='none'">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px;">
+        <div style="font-size:0.62rem;color:#00D4FF;font-weight:900;letter-spacing:0.05em;">CHASE</div>
+        <div style="font-size:0.62rem;background:rgba(0,212,255,0.2);color:#00D4FF;padding:2px 6px;border-radius:99px;font-weight:700;">人気No.1</div>
+      </div>
+      <div style="font-size:0.92rem;font-weight:900;margin-bottom:4px;line-height:1.3;">Sapphire<br>Preferred</div>
+      <div style="font-size:0.68rem;color:var(--text-muted);margin-bottom:8px;">旅行・食事3x</div>
+      <div style="font-size:0.7rem;color:#00D4FF;font-weight:700;background:rgba(0,212,255,0.1);border-radius:6px;padding:4px 6px;text-align:center;">60,000pt bonus</div>
     </div>
-    <div style="flex-shrink:0;background:linear-gradient(135deg,rgba(255,214,0,0.15),rgba(255,214,0,0.05));border:1px solid rgba(255,214,0,0.3);border-radius:14px;padding:12px 14px;min-width:190px;cursor:pointer;">
-      <div style="font-size:0.65rem;color:#FFD600;font-weight:700;margin-bottom:4px;">🥇 AMEX</div>
-      <div style="font-size:0.88rem;font-weight:900;">Gold Card</div>
-      <div style="font-size:0.7rem;color:var(--text-muted);margin-top:3px;">食費・レストラン4x ｜ 家族向け</div>
-      <div style="font-size:0.68rem;color:#FFD600;margin-top:4px;font-weight:700;">公式でボーナス確認 →</div>
+
+    <!-- Amex Gold -->
+    <div onclick="openCardModal(2)" style="flex-shrink:0;background:linear-gradient(135deg,rgba(201,168,76,0.2),rgba(201,168,76,0.05));border:1.5px solid rgba(201,168,76,0.4);border-radius:16px;padding:14px 15px;width:180px;cursor:pointer;transition:transform 0.2s,box-shadow 0.2s;" onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='0 8px 24px rgba(0,0,0,0.3)'" onmouseout="this.style.transform='none';this.style.boxShadow='none'">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px;">
+        <div style="font-size:0.62rem;color:#C9A84C;font-weight:900;letter-spacing:0.05em;">AMEX</div>
+        <div style="font-size:0.62rem;background:rgba(201,168,76,0.2);color:#C9A84C;padding:2px 6px;border-radius:99px;font-weight:700;">食費最強</div>
+      </div>
+      <div style="font-size:0.92rem;font-weight:900;margin-bottom:4px;line-height:1.3;">Gold<br>Card</div>
+      <div style="font-size:0.68rem;color:var(--text-muted);margin-bottom:8px;">食費・外食4x</div>
+      <div style="font-size:0.7rem;color:#C9A84C;font-weight:700;background:rgba(201,168,76,0.1);border-radius:6px;padding:4px 6px;text-align:center;">100,000pt bonus</div>
     </div>
-    <div style="flex-shrink:0;background:linear-gradient(135deg,rgba(245,118,58,0.15),rgba(245,118,58,0.05));border:1px solid rgba(245,118,58,0.3);border-radius:14px;padding:12px 14px;min-width:190px;cursor:pointer;">
-      <div style="font-size:0.65rem;color:var(--orange);font-weight:700;margin-bottom:4px;">✈️ AMEX DELTA</div>
-      <div style="font-size:0.88rem;font-weight:900;">Gold SkyMiles</div>
-      <div style="font-size:0.7rem;color:var(--text-muted);margin-top:3px;">初年度無料 ｜ ATL在住に◎</div>
-      <div style="font-size:0.68rem;color:var(--orange);margin-top:4px;font-weight:700;">公式でボーナス確認 →</div>
+
+    <!-- JAL USA Card -->
+    <div onclick="openCardModal(10)" style="flex-shrink:0;background:linear-gradient(135deg,rgba(200,16,46,0.15),rgba(200,16,46,0.05));border:1.5px solid rgba(200,16,46,0.35);border-radius:16px;padding:14px 15px;width:180px;cursor:pointer;transition:transform 0.2s,box-shadow 0.2s;" onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='0 8px 24px rgba(0,0,0,0.3)'" onmouseout="this.style.transform='none';this.style.boxShadow='none'">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px;">
+        <div style="font-size:0.62rem;color:#C8102E;font-weight:900;letter-spacing:0.05em;">JAL USA</div>
+        <div style="font-size:0.62rem;background:rgba(200,16,46,0.15);color:#C8102E;padding:2px 6px;border-radius:99px;font-weight:700;">🆕クレヒスなし</div>
+      </div>
+      <div style="font-size:0.92rem;font-weight:900;margin-bottom:4px;line-height:1.3;">JAL USA<br>Card</div>
+      <div style="font-size:0.68rem;color:var(--text-muted);margin-bottom:8px;">SSNなしで申込可</div>
+      <div style="font-size:0.7rem;color:#C8102E;font-weight:700;background:rgba(200,16,46,0.1);border-radius:6px;padding:4px 6px;text-align:center;">10,000マイル bonus</div>
     </div>
-    <div style="flex-shrink:0;background:linear-gradient(135deg,rgba(139,92,246,0.15),rgba(139,92,246,0.05));border:1px solid rgba(139,92,246,0.3);border-radius:14px;padding:12px 14px;min-width:190px;cursor:pointer;">
-      <div style="font-size:0.65rem;color:#8B5CF6;font-weight:700;margin-bottom:4px;">🏨 CHASE</div>
-      <div style="font-size:0.88rem;font-weight:900;">World of Hyatt</div>
-      <div style="font-size:0.7rem;color:var(--text-muted);margin-top:3px;">毎年無料宿泊1泊付き</div>
-      <div style="font-size:0.68rem;color:#8B5CF6;margin-top:4px;font-weight:700;">公式でボーナス確認 →</div>
+
+    <!-- ANA CARD -->
+    <div onclick="openCardModal(11)" style="flex-shrink:0;background:linear-gradient(135deg,rgba(0,102,204,0.15),rgba(0,102,204,0.05));border:1.5px solid rgba(0,102,204,0.35);border-radius:16px;padding:14px 15px;width:180px;cursor:pointer;transition:transform 0.2s,box-shadow 0.2s;" onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='0 8px 24px rgba(0,0,0,0.3)'" onmouseout="this.style.transform='none';this.style.boxShadow='none'">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px;">
+        <div style="font-size:0.62rem;color:#0066CC;font-weight:900;letter-spacing:0.05em;">ANA USA</div>
+        <div style="font-size:0.62rem;background:rgba(0,102,204,0.15);color:#0066CC;padding:2px 6px;border-radius:99px;font-weight:700;">🆕クレヒスなし</div>
+      </div>
+      <div style="font-size:0.92rem;font-weight:900;margin-bottom:4px;line-height:1.3;">ANA CARD<br>U.S.A. Plus</div>
+      <div style="font-size:0.68rem;color:var(--text-muted);margin-bottom:8px;">海外手数料なし</div>
+      <div style="font-size:0.7rem;color:#0066CC;font-weight:700;background:rgba(0,102,204,0.1);border-radius:6px;padding:4px 6px;text-align:center;">5,000マイル bonus</div>
     </div>
+
+    <!-- Delta Gold -->
+    <div onclick="openCardModal(8)" style="flex-shrink:0;background:linear-gradient(135deg,rgba(245,118,58,0.15),rgba(245,118,58,0.05));border:1.5px solid rgba(245,118,58,0.3);border-radius:16px;padding:14px 15px;width:180px;cursor:pointer;transition:transform 0.2s,box-shadow 0.2s;" onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='0 8px 24px rgba(0,0,0,0.3)'" onmouseout="this.style.transform='none';this.style.boxShadow='none'">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px;">
+        <div style="font-size:0.62rem;color:var(--orange);font-weight:900;letter-spacing:0.05em;">AMEX DELTA</div>
+        <div style="font-size:0.62rem;background:rgba(245,118,58,0.15);color:var(--orange);padding:2px 6px;border-radius:99px;font-weight:700;">ATL在住◎</div>
+      </div>
+      <div style="font-size:0.92rem;font-weight:900;margin-bottom:4px;line-height:1.3;">Delta Gold<br>SkyMiles</div>
+      <div style="font-size:0.68rem;color:var(--text-muted);margin-bottom:8px;">初年度無料</div>
+      <div style="font-size:0.7rem;color:var(--orange);font-weight:700;background:rgba(245,118,58,0.1);border-radius:6px;padding:4px 6px;text-align:center;">80,000マイル bonus</div>
+    </div>
+
   </div>
-  <div style="font-size:0.65rem;color:var(--text-muted);margin-top:-4px;padding-bottom:4px;">⚠️ ウェルカムボーナスは頻繁に変動します。申込前に必ず公式サイトで最新情報をご確認ください</div>
+  <div style="font-size:0.63rem;color:var(--text-muted);padding-bottom:4px;">⚠️ ボーナスは頻繁に変動します。申込前に必ず公式サイトで最新情報をご確認ください　👆タップで詳細</div>
 </div>
 
 <div class="filter-section">
@@ -1172,189 +1204,24 @@
 
 <!-- Blog Section -->
 <div class="quiz-section" id="blogSection" style="padding:0 16px 100px;">
-  <div style="padding:24px 0 20px;text-align:center;">
+  <div style="padding:24px 0 16px;text-align:center;">
     <div style="font-size:1.2rem;font-weight:900;background:linear-gradient(135deg,#FFD600,#F5763A);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:4px;">📖 AmePeach ブログ</div>
     <div style="font-size:0.75rem;color:var(--text-muted);">在米日本人のクレカ攻略記事</div>
   </div>
 
-  <!-- 記事カード1 -->
-  <a href="/blog/first-credit-card.html" style="display:block;text-decoration:none;color:inherit;">
-    <div style="background:var(--card-bg);border:1px solid rgba(245,166,35,0.2);border-radius:20px;margin-bottom:16px;overflow:hidden;transition:transform 0.2s,box-shadow 0.2s;" onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='0 12px 30px rgba(0,0,0,0.3)'" onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='none'">
-      <!-- Header bar -->
-      <div style="background:linear-gradient(135deg,rgba(245,118,58,0.3),rgba(245,166,35,0.1));padding:16px 18px 12px;">
-        <div style="display:flex;gap:8px;align-items:center;margin-bottom:8px;flex-wrap:wrap;">
-          <span style="background:var(--orange);color:white;padding:3px 10px;border-radius:99px;font-size:0.68rem;font-weight:700;">🔰 クレカ初心者</span>
-          <span style="background:rgba(255,255,255,0.1);color:var(--text-muted);padding:3px 8px;border-radius:99px;font-size:0.68rem;">📖 約10分</span>
-        </div>
-        <div style="font-size:1.05rem;font-weight:900;line-height:1.4;color:var(--text);">アメリカでクレジットカードを作る完全ガイド</div>
-      </div>
-      <!-- Body -->
-      <div style="padding:12px 18px 16px;">
-        <div style="font-size:0.78rem;color:var(--text-muted);line-height:1.6;margin-bottom:12px;">在米日本人がゼロから始める方法。SSN・ITINの違い、初心者におすすめのカード3選、クレヒスを最速で育てるコツまで完全網羅。</div>
-        <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px;">
-          <span style="font-size:0.68rem;color:var(--text-muted);background:rgba(255,255,255,0.05);padding:2px 8px;border-radius:99px;"># SSNなし</span>
-          <span style="font-size:0.68rem;color:var(--text-muted);background:rgba(255,255,255,0.05);padding:2px 8px;border-radius:99px;"># クレヒス構築</span>
-          <span style="font-size:0.68rem;color:var(--text-muted);background:rgba(255,255,255,0.05);padding:2px 8px;border-radius:99px;"># 最初の1枚</span>
-        </div>
-        <div style="font-size:0.8rem;color:var(--orange);font-weight:700;display:flex;align-items:center;gap:4px;">続きを読む <span style="font-size:1rem;">→</span></div>
-      </div>
-    </div>
-  </a>
+  <!-- ブログタブ -->
+  <div style="display:flex;gap:8px;overflow-x:auto;padding-bottom:12px;scrollbar-width:none;margin-bottom:16px;">
+    <button onclick="filterBlog('all', this)" class="blog-tab blog-tab-active" style="flex-shrink:0;padding:7px 14px;border-radius:99px;border:1px solid rgba(245,166,35,0.5);background:rgba(245,166,35,0.15);color:var(--amber);font-family:'Zen Maru Gothic',sans-serif;font-size:0.75rem;font-weight:700;cursor:pointer;white-space:nowrap;">すべて</button>
+    <button onclick="filterBlog('beginner', this)" class="blog-tab" style="flex-shrink:0;padding:7px 14px;border-radius:99px;border:1px solid var(--border);background:transparent;color:var(--text-muted);font-family:'Zen Maru Gothic',sans-serif;font-size:0.75rem;font-weight:700;cursor:pointer;white-space:nowrap;">🔰 初心者</button>
+    <button onclick="filterBlog('chase', this)" class="blog-tab" style="flex-shrink:0;padding:7px 14px;border-radius:99px;border:1px solid var(--border);background:transparent;color:var(--text-muted);font-family:'Zen Maru Gothic',sans-serif;font-size:0.75rem;font-weight:700;cursor:pointer;white-space:nowrap;">💎 Chase</button>
+    <button onclick="filterBlog('amex', this)" class="blog-tab" style="flex-shrink:0;padding:7px 14px;border-radius:99px;border:1px solid var(--border);background:transparent;color:var(--text-muted);font-family:'Zen Maru Gothic',sans-serif;font-size:0.75rem;font-weight:700;cursor:pointer;white-space:nowrap;">🥇 Amex</button>
+    <button onclick="filterBlog('jal_ana', this)" class="blog-tab" style="flex-shrink:0;padding:7px 14px;border-radius:99px;border:1px solid var(--border);background:transparent;color:var(--text-muted);font-family:'Zen Maru Gothic',sans-serif;font-size:0.75rem;font-weight:700;cursor:pointer;white-space:nowrap;">✈️ JAL/ANA</button>
+    <button onclick="filterBlog('savings', this)" class="blog-tab" style="flex-shrink:0;padding:7px 14px;border-radius:99px;border:1px solid var(--border);background:transparent;color:var(--text-muted);font-family:'Zen Maru Gothic',sans-serif;font-size:0.75rem;font-weight:700;cursor:pointer;white-space:nowrap;">💰 節約</button>
+    <button onclick="filterBlog('family', this)" class="blog-tab" style="flex-shrink:0;padding:7px 14px;border-radius:99px;border:1px solid var(--border);background:transparent;color:var(--text-muted);font-family:'Zen Maru Gothic',sans-serif;font-size:0.75rem;font-weight:700;cursor:pointer;white-space:nowrap;">👨‍👩‍👧 家族</button>
+  </div>
 
-  <!-- 記事カード2 -->
-  <a href="/blog/family-credit-card-strategy.html" style="display:block;text-decoration:none;color:inherit;">
-    <div style="background:var(--card-bg);border:1px solid rgba(139,92,246,0.25);border-radius:20px;margin-bottom:16px;overflow:hidden;transition:transform 0.2s,box-shadow 0.2s;" onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='0 12px 30px rgba(0,0,0,0.3)'" onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='none'">
-      <div style="background:linear-gradient(135deg,rgba(139,92,246,0.25),rgba(139,92,246,0.05));padding:16px 18px 12px;">
-        <div style="display:flex;gap:8px;align-items:center;margin-bottom:8px;flex-wrap:wrap;">
-          <span style="background:#8B5CF6;color:white;padding:3px 10px;border-radius:99px;font-size:0.68rem;font-weight:700;">👨‍👩‍👧‍👦 駐在員・家族向け</span>
-          <span style="background:rgba(255,255,255,0.1);color:var(--text-muted);padding:3px 8px;border-radius:99px;font-size:0.68rem;">📖 約12分</span>
-        </div>
-        <div style="font-size:1.05rem;font-weight:900;line-height:1.4;color:var(--text);">駐在員家族のクレカ戦略｜家族全員でポイントを最大化する完全ガイド</div>
-      </div>
-      <div style="padding:12px 18px 16px;">
-        <div style="font-size:0.78rem;color:var(--text-muted);line-height:1.6;margin-bottom:12px;">配偶者のクレヒス構築法、Authorized User活用、夫婦カードの最強コンボ、子どものクレカ戦略まで。家族全員で賢くポイントを貯める方法を解説。</div>
-        <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px;">
-          <span style="font-size:0.68rem;color:var(--text-muted);background:rgba(255,255,255,0.05);padding:2px 8px;border-radius:99px;"># 配偶者</span>
-          <span style="font-size:0.68rem;color:var(--text-muted);background:rgba(255,255,255,0.05);padding:2px 8px;border-radius:99px;"># 夫婦コンボ</span>
-          <span style="font-size:0.68rem;color:var(--text-muted);background:rgba(255,255,255,0.05);padding:2px 8px;border-radius:99px;"># ANAマイル</span>
-        </div>
-        <div style="font-size:0.8rem;color:#8B5CF6;font-weight:700;display:flex;align-items:center;gap:4px;">続きを読む <span style="font-size:1rem;">→</span></div>
-      </div>
-    </div>
-  </a>
-
-  <!-- 準備中 -->
-  <!-- 準備中 -->
-  <a href="/blog/chase-5-24-rule.html" style="display:block;text-decoration:none;color:inherit;">
-    <div style="background:var(--card-bg);border:1px solid rgba(17,122,202,0.25);border-radius:20px;margin-bottom:16px;overflow:hidden;transition:transform 0.2s,box-shadow 0.2s;" onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='0 12px 30px rgba(0,0,0,0.3)'" onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='none'">
-      <div style="background:linear-gradient(135deg,rgba(17,122,202,0.25),rgba(17,122,202,0.05));padding:16px 18px 12px;">
-        <div style="display:flex;gap:8px;align-items:center;margin-bottom:8px;flex-wrap:wrap;">
-          <span style="background:#117ACA;color:white;padding:3px 10px;border-radius:99px;font-size:0.68rem;font-weight:700;">💎 Chase攻略</span>
-          <span style="background:rgba(255,255,255,0.1);color:var(--text-muted);padding:3px 8px;border-radius:99px;font-size:0.68rem;">📖 約12分</span>
-        </div>
-        <div style="font-size:1.05rem;font-weight:900;line-height:1.4;color:var(--text);">Chase 5/24ルールとは？在米日本人が知っておくべき完全FAQ</div>
-      </div>
-      <div style="padding:12px 18px 16px;">
-        <div style="font-size:0.78rem;color:var(--text-muted);line-height:1.6;margin-bottom:12px;">「審査落ちした…」を防ぐために必須の知識。カウントされるカード・されないカード、5/24に引っかかった時の対処法まで完全解説。</div>
-        <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px;">
-          <span style="font-size:0.68rem;color:var(--text-muted);background:rgba(255,255,255,0.05);padding:2px 8px;border-radius:99px;"># 5/24ルール</span>
-          <span style="font-size:0.68rem;color:var(--text-muted);background:rgba(255,255,255,0.05);padding:2px 8px;border-radius:99px;"># Chase攻略</span>
-          <span style="font-size:0.68rem;color:var(--text-muted);background:rgba(255,255,255,0.05);padding:2px 8px;border-radius:99px;"># 申込戦略</span>
-        </div>
-        <div style="font-size:0.8rem;color:#117ACA;font-weight:700;display:flex;align-items:center;gap:4px;">続きを読む <span style="font-size:1rem;">→</span></div>
-      </div>
-    </div>
-  </a>
-
-  <!-- 記事4 -->
-  <a href="/blog/jal-ana-usa-cards.html" style="display:block;text-decoration:none;color:inherit;">
-    <div style="background:var(--card-bg);border:1px solid rgba(200,16,46,0.2);border-radius:20px;margin-bottom:16px;overflow:hidden;transition:transform 0.2s,box-shadow 0.2s;" onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='0 12px 30px rgba(0,0,0,0.3)'" onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='none'">
-      <div style="background:linear-gradient(135deg,rgba(200,16,46,0.15),rgba(0,102,204,0.1));padding:16px 18px 12px;">
-        <div style="display:flex;gap:8px;align-items:center;margin-bottom:8px;flex-wrap:wrap;">
-          <span style="background:#C8102E;color:white;padding:3px 8px;border-radius:99px;font-size:0.68rem;font-weight:700;">✈️ JAL</span>
-          <span style="background:#0066CC;color:white;padding:3px 8px;border-radius:99px;font-size:0.68rem;font-weight:700;">✈️ ANA</span>
-          <span style="background:rgba(255,255,255,0.1);color:var(--text-muted);padding:3px 8px;border-radius:99px;font-size:0.68rem;">📖 約14分</span>
-        </div>
-        <div style="font-size:1.05rem;font-weight:900;line-height:1.4;color:var(--text);">渡米後の最初の1枚はJAL・ANA USAカード？マイルを最大化する完全戦略</div>
-      </div>
-      <div style="padding:12px 18px 16px;">
-        <div style="font-size:0.78rem;color:var(--text-muted);line-height:1.6;margin-bottom:12px;">クレヒスゼロでも申込できるJAL・ANA USAカードの比較と、Chase・Amexと組み合わせたマイル最大化戦略。渡米後のクレカロードマップを完全解説。</div>
-        <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px;">
-          <span style="font-size:0.68rem;color:var(--text-muted);background:rgba(255,255,255,0.05);padding:2px 8px;border-radius:99px;"># JAL USAカード</span>
-          <span style="font-size:0.68rem;color:var(--text-muted);background:rgba(255,255,255,0.05);padding:2px 8px;border-radius:99px;"># ANA CARD USA</span>
-          <span style="font-size:0.68rem;color:var(--text-muted);background:rgba(255,255,255,0.05);padding:2px 8px;border-radius:99px;"># 帰国マイル</span>
-        </div>
-        <div style="font-size:0.8rem;color:#C8102E;font-weight:700;display:flex;align-items:center;gap:4px;">続きを読む <span style="font-size:1rem;">→</span></div>
-      </div>
-    </div>
-  </a>
-
-  <a href="/blog/improve-credit-score.html" style="display:block;text-decoration:none;color:inherit;">
-    <div style="background:var(--card-bg);border:1px solid rgba(93,190,138,0.25);border-radius:20px;margin-bottom:16px;overflow:hidden;transition:transform 0.2s,box-shadow 0.2s;" onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='0 12px 30px rgba(0,0,0,0.3)'" onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='none'">
-      <div style="background:linear-gradient(135deg,rgba(93,190,138,0.2),rgba(93,190,138,0.05));padding:16px 18px 12px;">
-        <div style="display:flex;gap:8px;align-items:center;margin-bottom:8px;flex-wrap:wrap;">
-          <span style="background:#5DBE8A;color:#0D1B2E;padding:3px 10px;border-radius:99px;font-size:0.68rem;font-weight:700;">📈 クレジットスコア</span>
-          <span style="background:rgba(255,255,255,0.1);color:var(--text-muted);padding:3px 8px;border-radius:99px;font-size:0.68rem;">📖 約12分</span>
-        </div>
-        <div style="font-size:1.05rem;font-weight:900;line-height:1.4;color:var(--text);">アメリカのクレジットスコアを上げる5つの方法｜在米日本人の実践ガイド</div>
-      </div>
-      <div style="padding:12px 18px 16px;">
-        <div style="font-size:0.78rem;color:var(--text-muted);line-height:1.6;margin-bottom:12px;">FICOスコアの仕組みから、支払い管理・利用率・Hard Inquiry対策まで。渡米後12〜18ヶ月でスコア700以上を目指す実践的な方法を解説。</div>
-        <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px;">
-          <span style="font-size:0.68rem;color:var(--text-muted);background:rgba(255,255,255,0.05);padding:2px 8px;border-radius:99px;"># FICOスコア</span>
-          <span style="font-size:0.68rem;color:var(--text-muted);background:rgba(255,255,255,0.05);padding:2px 8px;border-radius:99px;"># 利用率</span>
-          <span style="font-size:0.68rem;color:var(--text-muted);background:rgba(255,255,255,0.05);padding:2px 8px;border-radius:99px;"># 700達成</span>
-        </div>
-        <div style="font-size:0.8rem;color:#5DBE8A;font-weight:700;display:flex;align-items:center;gap:4px;">続きを読む <span style="font-size:1rem;">→</span></div>
-      </div>
-    </div>
-  </a>
-
-  <!-- 記事6 -->
-  <a href="/blog/chase-trifecta.html" style="display:block;text-decoration:none;color:inherit;">
-    <div style="background:var(--card-bg);border:1px solid rgba(17,122,202,0.25);border-radius:20px;margin-bottom:16px;overflow:hidden;transition:transform 0.2s,box-shadow 0.2s;" onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='0 12px 30px rgba(0,0,0,0.3)'" onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='none'">
-      <div style="background:linear-gradient(135deg,rgba(17,122,202,0.2),rgba(17,122,202,0.05));padding:16px 18px 12px;">
-        <div style="display:flex;gap:8px;align-items:center;margin-bottom:8px;flex-wrap:wrap;">
-          <span style="background:#117ACA;color:white;padding:3px 10px;border-radius:99px;font-size:0.68rem;font-weight:700;">💎 Chase攻略</span>
-          <span style="background:rgba(255,255,255,0.1);color:var(--text-muted);padding:3px 8px;border-radius:99px;font-size:0.68rem;">📖 約12分</span>
-        </div>
-        <div style="font-size:1.05rem;font-weight:900;line-height:1.4;color:var(--text);">Chaseトリフェクタ完全解説｜Freedom+Sapphireで最強ポイントを最大化する方法</div>
-      </div>
-      <div style="padding:12px 18px 16px;">
-        <div style="font-size:0.78rem;color:var(--text-muted);line-height:1.6;margin-bottom:12px;">Chase3枚の最強コンボ「トリフェクタ」を完全解説。Urポイントの集約方法・JAL/ANAマイルへの移行・家族での使い方まで。年間10万pt以上も現実的！</div>
-        <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px;">
-          <span style="font-size:0.68rem;color:var(--text-muted);background:rgba(255,255,255,0.05);padding:2px 8px;border-radius:99px;"># トリフェクタ</span>
-          <span style="font-size:0.68rem;color:var(--text-muted);background:rgba(255,255,255,0.05);padding:2px 8px;border-radius:99px;"># Urポイント</span>
-          <span style="font-size:0.68rem;color:var(--text-muted);background:rgba(255,255,255,0.05);padding:2px 8px;border-radius:99px;"># ポイント最大化</span>
-        </div>
-        <div style="font-size:0.8rem;color:#117ACA;font-weight:700;display:flex;align-items:center;gap:4px;">続きを読む <span style="font-size:1rem;">→</span></div>
-      </div>
-    </div>
-  </a>
-
-  <!-- 記事7 -->
-  <a href="/blog/amex-gold-guide.html" style="display:block;text-decoration:none;color:inherit;">
-    <div style="background:var(--card-bg);border:1px solid rgba(201,168,76,0.25);border-radius:20px;margin-bottom:16px;overflow:hidden;transition:transform 0.2s,box-shadow 0.2s;" onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='0 12px 30px rgba(0,0,0,0.3)'" onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='none'">
-      <div style="background:linear-gradient(135deg,rgba(201,168,76,0.2),rgba(201,168,76,0.05));padding:16px 18px 12px;">
-        <div style="display:flex;gap:8px;align-items:center;margin-bottom:8px;flex-wrap:wrap;">
-          <span style="background:#C9A84C;color:#0D1B2E;padding:3px 10px;border-radius:99px;font-size:0.68rem;font-weight:700;">🥇 Amex攻略</span>
-          <span style="background:rgba(255,255,255,0.1);color:var(--text-muted);padding:3px 8px;border-radius:99px;font-size:0.68rem;">📖 約12分</span>
-        </div>
-        <div style="font-size:1.05rem;font-weight:900;line-height:1.4;color:var(--text);">【2026年最新】Amex Gold完全攻略｜年会費$325を実質$0にする毎月のクレジット回収手順</div>
-      </div>
-      <div style="padding:12px 18px 16px;">
-        <div style="font-size:0.78rem;color:var(--text-muted);line-height:1.6;margin-bottom:12px;">Uber Cash・ダイニング・Resy・Dunkin'の4つのクレジットを毎月回収して年会費を実質無料に。初期設定から毎月のチェックリストまで完全解説。</div>
-        <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px;">
-          <span style="font-size:0.68rem;color:var(--text-muted);background:rgba(255,255,255,0.05);padding:2px 8px;border-radius:99px;"># Amex Gold</span>
-          <span style="font-size:0.68rem;color:var(--text-muted);background:rgba(255,255,255,0.05);padding:2px 8px;border-radius:99px;"># 年会費回収</span>
-          <span style="font-size:0.68rem;color:var(--text-muted);background:rgba(255,255,255,0.05);padding:2px 8px;border-radius:99px;"># 食費4x</span>
-        </div>
-        <div style="font-size:0.8rem;color:#C9A84C;font-weight:700;display:flex;align-items:center;gap:4px;">続きを読む <span style="font-size:1rem;">→</span></div>
-      </div>
-    </div>
-  </a>
-
-  <!-- 記事8 -->
-  <a href="/blog/poikatsu-us.html" style="display:block;text-decoration:none;color:inherit;">
-    <div style="background:var(--card-bg);border:1px solid rgba(93,190,138,0.25);border-radius:20px;margin-bottom:16px;overflow:hidden;transition:transform 0.2s,box-shadow 0.2s;" onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='0 12px 30px rgba(0,0,0,0.3)'" onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='none'">
-      <div style="background:linear-gradient(135deg,rgba(93,190,138,0.2),rgba(93,190,138,0.05));padding:16px 18px 12px;">
-        <div style="display:flex;gap:8px;align-items:center;margin-bottom:8px;flex-wrap:wrap;">
-          <span style="background:#5DBE8A;color:#0D1B2E;padding:3px 10px;border-radius:99px;font-size:0.68rem;font-weight:700;">💰 ポイ活・節約</span>
-          <span style="background:rgba(255,255,255,0.1);color:var(--text-muted);padding:3px 8px;border-radius:99px;font-size:0.68rem;">📖 約12分</span>
-        </div>
-        <div style="font-size:1.05rem;font-weight:900;line-height:1.4;color:var(--text);">【2026年最新】アメリカでお得なポイ活5選｜クレカと組み合わせて年間$500節約</div>
-      </div>
-      <div style="padding:12px 18px 16px;">
-        <div style="font-size:0.78rem;color:var(--text-muted);line-height:1.6;margin-bottom:12px;">ショッピングポータル・DashPass・Rakuten・Ibotta・ギフトカード割引。クレカポイントと組み合わせて二重・三重取りする方法を完全解説。</div>
-        <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px;">
-          <span style="font-size:0.68rem;color:var(--text-muted);background:rgba(255,255,255,0.05);padding:2px 8px;border-radius:99px;"># Ibotta</span>
-          <span style="font-size:0.68rem;color:var(--text-muted);background:rgba(255,255,255,0.05);padding:2px 8px;border-radius:99px;"># DashPass</span>
-          <span style="font-size:0.68rem;color:var(--text-muted);background:rgba(255,255,255,0.05);padding:2px 8px;border-radius:99px;"># 二重取り</span>
-        </div>
-        <div style="font-size:0.8rem;color:#5DBE8A;font-weight:700;display:flex;align-items:center;gap:4px;">続きを読む <span style="font-size:1rem;">→</span></div>
-      </div>
-    </div>
-  </a>
+  <!-- 記事一覧（JS生成） -->
+  <div id="blogList"></div>
 
   <div style="text-align:center;padding:24px 20px;color:var(--text-muted);font-size:0.78rem;background:var(--card-bg);border-radius:16px;border:1px dashed rgba(255,255,255,0.1);">
     <div style="font-size:1.5rem;margin-bottom:8px;">✍️</div>
@@ -1386,19 +1253,19 @@ const cards = [
     tags: ["travel", "hot"],
     tagLabels: { travel: "旅行向け", hot: "🔥人気No.1" },
     annualFee: "$95",
-    signupBonus: "60,000 Urポイント（$750相当）",
+    signupBonus: "最大60,000 Urポイント",
     signupCondition: "3ヶ月で$4,000利用",
-    rewards: "旅行・食事 3x、その他 1x",
+    rewards: "旅行・食事 3x、Chase Travel 5x、ストリーミング 3x、その他 1x",
     foreignFee: "なし ✅",
     ssnRequired: "easy",
     ssnNote: "SSNなし可（パスポートで申込可能なケースあり）",
     difficulty: "★★☆",
     url: "https://creditcards.chase.com/travel-credit-cards/sapphire/preferred",
     details: {
-      pros: ["Chaseの旅行ポータル経由で1.25倍の価値", "旅行保険・レンタカー保険付き", "DoorDash・Lyft特典あり"],
+      pros: ["Chase Travel経由で5x還元", "旅行・レンタカー保険付き", "DashPass 2027年末まで無料", "ANA・JALへのマイル移行1:1"],
       cons: ["年会費$95かかる", "クレヒス6ヶ月以上推奨"],
-      tips: "Chase 5/24ルールに注意！過去24ヶ月で5枚以上申し込むと審査落ちる可能性大。",
-      jpNote: "在米日本人に最も人気！Urポイントは日系航空会社（ANA・JAL）にも移行可能。"
+      tips: "Chase 5/24ルールに注意！過去24ヶ月で5枚以上申し込むと審査落ちる可能性大。渡米後最優先で申し込むべきカード。",
+      jpNote: "在米日本人に最も人気！Urポイントは日系航空会社（ANA直接・JALはBA経由）に1:1で移行可能。"
     }
   },
   {
@@ -1409,20 +1276,20 @@ const cards = [
     accent: "#FFD600",
     tags: ["travel", "cashback"],
     tagLabels: { travel: "旅行向け", cashback: "食費お得" },
-    annualFee: "$250",
-    signupBonus: "60,000 MRポイント",
-    signupCondition: "6ヶ月で$6,000利用",
-    rewards: "レストラン・スーパー 4x、旅行 3x",
+    annualFee: "$325（実質クレジット活用で$0〜）",
+    signupBonus: "最大100,000 MRポイント",
+    signupCondition: "6ヶ月で$8,000利用",
+    rewards: "レストラン・スーパー 4x、フライト直接購入 3x、その他 1x",
     foreignFee: "なし ✅",
     ssnRequired: "medium",
     ssnNote: "SSN必須（ITIN可能なケースあり）",
     difficulty: "★★★",
     url: "https://www.americanexpress.com/us/credit-cards/card/gold-card/",
     details: {
-      pros: ["食費4x還元は業界最強クラス", "毎月$10ダイニングクレジット", "毎月$10 Uberキャッシュ"],
-      cons: ["実質年会費は$250だが、クレジット活用で実質$10程度に", "Amexが使えない店もある"],
-      tips: "Cheesecake Factory、Grubhub等でクレジット活用でほぼ元が取れる。",
-      jpNote: "日本のスーパーやレストランもスーパーカテゴリに入ることが多い。"
+      pros: ["食費・スーパー4x還元は業界最強クラス", "毎月$10ダイニングクレジット（Grubhub等）", "毎月$10 Uber Cash", "半期$50 Resyクレジット", "毎月$7 Dunkin'クレジット"],
+      cons: ["年会費$325（クレジット全回収で実質$0）", "Amexが使えない店もある"],
+      tips: "Grubhub・Uber Eats・Dunkin'・Resyで毎月クレジットを回収すれば年間$424以上の価値に。家族の食費を集約するのが最強。",
+      jpNote: "MRポイントはANA（直接1:1）・JAL（BA経由1:1:1）へ移行可。帰国マイル積み上げに最適。"
     }
   },
   {
@@ -1839,9 +1706,9 @@ function showResult() {
   // Scoring logic (9 cards now)
   const scores = { 1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0, 7: 0, 8: 0, 9: 0, 10: 0, 11: 0 };
 
-  // History
-  if (history === 'nohistory') { scores[3] += 3; scores[6] += 3; scores[10] += 4; scores[11] += 4; }
-  else if (history === 'some') { scores[4] += 2; scores[6] += 2; scores[1] += 1; }
+  // History - クレヒスなし → JAL/ANAカードを強く推薦
+  if (history === 'nohistory') { scores[3] += 2; scores[6] += 2; scores[10] += 5; scores[11] += 5; }
+  else if (history === 'some') { scores[4] += 2; scores[6] += 2; scores[1] += 1; scores[10] += 1; scores[11] += 1; }
   else { scores[1] += 3; scores[2] += 3; scores[5] += 2; scores[7] += 2; scores[8] += 1; scores[9] += 1; }
 
   // Fee
@@ -1857,7 +1724,9 @@ function showResult() {
   else if (goal === 'airline') { scores[8] += 3; scores[9] += 3; scores[5] += 1; }
 
   // Japan
-  if (japan === 'often') { scores[1] += 2; scores[5] += 2; scores[6] += 2; scores[2] += 1; }
+  // Japan travel - JAL/ANAカードと日本便カードを強化
+  if (japan === 'often') { scores[1] += 2; scores[5] += 2; scores[10] += 3; scores[11] += 3; scores[2] += 1; }
+  else if (japan === 'sometimes') { scores[1] += 1; scores[10] += 2; scores[11] += 2; }
 
   // Family (new Q5)
   if (family === 'single') { scores[3] += 2; scores[4] += 1; }
@@ -2290,6 +2159,159 @@ function closeInfoModal(e) {
 function closeInfoModalDirect() {
   document.getElementById('infoModalOverlay').classList.remove('open');
 }
+
+// === ブログデータ（タブ分類付き） ===
+const blogPosts = [
+  {
+    url: '/blog/first-credit-card.html',
+    category: 'beginner',
+    categoryLabel: '🔰 クレカ初心者',
+    categoryColor: 'var(--orange)',
+    accentColor: 'rgba(245,118,58,0.2)',
+    borderColor: 'rgba(245,166,35,0.2)',
+    readTime: '約10分',
+    title: 'アメリカでクレジットカードを作る完全ガイド',
+    desc: '在米日本人がゼロから始める方法。SSN・ITINの違い、初心者におすすめのカード3選、クレヒスを最速で育てるコツまで完全網羅。',
+    tags: ['# SSNなし', '# クレヒス構築', '# 最初の1枚'],
+    linkColor: 'var(--orange)'
+  },
+  {
+    url: '/blog/family-credit-card-strategy.html',
+    category: 'family',
+    categoryLabel: '👨‍👩‍👧‍👦 駐在員・家族向け',
+    categoryColor: '#8B5CF6',
+    accentColor: 'rgba(139,92,246,0.2)',
+    borderColor: 'rgba(139,92,246,0.25)',
+    readTime: '約12分',
+    title: '駐在員家族のクレカ戦略｜家族全員でポイントを最大化する完全ガイド',
+    desc: '配偶者のクレヒス構築法、Authorized User活用、夫婦カードの最強コンボ、子どものクレカ戦略まで。家族全員で賢くポイントを貯める方法を解説。',
+    tags: ['# 配偶者', '# 夫婦コンボ', '# ANAマイル'],
+    linkColor: '#8B5CF6'
+  },
+  {
+    url: '/blog/chase-5-24-rule.html',
+    category: 'chase',
+    categoryLabel: '💎 Chase攻略',
+    categoryColor: '#117ACA',
+    accentColor: 'rgba(17,122,202,0.2)',
+    borderColor: 'rgba(17,122,202,0.25)',
+    readTime: '約12分',
+    title: 'Chase 5/24ルールとは？在米日本人が知っておくべき完全FAQ',
+    desc: '「審査落ちした…」を防ぐために必須の知識。カウントされるカード・されないカード、5/24に引っかかった時の対処法まで完全解説。',
+    tags: ['# 5/24ルール', '# Chase攻略', '# 申込戦略'],
+    linkColor: '#117ACA'
+  },
+  {
+    url: '/blog/jal-ana-usa-cards.html',
+    category: 'jal_ana',
+    categoryLabel: '✈️ JAL・ANA',
+    categoryColor: '#C8102E',
+    accentColor: 'rgba(200,16,46,0.15)',
+    borderColor: 'rgba(200,16,46,0.2)',
+    readTime: '約14分',
+    title: '渡米後の最初の1枚はJAL・ANA USAカード？マイルを最大化する完全戦略',
+    desc: 'クレヒスゼロでも申込できるJAL・ANA USAカードの比較と、Chase・Amexと組み合わせたマイル最大化戦略。渡米後のクレカロードマップを完全解説。',
+    tags: ['# JAL USAカード', '# ANA CARD USA', '# 帰国マイル'],
+    linkColor: '#C8102E'
+  },
+  {
+    url: '/blog/improve-credit-score.html',
+    category: 'beginner',
+    categoryLabel: '📈 クレジットスコア',
+    categoryColor: '#5DBE8A',
+    accentColor: 'rgba(93,190,138,0.2)',
+    borderColor: 'rgba(93,190,138,0.25)',
+    readTime: '約12分',
+    title: 'アメリカのクレジットスコアを上げる5つの方法｜在米日本人の実践ガイド',
+    desc: 'FICOスコアの仕組みから、支払い管理・利用率・Hard Inquiry対策まで。渡米後12〜18ヶ月でスコア700以上を目指す実践的な方法を解説。',
+    tags: ['# FICOスコア', '# 利用率', '# 700達成'],
+    linkColor: '#5DBE8A'
+  },
+  {
+    url: '/blog/chase-trifecta.html',
+    category: 'chase',
+    categoryLabel: '💎 Chase攻略',
+    categoryColor: '#117ACA',
+    accentColor: 'rgba(17,122,202,0.2)',
+    borderColor: 'rgba(17,122,202,0.25)',
+    readTime: '約12分',
+    title: 'Chaseトリフェクタ完全解説｜Freedom+Sapphireで最強ポイントを最大化する方法',
+    desc: 'Chase3枚の最強コンボ「トリフェクタ」を完全解説。Urポイントの集約方法・JAL/ANAマイルへの移行・家族での使い方まで。年間10万pt以上も現実的！',
+    tags: ['# トリフェクタ', '# Urポイント', '# ポイント最大化'],
+    linkColor: '#117ACA'
+  },
+  {
+    url: '/blog/amex-gold-guide.html',
+    category: 'amex',
+    categoryLabel: '🥇 Amex攻略',
+    categoryColor: '#C9A84C',
+    accentColor: 'rgba(201,168,76,0.2)',
+    borderColor: 'rgba(201,168,76,0.25)',
+    readTime: '約12分',
+    title: '【2026年最新】Amex Gold完全攻略｜年会費$325を実質$0にする毎月のクレジット回収手順',
+    desc: 'Uber Cash・ダイニング・Resy・Dunkin\'の4つのクレジットを毎月回収して年会費を実質無料に。初期設定から毎月のチェックリストまで完全解説。',
+    tags: ['# Amex Gold', '# 年会費回収', '# 食費4x'],
+    linkColor: '#C9A84C'
+  },
+  {
+    url: '/blog/poikatsu-us.html',
+    category: 'savings',
+    categoryLabel: '💰 ポイ活・節約',
+    categoryColor: '#5DBE8A',
+    accentColor: 'rgba(93,190,138,0.2)',
+    borderColor: 'rgba(93,190,138,0.25)',
+    readTime: '約14分',
+    title: '【2026年最新】アメリカでお得なポイ活6選｜TopCashback・Fetch・Rakuten・Ibottaを完全解説',
+    desc: 'TopCashback・Rakuten・Fetch・Ibotta・DashPass・ギフトカード割引。クレカポイントと組み合わせて二重・三重取りする方法を完全解説。',
+    tags: ['# TopCashback', '# Fetch', '# 二重取り'],
+    linkColor: '#5DBE8A'
+  }
+];
+
+function filterBlog(cat, btn) {
+  // タブスタイル更新
+  document.querySelectorAll('.blog-tab').forEach(b => {
+    b.style.background = 'transparent';
+    b.style.color = 'var(--text-muted)';
+    b.style.borderColor = 'var(--border)';
+  });
+  btn.style.background = 'rgba(245,166,35,0.15)';
+  btn.style.color = 'var(--amber)';
+  btn.style.borderColor = 'rgba(245,166,35,0.5)';
+
+  const filtered = cat === 'all' ? blogPosts : blogPosts.filter(p => p.category === cat);
+  renderBlogList(filtered);
+}
+
+function renderBlogList(posts) {
+  const container = document.getElementById('blogList');
+  if (!container) return;
+  container.innerHTML = posts.map(p => `
+    <a href="${p.url}" style="display:block;text-decoration:none;color:inherit;">
+      <div style="background:var(--card-bg);border:1px solid ${p.borderColor};border-radius:20px;margin-bottom:16px;overflow:hidden;transition:transform 0.2s,box-shadow 0.2s;" onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='0 12px 30px rgba(0,0,0,0.3)'" onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='none'">
+        <div style="background:linear-gradient(135deg,${p.accentColor},rgba(0,0,0,0));padding:16px 18px 12px;">
+          <div style="display:flex;gap:8px;align-items:center;margin-bottom:8px;flex-wrap:wrap;">
+            <span style="background:${p.categoryColor};color:white;padding:3px 10px;border-radius:99px;font-size:0.68rem;font-weight:700;">${p.categoryLabel}</span>
+            <span style="background:rgba(255,255,255,0.1);color:var(--text-muted);padding:3px 8px;border-radius:99px;font-size:0.68rem;">📖 ${p.readTime}</span>
+          </div>
+          <div style="font-size:1.05rem;font-weight:900;line-height:1.4;color:var(--text);">${p.title}</div>
+        </div>
+        <div style="padding:12px 18px 16px;">
+          <div style="font-size:0.78rem;color:var(--text-muted);line-height:1.6;margin-bottom:12px;">${p.desc}</div>
+          <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px;">
+            ${p.tags.map(t => `<span style="font-size:0.68rem;color:var(--text-muted);background:rgba(255,255,255,0.05);padding:2px 8px;border-radius:99px;">${t}</span>`).join('')}
+          </div>
+          <div style="font-size:0.8rem;color:${p.linkColor};font-weight:700;display:flex;align-items:center;gap:4px;">続きを読む <span style="font-size:1rem;">→</span></div>
+        </div>
+      </div>
+    </a>
+  `).join('');
+}
+
+// 初期表示
+document.addEventListener('DOMContentLoaded', () => {
+  renderBlogList(blogPosts);
+});
 
 // === シェア機能 ===
 function shareCard(platform) {
