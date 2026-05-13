@@ -981,13 +981,13 @@ transition: transform 0.2s, opacity 0.2s;
 
 <!-- お知らせバナー -->
 
-<div id="noticeBanner" style="background:linear-gradient(135deg,rgba(227,24,55,0.18),rgba(227,24,55,0.06));border-bottom:1px solid rgba(227,24,55,0.2);padding:10px 16px;display:flex;align-items:center;gap:10px;position:relative;z-index:20;">
-  <span style="font-size:1rem;flex-shrink:0;">✈️</span>
+<div id="noticeBanner" style="background:linear-gradient(135deg,rgba(14,165,233,0.18),rgba(14,165,233,0.06));border-bottom:1px solid rgba(14,165,233,0.2);padding:10px 16px;display:flex;align-items:center;gap:10px;position:relative;z-index:20;">
+  <span style="font-size:1rem;flex-shrink:0;">🛫</span>
   <div style="flex:1;min-width:0;">
-    <div style="font-size:0.72rem;font-weight:900;color:#E8304A;">📢 新着記事</div>
-    <div style="font-size:0.75rem;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Delta Reserve vs Gold｜年会費$650は本当に元が取れる？実体験記</div>
+    <div style="font-size:0.72rem;font-weight:900;color:#0EA5E9;">📢 新着記事</div>
+    <div style="font-size:0.75rem;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Global Entry & TSA PreCheck｜申請費用$120をクレカ特典で無料にする方法</div>
   </div>
-  <a href="/blog/delta-reserve-vs-gold.html" style="flex-shrink:0;background:#E31837;color:white;padding:5px 10px;border-radius:8px;text-decoration:none;font-size:0.7rem;font-weight:700;">読む</a>
+  <a href="/blog/global-entry-tsa-precheck-guide.html" style="flex-shrink:0;background:#0EA5E9;color:white;padding:5px 10px;border-radius:8px;text-decoration:none;font-size:0.7rem;font-weight:700;">読む</a>
   <button onclick="document.getElementById('noticeBanner').style.display='none'" style="flex-shrink:0;background:transparent;border:none;color:var(--text-muted);font-size:1rem;cursor:pointer;padding:0 4px;">✕</button>
 </div>
 
@@ -2630,6 +2630,19 @@ const blogPosts = [
     desc: 'Delta Platinum→Reserveにアップグレードして1年使った著者が正直に比較。Sky Clubラウンジ・コンパニオン証・MQD Boostの実際の価値を計算。来年はGoldにダウングレード予定の理由も公開。',
     tags: ['# Delta Reserve', '# Sky Club', '# 実体験'],
     linkColor: '#E31837'
+  },
+  {
+    url: '/blog/global-entry-tsa-precheck-guide.html',
+    category: 'beginner',
+    categoryLabel: '🛫 渡航・空港',
+    categoryColor: '#0EA5E9',
+    accentColor: 'rgba(14,165,233,0.15)',
+    borderColor: 'rgba(14,165,233,0.25)',
+    readTime: '約12分',
+    title: '【後悔しないで】Global Entry & TSA PreCheck完全ガイド｜申請費用$120をクレカ特典で無料にする方法',
+    desc: 'Global Entry（$120）の申請費用をクレカ特典で無料にする方法を完全解説。Capital One Venture・Delta Reserve等の対象カード一覧・日本からの申請方法・著者の実体験の後悔談付き。',
+    tags: ['# Global Entry', '# TSA PreCheck', '# 申請費用無料'],
+    linkColor: '#0EA5E9'
   }
 ];
 
