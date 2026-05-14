@@ -983,13 +983,13 @@ transition: transform 0.2s, opacity 0.2s;
 
 <!-- お知らせバナー -->
 
-<div id="noticeBanner" style="background:linear-gradient(135deg,rgba(14,165,233,0.18),rgba(14,165,233,0.06));border-bottom:1px solid rgba(14,165,233,0.2);padding:10px 16px;display:flex;align-items:center;gap:10px;position:relative;z-index:20;">
-  <span style="font-size:1rem;flex-shrink:0;">🛫</span>
+<div id="noticeBanner" style="background:linear-gradient(135deg,rgba(17,122,202,0.2),rgba(17,122,202,0.06));border-bottom:1px solid rgba(17,122,202,0.2);padding:10px 16px;display:flex;align-items:center;gap:10px;position:relative;z-index:20;">
+  <span style="font-size:1rem;flex-shrink:0;">🚗</span>
   <div style="flex:1;min-width:0;">
-    <div style="font-size:0.72rem;font-weight:900;color:#0EA5E9;">📢 新着記事</div>
-    <div style="font-size:0.75rem;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Global Entry & TSA PreCheck｜申請費用$120をクレカ特典で無料にする方法</div>
+    <div style="font-size:0.72rem;font-weight:900;color:#117ACA;">📢 新着記事</div>
+    <div style="font-size:0.75rem;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">家族旅行・レンタカーでポイントを最大化する方法｜Chase保険活用まで</div>
   </div>
-  <a href="/blog/global-entry-tsa-precheck-guide.html" style="flex-shrink:0;background:#0EA5E9;color:white;padding:5px 10px;border-radius:8px;text-decoration:none;font-size:0.7rem;font-weight:700;">読む</a>
+  <a href="/blog/family-travel-points-guide.html" style="flex-shrink:0;background:#117ACA;color:white;padding:5px 10px;border-radius:8px;text-decoration:none;font-size:0.7rem;font-weight:700;">読む</a>
   <button onclick="document.getElementById('noticeBanner').style.display='none'" style="flex-shrink:0;background:transparent;border:none;color:var(--text-muted);font-size:1rem;cursor:pointer;padding:0 4px;">✕</button>
 </div>
 
@@ -1886,8 +1886,20 @@ function showResult() {
     11: `${historyLabel}・${japanLabel}のANA派にANA CARD U.S.A. Plusが最適です。クレヒスなし・SSNなしでもOK、フライト25%ボーナスとプライオリティチェックインが魅力。渡米直後の最初の1枚として渡米直後から積み上げを始めましょう。`
   };
 
+  // カードIDに応じたリファラルリンクを返す関数
+  function getReferralUrl(cardId, fallbackUrl) {
+    const referralUrls = {
+      1: 'https://www.referyourchasecard.com/19w/91C9FPQNE1',  // Chase Sapphire Preferred
+      2: 'https://americanexpress.com/en-us/referral/gold-card?ref=NAOS46d5&xl=cp15', // Amex Gold
+      4: 'https://www.referyourchasecard.com/18a/Q6CR8LZ9Q1',  // Chase Freedom Unlimited
+      8: 'https://americanexpress.com/en-us/referral/delta-skymiles-gold?ref=NAOSKWKl&xl=cp15', // Delta Gold
+    };
+    return referralUrls[cardId] || fallbackUrl;
+  }
+
   const resultCard = document.getElementById('resultCard');
   resultCard.style.setProperty('--result-color', top.accent);
+  const topReferralUrl = getReferralUrl(top.id, top.url);
   resultCard.innerHTML = `
     <div class="result-emoji">${top.emoji}</div>
     <div class="result-label">${top.issuer}</div>
@@ -1915,8 +1927,11 @@ function showResult() {
         <div style="font-size:0.85rem;font-weight:700;">${top.difficulty}</div>
       </div>
     </div>
-    <div style="display:flex;gap:8px;margin-top:16px;">
-      <button class="apply-btn" style="background:${top.accent};flex:1;" onclick="window.open('${top.url}','_blank')">📝 公式サイトで申し込む →</button>
+    <div style="background:rgba(255,255,255,0.04);border-radius:10px;padding:8px 10px;margin:10px 0;font-size:0.7rem;color:#9DB8D4;line-height:1.55;">
+      🤝 下のボタンは<strong style="color:#FFF8EE;">友人紹介リンク</strong>です。承認された場合、<strong style="color:#FFF8EE;">あなたのボーナスは公式と同じ</strong>で、追加で運営者にもボーナスが付与されます。
+    </div>
+    <div style="display:flex;gap:8px;margin-top:10px;">
+      <button class="apply-btn" style="background:${top.accent};flex:1;" onclick="window.open('${topReferralUrl}','_blank')">📝 申し込む（友人紹介）→</button>
       <button style="background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);color:white;padding:0 14px;border-radius:12px;font-family:'Zen Maru Gothic',sans-serif;font-size:0.78rem;cursor:pointer;font-weight:700;" onclick="openCardModal(${top.id})">詳細</button>
     </div>
   `;
@@ -2645,6 +2660,19 @@ const blogPosts = [
     desc: 'Global Entry（$120）の申請費用をクレカ特典で無料にする方法を完全解説。Capital One Venture・Delta Reserve等の対象カード一覧・日本からの申請方法・著者の実体験の後悔談付き。',
     tags: ['# Global Entry', '# TSA PreCheck', '# 申請費用無料'],
     linkColor: '#0EA5E9'
+  },
+  {
+    url: '/blog/family-travel-points-guide.html',
+    category: 'chase',
+    categoryLabel: '✈️ 家族旅行・レンタカー',
+    categoryColor: '#117ACA',
+    accentColor: 'rgba(17,122,202,0.2)',
+    borderColor: 'rgba(17,122,202,0.25)',
+    readTime: '約13分',
+    title: '【2026年最新】家族旅行・レンタカーでポイントを最大化する方法｜Chase Sapphireの保険活用まで完全解説',
+    desc: 'Chase Sapphire Preferredのレンタカー一次保険でCDWを断って節約、Chase Travel経由で5xポイント獲得、JAL便でボーナスマイル。家族旅行のポイント最大化戦略を完全解説。',
+    tags: ['# レンタカー保険', '# Chase Travel 5x', '# 家族旅行'],
+    linkColor: '#117ACA'
   }
 ];
 
