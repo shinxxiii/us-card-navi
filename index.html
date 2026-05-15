@@ -1008,13 +1008,13 @@ transition: transform 0.2s, opacity 0.2s;
 
 <!-- お知らせバナー -->
 
-<div id="noticeBanner" style="background:linear-gradient(135deg,rgba(245,166,35,0.2),rgba(245,166,35,0.06));border-bottom:1px solid rgba(245,166,35,0.2);padding:10px 16px;display:flex;align-items:center;gap:10px;position:relative;z-index:20;">
-  <span style="font-size:1rem;flex-shrink:0;">🏨</span>
+<div id="noticeBanner" style="background:linear-gradient(135deg,rgba(201,168,76,0.2),rgba(201,168,76,0.06));border-bottom:1px solid rgba(201,168,76,0.2);padding:10px 16px;display:flex;align-items:center;gap:10px;position:relative;z-index:20;">
+  <span style="font-size:1rem;flex-shrink:0;">🔒</span>
   <div style="flex:1;min-width:0;">
-    <div style="font-size:0.72rem;font-weight:900;color:#F5A623;">📢 新着記事</div>
-    <div style="font-size:0.75rem;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Marriott vs Hyatt vs Hilton 徹底比較｜駐在員はどれを推進すべき？</div>
+    <div style="font-size:0.72rem;font-weight:900;color:#C9A84C;">📢 新着記事</div>
+    <div style="font-size:0.75rem;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Amex Pop-up Jail完全ガイド｜ウェルカムボーナス対象外の原因と回避法</div>
   </div>
-  <a href="/blog/hotel-points-comparison.html" style="flex-shrink:0;background:#F5A623;color:#0A1628;padding:5px 10px;border-radius:8px;text-decoration:none;font-size:0.7rem;font-weight:700;">読む</a>
+  <a href="/blog/amex-popup-jail-guide.html" style="flex-shrink:0;background:#C9A84C;color:#0A1628;padding:5px 10px;border-radius:8px;text-decoration:none;font-size:0.7rem;font-weight:700;">読む</a>
   <button onclick="document.getElementById('noticeBanner').style.display='none'" style="flex-shrink:0;background:transparent;border:none;color:var(--text-muted);font-size:1rem;cursor:pointer;padding:0 4px;">✕</button>
 </div>
 
@@ -2779,6 +2779,19 @@ const blogPosts = [
     desc: '3大ホテルプログラムを2026年最新情報で徹底比較。ポイント価値・エリートステータス取得難易度・在米日本人駐在員にはHilton Aspireが最適な理由を著者の実体験ベースで解説。',
     tags: ['# ホテルポイント比較', '# Hilton Aspire', '# Diamond自動付与'],
     linkColor: '#F5A623'
+  },
+  {
+    url: '/blog/amex-popup-jail-guide.html',
+    category: 'amex',
+    categoryLabel: '🥇 Amex攻略',
+    categoryColor: '#C9A84C',
+    accentColor: 'rgba(201,168,76,0.15)',
+    borderColor: 'rgba(201,168,76,0.25)',
+    readTime: '約12分',
+    title: '【2026年最新】Amex Pop-up Jail（ポップアップジェイル）完全ガイド｜ウェルカムボーナス対象外の原因・回避法・脱出法',
+    desc: 'Amexカード申請中に「ウェルカムボーナスの対象外です」と表示されるPop-up Jailの原因5つ・回避法・脱出法を完全解説。リファラルリンクとの関係・Manual Review活用法・著者の実体験あり。',
+    tags: ['# Pop-up Jail', '# Amexボーナス', '# 対象外回避'],
+    linkColor: '#C9A84C'
   }
 ];
 
