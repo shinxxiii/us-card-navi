@@ -46,6 +46,9 @@
   gtag('config', 'G-XB5X4LK6FL');
 </script>
 
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;500;700;900&family=Baloo+2:wght@700;800&family=Yusei+Magic&family=Mochiy+Pop+One&display=swap">
 <link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;500;700;900&family=Baloo+2:wght@700;800&family=Yusei+Magic&family=Mochiy+Pop+One&display=swap" rel="stylesheet">
 <style>
   :root {
@@ -67,7 +70,7 @@ html {
 background: #0A1628 !important;
 }
 
-/* PC対応：最大幅制限 */
+/* PC対応：最大幅制限・大画面で見やすく */
 @media (min-width: 600px) {
 body {
 display: flex;
@@ -83,6 +86,28 @@ position: relative;
 box-shadow: 0 0 60px rgba(0,0,0,0.6);
 }
 }
+
+/* 大画面：左右にサイドノートを表示してデスクトップ感を強化 */
+@media (min-width: 1200px) {
+body::before, body::after {
+content: ‘’;
+position: fixed;
+top: 0;
+bottom: 0;
+width: calc(50vw - 240px);
+pointer-events: none;
+z-index: -1;
+}
+body::before {
+left: 0;
+background: radial-gradient(circle at 80% 50%, rgba(245,166,35,0.04) 0%, transparent 70%);
+}
+body::after {
+right: 0;
+background: radial-gradient(circle at 20% 50%, rgba(0,212,255,0.04) 0%, transparent 70%);
+}
+}
+
 @media (max-width: 599px) {
 .pc-wrapper {
 width: 100%;
@@ -1216,11 +1241,13 @@ transition: transform 0.2s, opacity 0.2s;
     </div>
     <div class="suggested-chips" id="chipArea">
       <button class="chip" onclick="sendChip('渡米前にやるべき準備は？')">渡米前の準備は？</button>
-      <button class="chip" onclick="sendChip('Amex Global Transferって何？')">Global Transferとは？</button>
       <button class="chip" onclick="sendChip('クレヒスゼロから始めるには？')">クレヒスゼロから</button>
-      <button class="chip" onclick="sendChip('日本帰国のANAマイルを貯めたい')">ANAマイル貯めたい</button>
-      <button class="chip" onclick="sendChip('TopCashbackやFetchなどポイ活を教えて')">ポイ活を教えて</button>
-      <button class="chip" onclick="sendChip('Chaseトリフェクタとは？')">Chaseトリフェクタ</button>
+      <button class="chip" onclick="sendChip('Hilton AspireとMarriottどっち？')">🏨 ホテル戦略</button>
+      <button class="chip" onclick="sendChip('レンタカー保険って必要？')">🚗 レンタカー</button>
+      <button class="chip" onclick="sendChip('Global Entryの申請費を無料にしたい')">🛫 Global Entry</button>
+      <button class="chip" onclick="sendChip('Chase Inkビジネスカードについて')">💼 ビジネスカード</button>
+      <button class="chip" onclick="sendChip('配偶者のクレカどうする？')">👨‍👩‍👧 配偶者カード</button>
+      <button class="chip" onclick="sendChip('Chaseトリフェクタとは？')">💎 Chaseトリフェクタ</button>
     </div>
   </div>
 
@@ -1288,8 +1315,8 @@ transition: transform 0.2s, opacity 0.2s;
     <button onclick="filterBlog('beginner', this)" class="blog-tab" style="flex-shrink:0;padding:7px 14px;border-radius:99px;border:1px solid var(--border);background:transparent;color:var(--text-muted);font-family:'Zen Maru Gothic',sans-serif;font-size:0.75rem;font-weight:700;cursor:pointer;white-space:nowrap;">🔰 初心者</button>
     <button onclick="filterBlog('chase', this)" class="blog-tab" style="flex-shrink:0;padding:7px 14px;border-radius:99px;border:1px solid var(--border);background:transparent;color:var(--text-muted);font-family:'Zen Maru Gothic',sans-serif;font-size:0.75rem;font-weight:700;cursor:pointer;white-space:nowrap;">💎 Chase</button>
     <button onclick="filterBlog('amex', this)" class="blog-tab" style="flex-shrink:0;padding:7px 14px;border-radius:99px;border:1px solid var(--border);background:transparent;color:var(--text-muted);font-family:'Zen Maru Gothic',sans-serif;font-size:0.75rem;font-weight:700;cursor:pointer;white-space:nowrap;">🥇 Amex</button>
-    <button onclick="filterBlog('jal_ana', this)" class="blog-tab" style="flex-shrink:0;padding:7px 14px;border-radius:99px;border:1px solid var(--border);background:transparent;color:var(--text-muted);font-family:'Zen Maru Gothic',sans-serif;font-size:0.75rem;font-weight:700;cursor:pointer;white-space:nowrap;">✈️ JAL/ANA</button>
-    <button onclick="filterBlog('savings', this)" class="blog-tab" style="flex-shrink:0;padding:7px 14px;border-radius:99px;border:1px solid var(--border);background:transparent;color:var(--text-muted);font-family:'Zen Maru Gothic',sans-serif;font-size:0.75rem;font-weight:700;cursor:pointer;white-space:nowrap;">💰 節約</button>
+    <button onclick="filterBlog('jal_ana', this)" class="blog-tab" style="flex-shrink:0;padding:7px 14px;border-radius:99px;border:1px solid var(--border);background:transparent;color:var(--text-muted);font-family:'Zen Maru Gothic',sans-serif;font-size:0.75rem;font-weight:700;cursor:pointer;white-space:nowrap;">✈️ 航空・ホテル</button>
+    <button onclick="filterBlog('savings', this)" class="blog-tab" style="flex-shrink:0;padding:7px 14px;border-radius:99px;border:1px solid var(--border);background:transparent;color:var(--text-muted);font-family:'Zen Maru Gothic',sans-serif;font-size:0.75rem;font-weight:700;cursor:pointer;white-space:nowrap;">💰 節約・ポイ活</button>
     <button onclick="filterBlog('family', this)" class="blog-tab" style="flex-shrink:0;padding:7px 14px;border-radius:99px;border:1px solid var(--border);background:transparent;color:var(--text-muted);font-family:'Zen Maru Gothic',sans-serif;font-size:0.75rem;font-weight:700;cursor:pointer;white-space:nowrap;">👨‍👩‍👧 家族</button>
   </div>
 
@@ -1833,31 +1860,65 @@ function showResult() {
 
   const scores = { 1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0, 7: 0, 8: 0, 9: 0, 10: 0, 11: 0 };
 
-  // History
-  if (history === 'nohistory') { scores[3] += 2; scores[6] += 2; scores[10] += 5; scores[11] += 5; }
-  else if (history === 'some') { scores[4] += 2; scores[6] += 2; scores[1] += 1; scores[10] += 1; scores[11] += 1; }
-  else { scores[1] += 3; scores[2] += 3; scores[5] += 2; scores[7] += 2; scores[8] += 1; scores[9] += 1; }
+  // History - クレヒス重視（より精緻化）
+  if (history === 'nohistory') {
+    scores[3] += 3;  // Discover Student（初心者向け）
+    scores[6] += 2;  // BoA（口座あれば作りやすい）
+    scores[10] += 6; // JAL USA（SSNなしOK）
+    scores[11] += 6; // ANA USA（SSNなしOK）
+  } else if (history === 'some') {
+    scores[4] += 3;  // Freedom Unlimited
+    scores[6] += 2;  // BoA
+    scores[1] += 2;  // CSP（やや厳しめ）
+    scores[10] += 2;
+    scores[11] += 2;
+    scores[2] += 1;  // Amex Gold
+  } else { // 1年以上
+    scores[1] += 4;  // CSP（最有力）
+    scores[2] += 4;  // Amex Gold
+    scores[5] += 3;  // Capital One Venture
+    scores[7] += 3;  // Hyatt
+    scores[8] += 2;  // Delta Gold
+    scores[9] += 2;  // Citi AA
+  }
 
   // Fee
-  if (fee === 'free') { scores[3] += 3; scores[4] += 3; scores[6] += 3; }
-  else if (fee === 'ok95') { scores[1] += 2; scores[5] += 2; scores[7] += 2; scores[4] += 1; }
-  else { scores[2] += 3; scores[1] += 2; scores[7] += 2; scores[8] += 2; scores[9] += 1; }
+  if (fee === 'free') {
+    scores[3] += 4; scores[4] += 4; scores[6] += 4;
+    scores[10] += 1; scores[11] += 1;  // JAL/ANA USAは年会費安い
+  } else if (fee === 'ok95') {
+    scores[1] += 3; scores[5] += 3; scores[7] += 3;
+    scores[4] += 1; scores[8] += 1; scores[9] += 1;
+  } else { // 高くてもOK
+    scores[2] += 4; scores[1] += 3; scores[7] += 3;
+    scores[8] += 2; scores[9] += 1;
+  }
 
   // Goal
-  if (goal === 'travel') { scores[1] += 3; scores[5] += 3; scores[6] += 1; }
-  else if (goal === 'food') { scores[2] += 3; scores[3] += 1; }
-  else if (goal === 'daily') { scores[4] += 3; scores[3] += 2; }
-  else if (goal === 'hotel') { scores[7] += 4; scores[1] += 1; }
-  else if (goal === 'airline') { scores[8] += 3; scores[9] += 3; scores[5] += 1; }
+  if (goal === 'travel') { scores[1] += 4; scores[5] += 3; scores[6] += 1; scores[7] += 1; }
+  else if (goal === 'food') { scores[2] += 5; scores[3] += 1; scores[1] += 1; }
+  else if (goal === 'daily') { scores[4] += 4; scores[3] += 2; scores[2] += 1; }
+  else if (goal === 'hotel') { scores[7] += 5; scores[1] += 2; }  // Hyattのみ・将来Hilton追加検討
+  else if (goal === 'airline') { scores[8] += 4; scores[9] += 4; scores[5] += 2; scores[10] += 1; scores[11] += 1; }
 
   // Japan
-  if (japan === 'often') { scores[1] += 2; scores[5] += 2; scores[10] += 3; scores[11] += 3; scores[2] += 1; }
-  else if (japan === 'sometimes') { scores[1] += 1; scores[10] += 2; scores[11] += 2; }
+  if (japan === 'often') {
+    scores[1] += 3; scores[5] += 2;
+    scores[10] += 4; scores[11] += 4;
+    scores[2] += 2; scores[4] += 1;
+  } else if (japan === 'sometimes') {
+    scores[1] += 2; scores[10] += 2; scores[11] += 2;
+  }
 
   // Family
-  if (family === 'single') { scores[3] += 2; scores[4] += 1; }
-  else if (family === 'couple') { scores[2] += 2; scores[1] += 1; }
-  else if (family === 'family') { scores[2] += 3; scores[7] += 2; scores[1] += 1; }
+  if (family === 'single') { scores[3] += 2; scores[4] += 2; scores[1] += 1; }
+  else if (family === 'couple') { scores[2] += 3; scores[1] += 2; scores[5] += 1; }
+  else if (family === 'family') {
+    scores[2] += 4;  // Amex Gold（食費家族向け）
+    scores[7] += 3;  // Hyatt（家族旅行）
+    scores[1] += 2;  // CSP（保険・5x旅行）
+    scores[4] += 1;
+  }
 
   // Sort
   const sorted = Object.entries(scores).sort((a, b) => b[1] - a[1]);
@@ -2076,6 +2137,38 @@ const offlineRules = [
   {
     keywords: ['比較', 'どっち', 'どれ', 'おすすめ', '迷'],
     reply: `目的別おすすめをまとめました🎯\n\n**旅行・マイル重視：** 💎 Chase Sapphire Preferred\n**食費・スーパー重視：** 🥇 Amex Gold Card\n**ホテル・出張多め：** 🏨 Chase World of Hyatt\n**Delta利用（ATL在住）：** ✈️ Delta SkyMiles Gold\n**初心者・クレヒスなし：** 🎓 Discover it Student\n**シンプルに全部お得：** ✈️ Capital One Venture\n**AA系で日本へ：** 🦅 Citi AAdvantage\n\n下の「診断」タブで5問答えると、さらに詳しくあなたに合ったカードが分かります！\n他に質問があれば気軽にどうぞ！`
+  },
+  {
+    keywords: ['ホテル', 'hotel', 'hilton', 'ヒルトン', 'marriott', 'マリオット', 'hyatt', 'ハイアット'],
+    reply: `ホテルポイント戦略についてお答えします🏨\n\n**3大ホテルプログラム比較：**\n\n🏆 **Hilton Honors（駐在員に最強）**\n・Aspireカード保有でDiamond自動付与\n・Aspire実質-$650（$400リゾート・$200航空・$600F&B）\n・無料宿泊証はカテゴリー上限なし\n\n💎 **World of Hyatt**\n・ポイント価値最強（1.5〜1.8セント/pt）\n・Chase Urポイントから1:1移行可能\n・ホテル数は少なめ（約1,400軒）\n\n🌐 **Marriott Bonvoy**\n・世界最大の9,700+物件\n・動的価格で予測しにくい\n・Titaniumは年75泊必要で困難\n\n月1出張ペースなら**Hilton Aspire**が圧倒的にお得！\n\n詳しくはブログ「Marriott vs Hyatt vs Hilton徹底比較」をご覧ください📖`
+  },
+  {
+    keywords: ['車', 'レンタカー', 'rental', 'cdw', '保険', 'insurance'],
+    reply: `レンタカー・車関連の戦略です🚗\n\n**Chase Sapphire Preferred/Reserveで保険料$0に！**\n\nレンタカー会社のCDW（衝突損害免除）は$15〜$30/日。年3回の家族旅行で**$420の節約**が可能です。\n\n**手順：**\n1. Chase Sapphireで全額支払い\n2. カウンターで「CDWは不要」と伝える\n3. 受け取り時に車の傷を確認・撮影\n4. Chase Travel経由なら5x還元！\n\n**注意：**\n・Chase Sapphireは「一次保険」として機能（マイカー保険を使わずに済む）\n・対人・対物事故は別途マイカー保険が必要\n\n詳しくはブログ「家族旅行・レンタカーでポイント最大化」をご覧ください📖`
+  },
+  {
+    keywords: ['出張', 'business trip', '頻繁'],
+    reply: `出張族向けクレカ戦略です✈️\n\n**月1出張ペースのおすすめ構成：**\n\n🥇 **Hilton Aspire**（年会費$550）\n・Diamond自動付与で朝食無料・ラウンジ・ルームアップグレード\n・$400リゾート・$200航空クレジットで実質-$650\n\n✈️ **Delta Reserve or Gold**（ATL在住者）\n・Reserve: Sky Club年15回・MQD Boost $2,500\n・Gold: 手荷物無料・優先搭乗・初年度無料\n\n💎 **Chase Sapphire Preferred**\n・Chase Travel 5x還元・レンタカー一次保険\n・UrポイントをANAマイルに移行\n\n**ATL在住なら**Delta + Hilton + Chase Sapphireの3枚で完璧！\n\n詳しくはブログ「ATL在住者のポイント戦略」をご覧ください📖`
+  },
+  {
+    keywords: ['delta', 'デルタ', 'sky club', 'スカイクラブ', 'reserve'],
+    reply: `Deltaカード戦略をお答えします✈️\n\n**Delta Reserve vs Gold：**\n\n🏆 **Delta Reserve（$650）**\n・Sky Clubラウンジ年15回\n・MQD $2,500 Boost\n・コンパニオン証\n・$240 Resy+$120ライドシェアクレジット\n・Global Entry $120クレジット\n\n✈️ **Delta Gold（$150・初年度無料）**\n・手荷物無料・優先搭乗\n・Delta購入2x\n・基本特典で十分\n\n**結論：**\n・年10回以上Delta利用 → Reserve\n・年4〜6回程度 → Gold\n・ATL在住で家族5人だとSky Clubを全員で使えないことも...\n\n著者は来年Goldにダウングレード予定。詳しくはブログ「Delta Reserve vs Gold実体験記」をご覧ください📖`
+  },
+  {
+    keywords: ['ビジネス', 'business card', 'ink', 'sole proprietor'],
+    reply: `ビジネスカード戦略をお答えします💼\n\n**駐在員でも申し込めます！**\n\nChase Ink Business系は**5/24カウントに含まれない**最大のメリットがあります。副業なし・収益$0のSole Proprietor（個人事業主）でもOK。\n\n**3枚のラインナップ：**\n\n💼 **Ink Business Preferred**（$95）\n・90,000ptウェルカムボーナス\n・旅行・通信・広告3x\n・Urマイル移行可能\n\n💳 **Ink Business Cash**（無料）\n・オフィス・通信5x（年$25K上限）\n・$750キャッシュバック\n\n🚀 **Ink Business Unlimited**（無料）\n・すべて1.5x\n・Sapphireと組み合わせで真価\n\n申請時は「Business Type: Sole Proprietorship」「Tax ID: SSN」でOK。\n\n詳しくはブログ「Chase Inkビジネスカード完全解説」をご覧ください📖`
+  },
+  {
+    keywords: ['global entry', 'tsa', 'precheck', 'プリチェック'],
+    reply: `Global Entry / TSA PreCheck活用法です🛫\n\n**結論：Global Entry一択！**（TSA PreCheck込み）\n\n**申請費用$120を無料にする方法：**\n対象カードで申請費用を支払えば自動的にクレジットされます。\n\n🥇 **Capital One Venture**（$95）← コスパ最強\n💎 **Chase Sapphire Reserve**（$795）\n✈️ **Delta Reserve/Platinum**\n🏆 **Amex Platinum**（$895・追加カード保有者も対象）\n\n**重要な順序：**\n1. 対象カードを先に取得\n2. ttp.dhs.govで申請・対象カードで支払い\n3. 1〜2明細サイクル後に自動クレジット\n\n**駐在員の注意：** 依存ビザの子供は申請資格を満たさない可能性あり。ただしTSA PreCheckは12歳以下の子供は親と同伴で無料利用可能！\n\n詳しくはブログ「Global Entry完全ガイド」をご覧ください📖`
+  },
+  {
+    keywords: ['銀行', '口座', 'checking', 'wise', 'wells'],
+    reply: `アメリカの銀行口座選びについてお答えします🏦\n\n**4大選択肢：**\n\n💎 **Chase**\n・Chase Sapphireと相性◎\n・月額$12（直接入金$500免除）\n\n🏛️ **Bank of America**\n・直接入金$250で免除と低い条件\n・BoA Travel Rewardsと相性◎\n\n🐂 **Wells Fargo**\n・南部（TX・GA・NC等）に強い\n・残高$500で手数料免除（最低条件）\n\n💱 **Wise**\n・送金最強（日米送金$3〜8）\n・渡米前から開設可能✅\n\n**おすすめ組み合わせ：**\nメイン銀行（Chase or BoA or WF）+ 送金用Wise = 最強コンボ\n\n詳しくはブログ「アメリカの銀行口座完全ガイド」をご覧ください📖`
+  },
+  {
+    keywords: ['配偶者', '妻', '夫', 'spouse', '家族会員', 'au', 'authorized user', 'itin'],
+    reply: `配偶者のクレカ戦略についてお答えします👨‍👩‍👧\n\n**依存ビザ（H-4・L-2等）の配偶者でも3つの方法でクレカが持てます：**\n\n① **Authorized User（AU）に追加**\n・即日OK・SSN不要\n・Chase・Amex等はAUのクレヒスも報告される\n\n② **JAL/ANA USAカードを単独申込**\n・SSNなし・クレヒスなしでOK\n・配偶者が主契約者になれる\n\n③ **ITINを取得して別カード申請**\n・Form W-7を税務申告と一緒に提出\n・7〜16週間で取得\n・配偶者名義で独立したクレヒス構築\n\n**おすすめロードマップ：**\n渡米直後にAU追加 + JAL/ANAカード → 確定申告でITIN取得 → 配偶者名義のAmex GoldやChase Sapphire申請\n\n詳しくはブログ「配偶者のクレカ戦略完全ガイド」をご覧ください📖`
   }
 ];
 
