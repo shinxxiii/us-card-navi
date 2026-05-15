@@ -983,13 +983,13 @@ transition: transform 0.2s, opacity 0.2s;
 
 <!-- お知らせバナー -->
 
-<div id="noticeBanner" style="background:linear-gradient(135deg,rgba(17,122,202,0.2),rgba(17,122,202,0.06));border-bottom:1px solid rgba(17,122,202,0.2);padding:10px 16px;display:flex;align-items:center;gap:10px;position:relative;z-index:20;">
-  <span style="font-size:1rem;flex-shrink:0;">🚗</span>
+<div id="noticeBanner" style="background:linear-gradient(135deg,rgba(245,166,35,0.2),rgba(245,166,35,0.06));border-bottom:1px solid rgba(245,166,35,0.2);padding:10px 16px;display:flex;align-items:center;gap:10px;position:relative;z-index:20;">
+  <span style="font-size:1rem;flex-shrink:0;">🏨</span>
   <div style="flex:1;min-width:0;">
-    <div style="font-size:0.72rem;font-weight:900;color:#117ACA;">📢 新着記事</div>
-    <div style="font-size:0.75rem;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">家族旅行・レンタカーでポイントを最大化する方法｜Chase保険活用まで</div>
+    <div style="font-size:0.72rem;font-weight:900;color:#F5A623;">📢 新着記事</div>
+    <div style="font-size:0.75rem;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Marriott vs Hyatt vs Hilton 徹底比較｜駐在員はどれを推進すべき？</div>
   </div>
-  <a href="/blog/family-travel-points-guide.html" style="flex-shrink:0;background:#117ACA;color:white;padding:5px 10px;border-radius:8px;text-decoration:none;font-size:0.7rem;font-weight:700;">読む</a>
+  <a href="/blog/hotel-points-comparison.html" style="flex-shrink:0;background:#F5A623;color:#0A1628;padding:5px 10px;border-radius:8px;text-decoration:none;font-size:0.7rem;font-weight:700;">読む</a>
   <button onclick="document.getElementById('noticeBanner').style.display='none'" style="flex-shrink:0;background:transparent;border:none;color:var(--text-muted);font-size:1rem;cursor:pointer;padding:0 4px;">✕</button>
 </div>
 
@@ -2150,8 +2150,8 @@ async function sendMessage() {
   addBubble(text, 'user');
   showTyping();
 
-  // Simulate thinking delay then offline reply
-  await new Promise(r => setTimeout(r, 900));
+  // キーワードマッチで即答
+  await new Promise(r => setTimeout(r, 800));
   removeTyping();
   const reply = getOfflineReply(text);
   addBubble(reply, 'ai');
@@ -2673,6 +2673,19 @@ const blogPosts = [
     desc: 'Chase Sapphire Preferredのレンタカー一次保険でCDWを断って節約、Chase Travel経由で5xポイント獲得、JAL便でボーナスマイル。家族旅行のポイント最大化戦略を完全解説。',
     tags: ['# レンタカー保険', '# Chase Travel 5x', '# 家族旅行'],
     linkColor: '#117ACA'
+  },
+  {
+    url: '/blog/hotel-points-comparison.html',
+    category: 'jal_ana',
+    categoryLabel: '🏨 ホテルポイント',
+    categoryColor: '#F5A623',
+    accentColor: 'rgba(245,166,35,0.15)',
+    borderColor: 'rgba(245,166,35,0.25)',
+    readTime: '約13分',
+    title: '【2026年最新】Marriott vs Hyatt vs Hilton ホテルポイント徹底比較｜駐在員はどれを推進すべき？',
+    desc: '3大ホテルプログラムを2026年最新情報で徹底比較。ポイント価値・エリートステータス取得難易度・在米日本人駐在員にはHilton Aspireが最適な理由を著者の実体験ベースで解説。',
+    tags: ['# ホテルポイント比較', '# Hilton Aspire', '# Diamond自動付与'],
+    linkColor: '#F5A623'
   }
 ];
 
