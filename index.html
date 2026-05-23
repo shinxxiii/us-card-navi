@@ -1022,6 +1022,23 @@
   </div>
   <div class="logo">🇺🇸 USカードナビ</div>
   <div class="tagline">アメリカ生活×お得を、わかりやすく</div>
+
+  <!-- 統計バッジ -->
+  <div style="display:flex;justify-content:center;gap:10px;margin-top:14px;flex-wrap:wrap;">
+    <div style="background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:99px;padding:5px 12px;display:flex;align-items:center;gap:5px;">
+      <span style="font-size:0.85rem;">📖</span>
+      <span style="font-size:0.72rem;font-weight:700;color:var(--amber);">ブログ30本</span>
+    </div>
+    <div style="background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:99px;padding:5px 12px;display:flex;align-items:center;gap:5px;">
+      <span style="font-size:0.85rem;">💳</span>
+      <span style="font-size:0.72rem;font-weight:700;color:var(--amber);">カード11枚比較</span>
+    </div>
+    <div style="background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:99px;padding:5px 12px;display:flex;align-items:center;gap:5px;">
+      <span style="font-size:0.85rem;">🤖</span>
+      <span style="font-size:0.72rem;font-weight:700;color:var(--amber);">AI相談33種</span>
+    </div>
+  </div>
+
   <div style="display:flex;flex-direction:column;align-items:center;gap:6px;margin-top:12px;">
     <div class="updated-badge"><div class="pulse"></div>最終確認：2026年5月｜最新情報は各公式サイトで確認を</div>
   </div>
@@ -1283,7 +1300,15 @@
 <div class="quiz-section" id="blogSection" style="padding:0 16px 100px;">
   <div style="padding:24px 0 16px;text-align:center;">
     <div style="font-size:1.2rem;font-weight:900;background:linear-gradient(135deg,#FFD600,#F5763A);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:4px;">📖 AmePeach ブログ</div>
-    <div style="font-size:0.75rem;color:var(--text-muted);">在米日本人のクレカ攻略記事</div>
+    <div style="font-size:0.75rem;color:var(--text-muted);">在米日本人のクレカ攻略記事 <span id="blogCount" style="color:var(--amber);font-weight:700;"></span></div>
+  </div>
+
+  <!-- 検索ボックス -->
+  <div style="position:relative;margin-bottom:12px;">
+    <input id="blogSearchInput" type="text" placeholder="🔍 記事を検索（Bilt・SSN・マイル等）" oninput="searchBlog(this.value)"
+      style="width:100%;padding:10px 14px 10px 36px;background:var(--card-bg);border:1px solid var(--border);border-radius:12px;color:var(--text);font-family:'Zen Maru Gothic',sans-serif;font-size:0.82rem;outline:none;box-sizing:border-box;-webkit-appearance:none;">
+    <span style="position:absolute;left:12px;top:50%;transform:translateY(-50%);font-size:0.85rem;pointer-events:none;">🔍</span>
+    <button id="blogSearchClear" onclick="clearBlogSearch()" style="display:none;position:absolute;right:10px;top:50%;transform:translateY(-50%);background:transparent;border:none;color:var(--text-muted);font-size:1rem;cursor:pointer;padding:0;">✕</button>
   </div>
 
   <!-- ブログタブ -->
@@ -1348,7 +1373,7 @@ const cards = [
     tags: ["travel", "hot"],
     tagLabels: { travel: "旅行向け", hot: "🔥人気No.1" },
     annualFee: "$95",
-    signupBonus: "最大60,000 Urポイント",
+    signupBonus: "最大60,000〜100,000 Urポイント",
     signupCondition: "3ヶ月で$4,000利用",
     rewards: "旅行・食事 3x、Chase Travel 5x、ストリーミング 3x、その他 1x",
     foreignFee: "なし ✅",
@@ -2017,7 +2042,7 @@ const CARD_CONTEXT = `
 以下のカード情報をもとに、ユーザーの質問に日本語で丁寧・わかりやすく答えてください。
 
 【掲載カード一覧】
-1. Chase Sapphire Preferred® | 年会費$95 | ウェルカムボーナス：60,000 Urポイント（3ヶ月$4,000利用）| 旅行・食事3x還元 | 海外手数料なし | SSNなし可（パスポートで申込できるケースあり）| ANA・JALマイルへの移行可能 | Chase5/24ルールに注意
+1. Chase Sapphire Preferred® | 年会費$95 | ウェルカムボーナス：60,000〜100,000 Urポイント（時期により変動）| 旅行・食事3x還元 | 海外手数料なし | SSNなし可（パスポートで申込できるケースあり）| ANA・JALマイルへの移行可能 | Chase5/24ルールに注意
 2. Amex Gold Card | 年会費$250 | ボーナス：60,000 MRポイント（6ヶ月$6,000利用）| レストラン・スーパー4x | 毎月$10ダイニング＋$10 Uberクレジット | SSN必須（ITIN可の場合も）
 3. Discover it® Student | 年会費無料 | ボーナス：初年度キャッシュバック全額マッチ | 四半期5%還元 | 海外手数料なし | クレヒスなしでも作りやすい | F1/J1ビザ向け
 4. Chase Freedom Unlimited® | 年会費無料 | ボーナス：$200（3ヶ月$500利用）| すべて1.5%還元 | 海外手数料3% | Sapphireと組み合わせ最強
@@ -2097,7 +2122,7 @@ const offlineRules = [
   },
   {
     keywords: ['chase', 'sapphire'],
-    reply: `Chase Sapphire Preferred®について詳しく説明します💎\n\n**基本情報：**\n・年会費：$95\n・ウェルカムボーナス：60,000 Urポイント（3ヶ月$4,000利用）\n・旅行・食事 3x、その他 1x還元\n・海外手数料：なし✅\n\n**在米日本人ポイント：**\n・ANA・JALマイルへの移行可能！\n・Chase 5/24ルールに注意（過去24ヶ月で5枚以上申込むと審査落ちやすい）\n・SSNなしでもパスポートで申込できるケースあり\n・家族のAUに追加すれば配偶者のクレヒスも構築できる\n\n在米日本人に最も人気のカードです🇯🇵\n他に質問があれば気軽にどうぞ！`
+    reply: `Chase Sapphire Preferred®について詳しく説明します💎\n\n**基本情報：**\n・年会費：$95\n・ウェルカムボーナス：60,000〜100,000 Urポイント（3ヶ月$4,000利用・時期により変動）\n・旅行・食事 3x、その他 1x還元\n・海外手数料：なし✅\n\n**在米日本人ポイント：**\n・ANA・JALマイルへの移行可能！\n・Chase 5/24ルールに注意（過去24ヶ月で5枚以上申込むと審査落ちやすい）\n・SSNなしでもパスポートで申込できるケースあり\n・家族のAUに追加すれば配偶者のクレヒスも構築できる\n\n在米日本人に最も人気のカードです🇯🇵\n他に質問があれば気軽にどうぞ！`
   },
   {
     keywords: ['amex', 'american express', 'アメックス', 'gold'],
@@ -2110,6 +2135,10 @@ const offlineRules = [
   {
     keywords: ['reserve', 'リザーブ', 'csr', 'reserve vs', 'preferred vs', 'どっちがいい', 'アップグレード'],
     reply: `Chase Sapphire Reserve vs Preferredの比較です💎\n\n**年会費の差額$700は回収できる？**\n\n💎 **Sapphire Preferred（$95）がおすすめな人：**\n・年会費を抑えたい\n・旅行頻度が年2〜3回程度\n・すでにDelta Reserveでラウンジをカバー\n\n👑 **Sapphire Reserve（$795）がおすすめな人：**\n・月1回以上出張がある\n・Chase Travel経由で予約する習慣がある\n・$300旅行+$500ホテルクレジットを使い切れる\n・ラウンジアクセスが必要\n\n**現実的な計算：**\n旅行クレジット$300＋ラウンジ$280＋ホテル$200＋その他で約+$548のプラスになります。\n\n**2026年注目：**\nReserveのウェルカムボーナスが過去最高の**150,000pt**（$6,000利用）！\n\n詳しくはブログ「Reserve vs Preferred徹底比較」をご覧ください📖`
+  },
+  {
+    keywords: ['車', 'car', '購入', '自動車', 'ローン', 'dealer', 'ディーラー'],
+    reply: `車購入時のクレカ活用法です🚗\n\n**ディーラーでのクレカ払いは限度額に注意！**\nほとんどのディーラーはクレカ決済に上限（$2,000〜$5,000）を設けています。\n\n**ポイントを最大化する方法：**\n① 頭金の一部をクレカ払い → 上限内でポイント獲得\n② 残りは銀行ローンor現金\n③ Global Entry無料目的でCapital One Ventureを先に取得\n\n**おすすめカード構成（車購入時）：**\n・Capital One Venture：購入費用2x＋Global Entry$120無料\n・Chase Sapphire Preferred：レンタカー一次保険（試乗・代車にも）\n・Amex Gold：ディーラーのレストランで4x（商談中の食事）\n\n購入前にクレカのサインアップボーナス達成に車の費用を活用するのも手です！`
   },
   {
     keywords: ['比較', 'どっち', 'どれ', 'おすすめ', '迷'],
@@ -2916,6 +2945,12 @@ const blogPosts = [
 ];
 
 function filterBlog(cat, btn) {
+  // 検索をクリア
+  const searchInput = document.getElementById('blogSearchInput');
+  if (searchInput) searchInput.value = '';
+  const clearBtn = document.getElementById('blogSearchClear');
+  if (clearBtn) clearBtn.style.display = 'none';
+
   // タブスタイル更新
   document.querySelectorAll('.blog-tab').forEach(b => {
     b.style.background = 'transparent';
@@ -2930,9 +2965,42 @@ function filterBlog(cat, btn) {
   renderBlogList(filtered);
 }
 
+function searchBlog(query) {
+  const clearBtn = document.getElementById('blogSearchClear');
+  if (clearBtn) clearBtn.style.display = query ? 'block' : 'none';
+
+  if (!query.trim()) {
+    renderBlogList(blogPosts);
+    return;
+  }
+  const q = query.toLowerCase();
+  const filtered = blogPosts.filter(p =>
+    p.title.toLowerCase().includes(q) ||
+    p.desc.toLowerCase().includes(q) ||
+    p.tags.some(t => t.toLowerCase().includes(q)) ||
+    p.categoryLabel.toLowerCase().includes(q)
+  );
+  renderBlogList(filtered);
+}
+
+function clearBlogSearch() {
+  const input = document.getElementById('blogSearchInput');
+  if (input) { input.value = ''; input.focus(); }
+  const clearBtn = document.getElementById('blogSearchClear');
+  if (clearBtn) clearBtn.style.display = 'none';
+  renderBlogList(blogPosts);
+}
+
 function renderBlogList(posts) {
   const container = document.getElementById('blogList');
   if (!container) return;
+  // 記事数表示
+  const countEl = document.getElementById('blogCount');
+  if (countEl) countEl.textContent = `（${posts.length}本）`;
+  if (posts.length === 0) {
+    container.innerHTML = `<div style="text-align:center;padding:40px 0;color:var(--text-muted);font-size:0.88rem;">🔍 該当する記事が見つかりませんでした</div>`;
+    return;
+  }
   container.innerHTML = posts.map(p => `
     <a href="${p.url}" style="display:block;text-decoration:none;color:inherit;">
       <div style="background:var(--card-bg);border:1px solid ${p.borderColor};border-radius:20px;margin-bottom:16px;overflow:hidden;transition:transform 0.2s,box-shadow 0.2s;" onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='0 12px 30px rgba(0,0,0,0.3)'" onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='none'">
