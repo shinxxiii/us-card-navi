@@ -1001,12 +1001,12 @@
 
 <!-- お知らせバナー -->
 <div id="noticeBanner" style="background:linear-gradient(135deg,rgba(201,168,76,0.2),rgba(201,168,76,0.06));border-bottom:1px solid rgba(201,168,76,0.2);padding:10px 16px;display:flex;align-items:center;gap:10px;position:relative;z-index:20;">
-  <span style="font-size:1rem;flex-shrink:0;">✨</span>
+  <span style="font-size:1rem;flex-shrink:0;">🥇</span>
   <div style="flex:1;min-width:0;">
-    <div style="font-size:0.72rem;font-weight:900;color:#C9A84C;">📢 25本目まで一気に公開！</div>
-    <div style="font-size:0.75rem;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Bilt・SSN・Hilton Aspire・携帯キャリア・Amex Platinum 完全ガイド</div>
+    <div style="font-size:0.72rem;font-weight:900;color:#C9A84C;">📢 30本達成！新着記事</div>
+    <div style="font-size:0.75rem;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Amexクレジット完全活用｜$7 Dunkin'・$10ダイニング・$10 Uber Cash・$50 Resyを毎月使い切る</div>
   </div>
-  <a href="/blog/amex-platinum-guide.html" style="flex-shrink:0;background:#C9A84C;color:#0A1628;padding:5px 10px;border-radius:8px;text-decoration:none;font-size:0.7rem;font-weight:700;">読む</a>
+  <a href="/blog/amex-credits-guide.html" style="flex-shrink:0;background:#C9A84C;color:#0A1628;padding:5px 10px;border-radius:8px;text-decoration:none;font-size:0.7rem;font-weight:700;">読む</a>
   <button onclick="document.getElementById('noticeBanner').style.display='none'" style="flex-shrink:0;background:transparent;border:none;color:var(--text-muted);font-size:1rem;cursor:pointer;padding:0 4px;">✕</button>
 </div>
 
@@ -2846,6 +2846,58 @@ const blogPosts = [
     title: '【2026年最新】Amex Platinum完全解説｜年会費$895は元が取れる？$3,500以上の特典を徹底計算・在米日本人向け正直レビュー',
     desc: 'Amex Platinumの2026年版全特典を完全解説。$600ホテルクレジット・Centurionラウンジ・Global Entry等を計算し、在米日本人にとってGoldとPlatinumのどちらが最適かを正直に解説。',
     tags: ['# Amex Platinum', '# Centurionラウンジ', '# $895'],
+    linkColor: '#C9A84C'
+  },
+  {
+    url: '/blog/capital-one-venture-guide.html',
+    category: 'beginner',
+    categoryLabel: '✈️ Capital One',
+    categoryColor: '#C8102E',
+    accentColor: 'rgba(200,16,46,0.15)',
+    borderColor: 'rgba(200,16,46,0.25)',
+    readTime: '約12分',
+    title: '【2026年最新】Capital One Venture完全解説｜年会費$95でGlobal Entry無料・全て2xのコスパ最強カード',
+    desc: 'Global Entry $120クレジット（年会費$95より高い！）・全購入2x・ANAマイル1:1移行。「Global Entryのためだけに持つ価値がある」在米日本人向けコスパ最強カードを完全解説。',
+    tags: ['# Global Entry無料', '# 全て2x', '# ANA移行'],
+    linkColor: '#C8102E'
+  },
+  {
+    url: '/blog/chase-freedom-flex-guide.html',
+    category: 'chase',
+    categoryLabel: '💎 Chase攻略',
+    categoryColor: '#117ACA',
+    accentColor: 'rgba(17,122,202,0.15)',
+    borderColor: 'rgba(17,122,202,0.25)',
+    readTime: '約11分',
+    title: '【2026年最新】Chase Freedom Flex完全解説｜四半期5xカテゴリー活用で年間30,000ポイントを狙う',
+    desc: '2026年Q1（ダイニング）・Q2（Amazon・Whole Foods）の四半期5xカテゴリーをフル活用して年間30,000pt以上を狙う方法。Chase Sapphireとのコンボ・登録方法・Freedom Unlimitedとの違いまで。',
+    tags: ['# 四半期5x', '# 年会費無料', '# Chase Trifecta'],
+    linkColor: '#117ACA'
+  },
+  {
+    url: '/blog/us-tax-guide.html',
+    category: 'beginner',
+    categoryLabel: '📋 税金・申告',
+    categoryColor: '#6366F1',
+    accentColor: 'rgba(99,102,241,0.15)',
+    borderColor: 'rgba(99,102,241,0.25)',
+    readTime: '約10分',
+    title: '【入門】アメリカ在住日本人の確定申告ガイド｜W-2・FBAR・クレカポイントの課税関係を解説',
+    desc: 'W-2・FBAR・日米租税条約の基本、クレカポイント・キャッシュバックの課税関係、TurboTax vs CPA選択まで解説。詳細はCPA相談推奨の入門ガイド。',
+    tags: ['# W-2', '# FBAR', '# CPA相談'],
+    linkColor: '#6366F1'
+  },
+  {
+    url: '/blog/amex-credits-guide.html',
+    category: 'amex',
+    categoryLabel: '🥇 Amex攻略',
+    categoryColor: '#C9A84C',
+    accentColor: 'rgba(201,168,76,0.15)',
+    borderColor: 'rgba(201,168,76,0.25)',
+    readTime: '約11分',
+    title: '【2026年最新】Amexカードのクレジットをフル活用する方法｜$7 Dunkinクレジット・$10ダイニング・$10 Uber Cash・$50 Resyを毎月使い切る',
+    desc: 'Amex Goldの月次クレジットを完全解説。Dunkin近くになくてもアプリチャージでOK・Grubhub$10・Uber Cash$10・Resy$50をフル活用で年会費$325が実質+$99のプラスに。登録方法・毎月のルーティンまで。',
+    tags: ['# Dunkin$7', '# Uber Cash', '# 年会費実質ゼロ'],
     linkColor: '#C9A84C'
   }
 ];
