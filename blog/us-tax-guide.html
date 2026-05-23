@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta name='impact-site-verification' value='f61378ef-93de-4c38-97ee-2d79c494f4d9'>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="dark">
+<meta name="theme-color" content="#0A1628">
+<title>【入門】アメリカ在住日本人の確定申告ガイド｜W-2・FBAR・クレカポイントの課税関係を解説 | AmePeach</title>
+<meta name="description" content="アメリカ在住日本人向けの確定申告入門ガイド。W-2・FBAR・日米租税条約の基本・クレカのポイントやキャッシュバックは課税対象？TurboTaxやCPAの使い方まで解説。専門家相談を推奨。">
+<meta name="keywords" content="アメリカ 確定申告 日本人 駐在員,W-2 税金 在米日本人,FBAR 申告 駐在員,TurboTax 外国人,クレカポイント 課税 アメリカ">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://amepeach.com/blog/us-tax-guide.html">
+<meta property="og:title" content="【入門】アメリカ在住日本人の確定申告ガイド｜W-2・FBAR・クレカポイントの課税関係">
+<meta property="og:image" content="https://amepeach.com/og-image.png">
+<meta property="og:site_name" content="AmePeach">
+<link rel="canonical" href="https://amepeach.com/blog/us-tax-guide.html">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XB5X4LK6FL"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-XB5X4LK6FL');</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+:root{--orange:#F5763A;--gold:#FFD600;--amber:#F5A623;--bg:#0A1628;--card-bg:#1A2E45;--text:#FFF8EE;--text-muted:#9DB8D4;--border:rgba(255,255,255,0.08);--green:#5DBE8A;--tax:#6366F1;}
+*{margin:0;padding:0;box-sizing:border-box;}
+html,body{background:var(--bg)!important;}
+body{font-family:'Zen Maru Gothic',sans-serif;color:var(--text);line-height:1.8;overflow-x:hidden;}
+.site-header{position:sticky;top:0;background:rgba(10,22,40,0.95);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:14px 16px;z-index:100;display:flex;align-items:center;justify-content:space-between;}
+.site-logo{font-size:1rem;font-weight:900;color:var(--gold);text-decoration:none;display:flex;align-items:center;gap:6px;}
+.back-link{font-size:0.78rem;color:var(--text-muted);text-decoration:none;padding:6px 12px;border:1px solid var(--border);border-radius:99px;}
+.article{max-width:720px;margin:0 auto;padding:24px 18px 60px;}
+.category-tag{background:rgba(99,102,241,0.15);color:var(--tax);padding:4px 10px;border-radius:99px;font-size:0.7rem;font-weight:700;border:1px solid rgba(99,102,241,0.3);}
+h1{font-size:1.55rem;font-weight:900;line-height:1.4;margin-bottom:18px;}
+h2{font-size:1.2rem;font-weight:900;margin:40px 0 14px;padding-bottom:8px;border-bottom:2px solid var(--tax);}
+h3{font-size:1rem;font-weight:900;margin:20px 0 10px;color:var(--gold);}
+p{font-size:0.92rem;line-height:1.95;margin-bottom:16px;color:rgba(255,248,238,0.92);}
+strong{color:var(--gold);font-weight:900;}
+ul,ol{margin:12px 0 20px 22px;}
+li{font-size:0.92rem;line-height:1.85;margin-bottom:6px;}
+.article-intro{font-size:0.95rem;color:var(--text-muted);line-height:1.8;margin-bottom:28px;padding:16px;background:rgba(255,255,255,0.03);border-left:3px solid var(--tax);border-radius:0 8px 8px 0;}
+.toc{background:var(--card-bg);border:1px solid var(--border);border-radius:12px;padding:18px;margin-bottom:32px;}
+.toc-title{font-size:0.78rem;font-weight:900;color:var(--gold);margin-bottom:12px;}
+.toc ol{padding-left:20px;}
+.toc li{font-size:0.85rem;line-height:1.9;}
+.toc a{color:var(--text-muted);text-decoration:none;}
+.callout{background:var(--card-bg);border:1px solid var(--border);border-left:4px solid var(--gold);padding:16px 18px;margin:20px 0;border-radius:0 12px 12px 0;}
+.callout-title{font-weight:900;color:var(--gold);margin-bottom:8px;font-size:0.9rem;}
+.callout.success{border-left-color:var(--green);}
+.callout.success .callout-title{color:var(--green);}
+.callout.warning{border-left-color:var(--orange);}
+.callout.warning .callout-title{color:var(--orange);}
+.callout.cpa{border-left-color:var(--tax);background:rgba(99,102,241,0.06);}
+.callout.cpa .callout-title{color:var(--tax);}
+.callout p:last-child{margin-bottom:0;}
+.compare-table{background:var(--card-bg);border-radius:12px;padding:16px;margin:20px 0;overflow-x:auto;}
+table{width:100%;border-collapse:collapse;font-size:0.78rem;}
+th{text-align:left;padding:10px 8px;color:var(--gold);font-weight:900;border-bottom:2px solid var(--tax);font-size:0.72rem;}
+td{padding:10px 8px;border-bottom:1px solid var(--border);color:rgba(255,248,238,0.9);line-height:1.5;}
+tr:last-child td{border-bottom:none;}
+.good{color:var(--green);font-weight:700;}
+.mid{color:var(--gold);font-weight:700;}
+.bad{color:var(--orange);}
+.tip-row{font-size:0.78rem;color:var(--amber);padding:8px 12px;background:rgba(245,166,35,0.07);border-radius:8px;border-left:3px solid var(--amber);margin-top:10px;line-height:1.55;}
+.warn-row{font-size:0.78rem;color:var(--orange);padding:8px 12px;background:rgba(245,118,58,0.07);border-radius:8px;margin-top:8px;line-height:1.55;}
+.cta-box{background:linear-gradient(135deg,rgba(245,166,35,0.15),rgba(245,118,58,0.08));border:2px solid var(--orange);border-radius:16px;padding:22px 20px;margin:32px 0;text-align:center;}
+.cta-title{font-size:1.05rem;font-weight:900;color:var(--gold);margin-bottom:6px;}
+.cta-desc{font-size:0.82rem;color:var(--text-muted);margin-bottom:16px;line-height:1.7;}
+.cta-btn{display:inline-block;background:linear-gradient(135deg,var(--amber),var(--orange));color:white;padding:11px 24px;border-radius:99px;text-decoration:none;font-weight:900;font-size:0.88rem;}
+.article-footer{margin-top:50px;padding-top:24px;border-top:1px solid var(--border);}
+.disclosure{background:rgba(245,166,35,0.06);border:1px solid rgba(245,166,35,0.2);border-radius:10px;padding:12px 14px;font-size:0.72rem;color:var(--text-muted);line-height:1.7;margin-bottom:24px;}
+.disclosure strong{color:var(--orange);}
+.author-box{display:flex;gap:12px;align-items:center;padding:14px;background:var(--card-bg);border-radius:12px;margin-bottom:20px;}
+.author-icon{width:48px;height:48px;background:linear-gradient(135deg,var(--amber),var(--orange));border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.5rem;flex-shrink:0;}
+.author-name{font-size:0.85rem;font-weight:900;color:var(--gold);}
+.author-bio{font-size:0.72rem;color:var(--text-muted);margin-top:2px;line-height:1.6;}
+.footer-nav{text-align:center;padding:20px 0;font-size:0.72rem;color:var(--text-muted);}
+.footer-nav a{color:var(--text-muted);text-decoration:none;margin:0 6px;}
+</style>
+</head>
+<body>
+<header class="site-header">
+  <a href="/" class="site-logo"><span>🍑</span><span>AmePeach</span></a>
+  <a href="/" class="back-link">← アプリへ戻る</a>
+</header>
+<article class="article">
+  <div style="display:flex;gap:8px;align-items:center;margin-bottom:14px;flex-wrap:wrap;">
+    <span class="category-tag">📋 税金・確定申告</span>
+    <span style="font-size:0.72rem;color:var(--text-muted);">2026年5月</span>
+    <span style="font-size:0.72rem;color:var(--text-muted);">📖 約10分</span>
+  </div>
+
+  <h1>【入門】アメリカ在住日本人の確定申告ガイド｜W-2・FBAR・クレカポイントの課税関係を解説</h1>
+
+  <div style="background:rgba(99,102,241,0.1);border:2px solid rgba(99,102,241,0.4);border-radius:12px;padding:14px 16px;margin-bottom:20px;">
+    <div style="font-size:0.82rem;font-weight:900;color:var(--tax);margin-bottom:6px;">⚖️ 重要：本記事は一般的な情報提供のみです</div>
+    <div style="font-size:0.78rem;color:var(--text-muted);line-height:1.65;">税務は個人の状況・ビザ・州・収入形態によって大きく異なります。<strong style="color:var(--text);">個別の税務判断は必ずCPA（公認会計士）または税理士に相談してください。</strong>本記事の情報を個別の税務判断に使用することはお控えください。</div>
+  </div>
+
+  <div class="article-intro">
+    <p>「アメリカでも確定申告が必要なの？」「FBARって何？やらないとどうなる？」</p>
+    <p style="margin-top:8px;">アメリカに住む日本人には、アメリカの税申告義務が発生します。概要を把握してCPAに相談するための基礎知識をまとめました🍑</p>
+  </div>
+
+  <nav class="toc">
+    <div class="toc-title">📚 目次</div>
+    <ol>
+      <li><a href="#overview">アメリカの税制の基本</a></li>
+      <li><a href="#w2">W-2とは何か</a></li>
+      <li><a href="#fbar">FBAR：海外金融口座申告</a></li>
+      <li><a href="#treaty">日米租税条約の基本</a></li>
+      <li><a href="#points">クレカポイント・キャッシュバックは課税対象？</a></li>
+      <li><a href="#tools">確定申告ツール</a></li>
+      <li><a href="#cpa">CPAに相談すべきケース</a></li>
+      <li><a href="#summary">まとめ</a></li>
+    </ol>
+  </nav>
+
+  <h2 id="overview">1. アメリカの税制の基本</h2>
+  <p>アメリカの税申告は<strong>連邦税（Federal Tax）と州税（State Tax）の2種類</strong>があります。駐在員として給与を受け取っている場合、原則として両方の申告が必要です。</p>
+  <p>申告期限は原則<strong>毎年4月15日</strong>（Tax Day）。期限延長申請（Extension）を行えば10月15日まで延長可能です。</p>
+
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:16px 0;">
+    <div style="background:var(--card-bg);border-radius:12px;padding:12px;border-left:3px solid var(--tax);">
+      <div style="font-size:0.65rem;color:var(--tax);font-weight:700;margin-bottom:6px;">📋 連邦税</div>
+      <div style="font-size:0.78rem;line-height:1.8;">・Form 1040で申告<br>・IRS（国税庁）に提出<br>・全米共通の税率</div>
+    </div>
+    <div style="background:var(--card-bg);border-radius:12px;padding:12px;border-left:3px solid var(--amber);">
+      <div style="font-size:0.65rem;color:var(--amber);font-weight:700;margin-bottom:6px;">🏛️ 州税</div>
+      <div style="font-size:0.78rem;line-height:1.8;">・州によって異なる<br>・ジョージア州：最大5.39%<br>・テキサス・フロリダ：州税なし</div>
+    </div>
+  </div>
+
+  <h2 id="w2">2. W-2とは何か</h2>
+  <p>W-2は<strong>雇用主から1月末までに届く給与報告書</strong>です。年間の給与・源泉徴収された税金が記載されています。確定申告時に使用します。</p>
+  <ul>
+    <li>毎年1月31日までに雇用主から郵送またはメール送付</li>
+    <li>複数の雇用主がいた場合は複数のW-2が届く</li>
+    <li>副業収入がある場合はForm 1099-NEC or 1099-Kも届く</li>
+  </ul>
+
+  <h2 id="fbar">3. FBAR：海外金融口座申告</h2>
+
+  <div class="callout warning">
+    <div class="callout-title">⚠️ FBARを忘れると重大なペナルティ</div>
+    <p>FBAR（Foreign Bank Account Report）は<strong>海外（日本）の金融口座の残高が1年間のいずれかの時点で$10,000以上</strong>であった場合に申告が必要です。申告期限はTax Dayと同じ4月15日（自動で10月15日まで延長）。<br><br>
+    <strong>意図的な未申告には最大$100,000以上のペナルティ</strong>が課せられることがあります。日本の口座を持っている駐在員は必ずCPAに確認してください。</p>
+  </div>
+
+  <p>FBARはFinCEN（金融犯罪執行ネットワーク）のBSAe-Filingシステムから電子申告します（bsaefiling.fincen.treas.gov）。</p>
+
+  <h2 id="treaty">4. 日米租税条約の基本</h2>
+  <p>日米間には<strong>租税条約</strong>があり、二重課税（日米両方で課税される）を防ぐための仕組みがあります。ただし適用条件は複雑で、個人の状況によって異なります。</p>
+  <ul>
+    <li>日本での所得に対してアメリカで課税されないケースがある</li>
+    <li>外国税額控除（Foreign Tax Credit）で二重課税を軽減できる</li>
+    <li>日本の銀行利息・配当への課税率が軽減される場合がある</li>
+  </ul>
+  <div class="tip-row">💡 租税条約の適用は複雑です。CPAのサポートなしに自己判断するのはリスクがあります。</div>
+
+  <h2 id="points">5. クレカポイント・キャッシュバックは課税対象？</h2>
+  <p>これは多くの在米日本人が気にするポイントです。結論から言うと：</p>
+
+  <div class="compare-table">
+    <table>
+      <thead><tr><th>種類</th><th>課税対象？</th><th>理由</th></tr></thead>
+      <tbody>
+        <tr><td>ウェルカムボーナス（$500以上）</td><td class="bad">原則 課税対象</td><td>購入条件がない場合は雑所得扱い</td></tr>
+        <tr><td>購入に伴うポイント・キャッシュバック</td><td class="good">原則 非課税</td><td>購入価格の割引として扱われる</td></tr>
+        <tr><td>リファラルボーナス</td><td class="bad">課税対象の可能性</td><td>サービスへの報酬として扱われる場合も</td></tr>
+        <tr><td>マイルでの旅行特典</td><td class="good">原則 非課税</td><td>購入に伴う割引として扱われる</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="callout cpa">
+    <div class="callout-title">💡 実務では多くのケースで申告不要</div>
+    <p>IRSはクレカのポイント・マイルの課税に関して明確なガイドラインを出していないため、実務上は多くのケースで申告されていません。ただし<strong>大額のウェルカムボーナスや特定のリファラル収入は1099-MISCが発行されることがあります</strong>。Amexから1099が届いた場合は申告が必要です。</p>
+  </div>
+
+  <h2 id="tools">6. 確定申告ツール</h2>
+
+  <div class="compare-table">
+    <table>
+      <thead><tr><th>ツール</th><th>費用</th><th>外国人対応</th><th>おすすめ度</th></tr></thead>
+      <tbody>
+        <tr><td><strong>TurboTax</strong></td><td class="mid">$0〜$180</td><td class="good">対応（有料版）</td><td class="good">◎ 最も一般的</td></tr>
+        <tr><td><strong>H&R Block</strong></td><td class="mid">$0〜$110</td><td class="good">対応</td><td class="good">◎ 日本人利用者多い</td></tr>
+        <tr><td><strong>FreeTaxUSA</strong></td><td class="good">$0〜$15</td><td class="mid">基本的な対応</td><td class="mid">○ シンプルな方に</td></tr>
+        <tr><td><strong>日系CPA事務所</strong></td><td class="bad">$300〜$1,000+</td><td class="good">最も対応 🏆</td><td class="good">🏆 複雑な状況に</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2 id="cpa">7. CPAに相談すべきケース</h2>
+  <ul>
+    <li><strong>日本の口座残高が$10,000以上</strong>（FBAR申告必須）</li>
+    <li>日本でも収入がある（二重課税の可能性）</li>
+    <li>株式・投資を保有している</li>
+    <li>副業・フリーランス収入がある</li>
+    <li>帰国年度の税申告（日米にまたがる）</li>
+    <li>初めての確定申告</li>
+  </ul>
+
+  <div class="callout success">
+    <div class="callout-title">✅ 日系CPAの探し方</div>
+    <p>ジョージア州アトランタ周辺には日系の会計事務所があります。JETROや日本商工会議所のウェブサイトで紹介されている事務所に相談するのが安心です。初回相談無料の事務所も多いです。</p>
+  </div>
+
+  <h2 id="summary">8. まとめ</h2>
+  <p>アメリカ在住日本人の確定申告は複雑ですが、基本を把握しておけば慌てずに対処できます。<strong>特にFBARは忘れやすいので要注意</strong>。日本の口座を持っている方は毎年4月15日の期限を意識してください。</p>
+
+  <div class="cta-box">
+    <div class="cta-title">🧭 クレカポイントを賢く使って節税？</div>
+    <div class="cta-desc">Chase・Amexのポイントをビジネス費用の節約に活用する戦略をAI診断でご提案。</div>
+    <a href="/" class="cta-btn">USカードナビで診断する →</a>
+  </div>
+
+  <div style="margin-top:32px;">
+    <div style="font-size:0.75rem;color:var(--text-muted);margin-bottom:12px;font-weight:700;">📚 あわせて読みたい</div>
+    <a href="/blog/us-bank-account-guide.html" style="display:block;text-decoration:none;color:inherit;background:var(--card-bg);border:1px solid var(--border);border-radius:12px;padding:14px;margin-bottom:10px;" onmouseover="this.style.borderColor='var(--orange)'" onmouseout="this.style.borderColor='var(--border)'">
+      <div style="font-size:0.68rem;color:#0EA5E9;margin-bottom:4px;">銀行口座</div>
+      <div style="font-size:0.88rem;font-weight:900;">アメリカの銀行口座完全ガイド</div>
+    </a>
+    <a href="/blog/ssn-guide.html" style="display:block;text-decoration:none;color:inherit;background:var(--card-bg);border:1px solid var(--border);border-radius:12px;padding:14px;" onmouseover="this.style.borderColor='var(--orange)'" onmouseout="this.style.borderColor='var(--border)'">
+      <div style="font-size:0.68rem;color:#0EA5E9;margin-bottom:4px;">渡米準備</div>
+      <div style="font-size:0.88rem;font-weight:900;">SSN取得完全ガイド</div>
+    </a>
+  </div>
+
+  <div class="article-footer">
+    <div class="author-box">
+      <div class="author-icon">🍑</div>
+      <div>
+        <div class="author-name">AmePeach</div>
+        <div class="author-bio">米国駐在員（ジョージア州在住・家族5人）。税務は専門家ではないため、概要のみを把握しCPAに相談している立場から執筆。詳細は必ず専門家にご相談ください。</div>
+      </div>
+    </div>
+    <div class="disclosure">
+      <strong>📢 重要な免責事項</strong><br>
+      本記事は税務アドバイスではありません。個別の税務判断は必ずCPA（公認会計士）または税理士にご相談ください。情報は参考目的のみであり、正確性・完全性を保証するものではありません。
+    </div>
+    <div class="footer-nav">
+      <a href="/">アプリへ戻る</a> ·
+      <a href="/blog/us-bank-account-guide.html">銀行口座ガイド</a> ·
+      <a href="/blog/before-moving-to-us.html">渡米前準備</a>
+    </div>
+  </div>
+</article>
+</body>
+</html>
