@@ -1000,13 +1000,13 @@
 <div class="pc-wrapper">
 
 <!-- お知らせバナー -->
-<div id="noticeBanner" style="background:linear-gradient(135deg,rgba(14,165,233,0.2),rgba(14,165,233,0.06));border-bottom:1px solid rgba(14,165,233,0.2);padding:10px 16px;display:flex;align-items:center;gap:10px;position:relative;z-index:20;">
-  <span style="font-size:1rem;flex-shrink:0;">🛡️</span>
+<div id="noticeBanner" style="background:linear-gradient(135deg,rgba(201,168,76,0.2),rgba(201,168,76,0.06));border-bottom:1px solid rgba(201,168,76,0.2);padding:10px 16px;display:flex;align-items:center;gap:10px;position:relative;z-index:20;">
+  <span style="font-size:1rem;flex-shrink:0;">🛒</span>
   <div style="flex:1;min-width:0;">
-    <div style="font-size:0.72rem;font-weight:900;color:#0EA5E9;">📢 新着記事</div>
-    <div style="font-size:0.75rem;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">アメリカの保険入門｜車・住宅・旅行保険をクレカで節約する方法</div>
+    <div style="font-size:0.72rem;font-weight:900;color:#C9A84C;">📢 新着記事</div>
+    <div style="font-size:0.75rem;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">スーパー・食費でポイントを最大化｜Amex Gold 4x・Kroger・Costco完全攻略</div>
   </div>
-  <a href="/blog/insurance-guide.html" style="flex-shrink:0;background:#0EA5E9;color:#0A1628;padding:5px 10px;border-radius:8px;text-decoration:none;font-size:0.7rem;font-weight:700;">読む</a>
+  <a href="/blog/grocery-points-guide.html" style="flex-shrink:0;background:#C9A84C;color:#0A1628;padding:5px 10px;border-radius:8px;text-decoration:none;font-size:0.7rem;font-weight:700;">読む</a>
   <button onclick="document.getElementById('noticeBanner').style.display='none'" style="flex-shrink:0;background:transparent;border:none;color:var(--text-muted);font-size:1rem;cursor:pointer;padding:0 4px;">✕</button>
 </div>
 
@@ -2145,6 +2145,10 @@ const offlineRules = [
     reply: `目的別おすすめをまとめました🎯\n\n**旅行・マイル重視：** 💎 Chase Sapphire Preferred\n**食費・スーパー重視：** 🥇 Amex Gold Card\n**ホテル・出張多め：** 🏨 Chase World of Hyatt\n**Delta利用（ATL在住）：** ✈️ Delta SkyMiles Gold\n**初心者・クレヒスなし：** 🎓 Discover it Student\n**シンプルに全部お得：** ✈️ Capital One Venture\n**AA系で日本へ：** 🦅 Citi AAdvantage\n\n下の「診断」タブで5問答えると、さらに詳しくあなたに合ったカードが分かります！\n他に質問があれば気軽にどうぞ！`
   },
   {
+    keywords: ['食費', 'スーパー', 'grocery', 'kroger', 'publix', 'whole foods', 'costco', 'walmart', 'target'],
+    reply: `スーパー・食費のポイント最大化についてお答えします🛒\n\n**店舗別・最強カード：**\n\n🥇 **Kroger・Publix・Whole Foods・Trader Joe's：**\n→ Amex Gold（4x MR）一択！月$800なら年38,400ポイント\n\n🏪 **Costco：**\n→ Amex Goldは使えない（Visa/Mastercardのみ）\n→ Capital One Venture（2x）またはCostco Anywhere Visa（2%）\n\n🎯 **Target・Walmart：**\n→ スーパーMCCに非該当・Amex Gold 4x不可\n→ Target RedCard（5%割引）が最強\n\n💡 **重要ポイント：**\nAmex GoldのスーパーMCCは5411のみ対象。Target・Walmart・Costcoは非対象なので注意！\n\n詳しくはブログ「スーパー・食費ポイント最大化」をご覧ください📖`
+  },
+  {
     keywords: ['ホテル', 'hotel', 'hilton', 'ヒルトン', 'marriott', 'マリオット', 'hyatt', 'ハイアット'],
     reply: `ホテルポイント戦略についてお答えします🏨\n\n**3大ホテルプログラム比較：**\n\n🏆 **Hilton Honors（駐在員に最強）**\n・Aspireカード保有でDiamond自動付与\n・Aspire実質-$650（$400リゾート・$200航空・$600F&B）\n・無料宿泊証はカテゴリー上限なし\n\n💎 **World of Hyatt**\n・ポイント価値最強（1.5〜1.8セント/pt）\n・Chase Urポイントから1:1移行可能\n・ホテル数は少なめ（約1,400軒）\n\n🌐 **Marriott Bonvoy**\n・世界最大の9,700+物件\n・動的価格で予測しにくい\n・Titaniumは年75泊必要で困難\n\n月1出張ペースなら**Hilton Aspire**が圧倒的にお得！\n\n詳しくはブログ「Marriott vs Hyatt vs Hilton徹底比較」をご覧ください📖`
   },
@@ -2954,6 +2958,19 @@ const blogPosts = [
     desc: '車保険の義務と種類・Renters Insurance月$10〜・Chase Sapphireのレンタカー一次保険でCDW節約・旅行キャンセル$10,000/人をクレカ保険でカバー。駐在員の保険チェックリスト付き。',
     tags: ['# レンタカー一次保険', '# 旅行保険', '# Renters Insurance'],
     linkColor: '#0EA5E9'
+  },
+  {
+    url: '/blog/grocery-points-guide.html',
+    category: 'amex',
+    categoryLabel: '🛒 食費・スーパー',
+    categoryColor: '#C9A84C',
+    accentColor: 'rgba(201,168,76,0.15)',
+    borderColor: 'rgba(201,168,76,0.25)',
+    readTime: '約12分',
+    title: '【2026年最新】スーパー・食費でポイントを最大化する方法｜Amex Gold 4x・Kroger・Whole Foods・Costco完全攻略',
+    desc: 'Amex Gold 4x（年$25,000まで）・Chase Sapphire 3x（オンライン）・CostcoとTargetで損しないカード選び・家族5人の食費シミュレーション。MCC5411の仕組みから店舗別最強カードまで完全解説。',
+    tags: ['# Amex Gold 4x', '# Kroger/Publix', '# Costco攻略'],
+    linkColor: '#C9A84C'
   }
 ];
 
