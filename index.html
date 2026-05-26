@@ -848,7 +848,7 @@
     z-index: 10;
     padding: 0 16px;
     flex-direction: column;
-    height: calc(100vh - 140px);
+    height: calc(100dvh - 140px);
   }
   .chat-section.active { display: flex; }
 
@@ -960,6 +960,9 @@
     gap: 8px;
     padding: 10px 0 16px;
     align-items: flex-end;
+    position: sticky;
+    bottom: 0;
+    background: #0A1628;
   }
 
   .chat-input {
