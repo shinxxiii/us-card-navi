@@ -998,6 +998,28 @@
   .send-btn:disabled { opacity: 0.4; cursor: not-allowed; transform: none; }
 </style>
 <meta name='impact-site-verification' value='f61378ef-93de-4c38-97ee-2d79c494f4d9'>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "USカードナビ",
+  "description": "在米日本人のためのクレジットカード比較・AI診断アプリ。SSNなし対応カードや日本帰国時のマイル戦略も網羅。",
+  "url": "https://amepeach.com",
+  "applicationCategory": "FinanceApplication",
+  "operatingSystem": "Any",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "AmePeach",
+    "url": "https://amepeach.com"
+  },
+  "inLanguage": "ja"
+}
+</script>
 </head>
 <body>
 <div class="pc-wrapper">
@@ -1030,7 +1052,7 @@
   <div style="display:flex;justify-content:center;gap:10px;margin-top:14px;flex-wrap:wrap;">
     <div style="background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:99px;padding:5px 12px;display:flex;align-items:center;gap:5px;">
       <span style="font-size:0.85rem;">📖</span>
-      <span style="font-size:0.72rem;font-weight:700;color:var(--amber);">ブログ30本</span>
+      <span style="font-size:0.72rem;font-weight:700;color:var(--amber);">ブログ34本</span>
     </div>
     <div style="background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:99px;padding:5px 12px;display:flex;align-items:center;gap:5px;">
       <span style="font-size:0.85rem;">💳</span>
@@ -1038,7 +1060,7 @@
     </div>
     <div style="background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:99px;padding:5px 12px;display:flex;align-items:center;gap:5px;">
       <span style="font-size:0.85rem;">🤖</span>
-      <span style="font-size:0.72rem;font-weight:700;color:var(--amber);">AI相談33種</span>
+      <span style="font-size:0.72rem;font-weight:700;color:var(--amber);">AI相談34種</span>
     </div>
   </div>
 
@@ -2021,9 +2043,11 @@ function showResult() {
     <div style="background:rgba(255,255,255,0.04);border-radius:10px;padding:8px 10px;margin:10px 0;font-size:0.7rem;color:#9DB8D4;line-height:1.55;">
       🤝 下のボタンは<strong style="color:#FFF8EE;">友人紹介リンク</strong>です。承認された場合、<strong style="color:#FFF8EE;">あなたのボーナスは公式と同じ</strong>で、追加で運営者にもボーナスが付与されます。
     </div>
-    <div style="display:flex;gap:8px;margin-top:10px;">
-      <button class="apply-btn" style="background:${top.accent};flex:1;" onclick="window.open('${topReferralUrl}','_blank')">📝 申し込む（友人紹介）→</button>
-      <button style="background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);color:white;padding:0 14px;border-radius:12px;font-family:'Zen Maru Gothic',sans-serif;font-size:0.78rem;cursor:pointer;font-weight:700;" onclick="openCardModal(${top.id})">詳細</button>
+    <div style="margin-top:12px;">
+      <button class="apply-btn" style="background:linear-gradient(135deg,${top.accent},${top.accent}CC);width:100%;font-size:0.95rem;padding:14px;border-radius:14px;box-shadow:0 4px 20px rgba(0,0,0,0.3);border:2px solid rgba(255,255,255,0.15);" onclick="window.open('${topReferralUrl}','_blank')">
+        🎁 ${top.name}に申し込む（友人紹介）→
+      </button>
+      <button style="background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);color:white;width:100%;padding:10px;border-radius:12px;font-family:'Zen Maru Gothic',sans-serif;font-size:0.82rem;cursor:pointer;font-weight:700;margin-top:8px;" onclick="openCardModal(${top.id})">📋 カード詳細を見る</button>
     </div>
   `;
 
@@ -2167,6 +2191,10 @@ const offlineRules = [
   {
     keywords: ['reserve', 'リザーブ', 'csr', 'reserve vs', 'preferred vs', 'どっちがいい', 'アップグレード'],
     reply: `Chase Sapphire Reserve vs Preferredの比較です💎\n\n**年会費の差額$700は回収できる？**\n\n💎 **Sapphire Preferred（$95）がおすすめな人：**\n・年会費を抑えたい\n・旅行頻度が年2〜3回程度\n・すでにDelta Reserveでラウンジをカバー\n\n👑 **Sapphire Reserve（$795）がおすすめな人：**\n・月1回以上出張がある\n・Chase Travel経由で予約する習慣がある\n・$300旅行+$500ホテルクレジットを使い切れる\n・ラウンジアクセスが必要\n\n**現実的な計算：**\n旅行クレジット$300＋ラウンジ$280＋ホテル$200＋その他で約+$548のプラスになります。\n\n**2026年注目：**\nReserveのウェルカムボーナスが過去最高の**150,000pt**（$6,000利用）！\n\n詳しくはブログ「Reserve vs Preferred徹底比較」をご覧ください📖`
+  },
+  {
+    keywords: ['利用率', '利用額', 'autopay', 'オートペイ', '全額払い', '締め日', '支払日', '残高'],
+    reply: `利用率・AutoPay管理についてお答えします📊\n\n**クレジット利用率の基本：**\n・目標は常に**10%以下**（30%以下では不十分）\n・限度額$10,000なら残高$1,000以下を維持\n\n**締め日の重要性：**\n利用率はStatement Date（締め日）の残高で報告されます。支払期日（Due Date）に全額払っても、締め日に残高が高ければスコアに悪影響。\n→ **締め日の2〜3日前に残高を減らす**のがポイント！\n\n**AutoPayの正解：**\n✅ Statement Balance（全額）で設定\n❌ Minimum Paymentは絶対NG（利息発生＋利用率悪化）\n\n詳しくはブログ「利用率・AutoPayの正しい管理法」をご覧ください📖`
   },
   {
     keywords: ['車', 'car', '購入', '自動車', 'ローン', 'dealer', 'ディーラー'],
@@ -3087,6 +3115,9 @@ function renderBlogList(posts) {
     '/blog/improve-credit-score.html',
     '/blog/ssn-guide.html',
     '/blog/mobile-carrier-guide.html',
+    '/blog/grocery-points-guide.html',
+    '/blog/insurance-guide.html',
+    '/blog/credit-utilization-guide.html',
   ]);
 
   container.innerHTML = posts.map(p => {
