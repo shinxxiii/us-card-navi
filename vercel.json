@@ -1,0 +1,9 @@
+{
+  "redirects": [
+    {
+      "source": "/blog/global-entry-tsa-page.html",
+      "destination": "/blog/global-entry-tsa-precheck-guide.html",
+      "permanent": true
+    }
+  ]
+}
